@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'features/onboarding/presentation/pages/onboarding_screen.dart';
 
 import 'theme.dart';
 
@@ -16,22 +17,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: theme(),
-      home: const HomeScreen(),
+      home: const OnboardingScreen(),
     );
   }
 }
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text(
-          "TESTINGGGGGG",
-        ),
-      ),
-    );
-  }
-}
