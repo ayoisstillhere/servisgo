@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../../../constants.dart';
 
+import '../../../../constants.dart';
 import '../../../../size_config.dart';
+import '../widgets/body.dart';
 
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
@@ -10,22 +11,27 @@ class OnboardingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      appBar: AppBar(
-        actions: <Widget>[
-          Padding(
-            padding: EdgeInsets.only(right: getProportionateScreenWidth(16)),
-            child: TextButton(
-              onPressed: () {},
-              child: Text(
-                "Skip",
-                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                      color: kCallToAction,
-                    ),
-              ),
+      appBar: buildOnboardingAppbar(context),
+      body: const Body(),
+    );
+  }
+
+  AppBar buildOnboardingAppbar(BuildContext context) {
+    return AppBar(
+      actions: <Widget>[
+        Padding(
+          padding: EdgeInsets.only(right: getProportionateScreenWidth(16)),
+          child: TextButton(
+            onPressed: () {},
+            child: Text(
+              "Skip",
+              style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                    color: kCallToAction,
+                  ),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }
