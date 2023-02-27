@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
+import '../../../../components/default_button.dart';
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
-
-import '../../../../components/default_button.dart';
 
 class Body extends StatefulWidget {
   const Body({super.key});
@@ -17,20 +16,20 @@ class _BodyState extends State<Body> {
   int currentPage = 0;
   List<Map<String, String>> onboardingData = [
     {
-      "image": "assets/images/Onboarding1.svg",
-      "header": "Welcome to Servis",
+      "image": "assets/images/Onboarding1.png",
+      "header": "Welcome to ServisGo",
       "text":
           "We're excited to help you take care of all of your home needs, from cleaning and maintenance to repairs and renovations",
     },
     {
-      "image": "assets/images/Onboarding2.svg",
+      "image": "assets/images/Onboarding2.png",
       "header": "Book Services Providers Now!",
       "text":
           "To get started, simply create an account and browse through our available services. When you find something you need, just place an order and we'll match you with a trusted and qualified professional who can help.",
     },
     {
-      "image": "assets/images/Onboarding3.svg",
-      "header": "Live Correspondence with Service Providers",
+      "image": "assets/images/Onboarding3.png",
+      "header": "Chat With Taskers",
       "text":
           "You can track the progress of your order and communicate with your professional directly through the app. And when the job is done, you can leave a review and let us know how we did.",
     },
@@ -43,20 +42,39 @@ class _BodyState extends State<Body> {
       child: Column(
         children: [
           SizedBox(height: getProportionateScreenHeight(64)),
-          OnboardingContent(),
-          Container(
-            decoration: const BoxDecoration(
-              color: kBgColor,
+          Expanded(
+            flex: 5,
+            child: PageView.builder(
+              onPageChanged: (value) {
+                setState(() {
+                  currentPage = value;
+                });
+              },
+              itemCount: onboardingData.length,
+              itemBuilder: (context, index) => OnboardingContent(
+                image: onboardingData[index]['image'],
+                header: onboardingData[index]['header'],
+                text: onboardingData[index]['text'],
+                index: currentPage,
+              ),
             ),
-            child: Column(
-              children: [
-                _buildSliderIndicator(),
-                SizedBox(height: getProportionateScreenHeight(32)),
-                DefaultButton(
-                  text: 'Get Started',
-                  press: () {},
-                ),
-              ],
+          ),
+          Expanded(
+            flex: 2,
+            child: Container(
+              decoration: const BoxDecoration(
+                color: kBgColor,
+              ),
+              child: Column(
+                children: [
+                  _buildSliderIndicator(),
+                  SizedBox(height: getProportionateScreenHeight(32)),
+                  DefaultButton(
+                    text: 'Get Started',
+                    press: () {},
+                  ),
+                ],
+              ),
             ),
           ),
         ],
@@ -68,42 +86,47 @@ class _BodyState extends State<Body> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Container(
-          height: getProportionateScreenHeight(8),
-          width: getProportionateScreenWidth(32),
-          decoration: BoxDecoration(
-              color: kPrimaryColor,
-              borderRadius: BorderRadius.circular(
-                getProportionateScreenWidth(24),
-              )),
-        ),
+        _buildDot(0),
         SizedBox(width: getProportionateScreenWidth(4)),
-        Container(
-          height: getProportionateScreenHeight(8),
-          width: getProportionateScreenWidth(8),
-          decoration: const BoxDecoration(
-            color: kGreys,
-            shape: BoxShape.circle,
-          ),
-        ),
+        _buildDot(1),
         SizedBox(width: getProportionateScreenWidth(4)),
-        Container(
-          height: getProportionateScreenHeight(8),
-          width: getProportionateScreenWidth(8),
-          decoration: const BoxDecoration(
-            color: kGreys,
-            shape: BoxShape.circle,
-          ),
-        ),
+        _buildDot(2)
       ],
     );
+  }
+
+  Container _buildDot(int index) {
+    return currentPage == index
+        ? Container(
+            height: getProportionateScreenHeight(8),
+            width: getProportionateScreenWidth(32),
+            decoration: BoxDecoration(
+                color: kPrimaryColor,
+                borderRadius: BorderRadius.circular(
+                  getProportionateScreenWidth(24),
+                )),
+          )
+        : Container(
+            height: getProportionateScreenHeight(8),
+            width: getProportionateScreenWidth(8),
+            decoration: const BoxDecoration(
+              color: kGreys,
+              shape: BoxShape.circle,
+            ),
+          );
   }
 }
 
 class OnboardingContent extends StatelessWidget {
   const OnboardingContent({
-    super.key,
-  });
+    Key? key,
+    required this.text,
+    required this.index,
+    required this.image,
+    required this.header,
+  }) : super(key: key);
+  final String? image, header, text;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -111,8 +134,8 @@ class OnboardingContent extends StatelessWidget {
       children: <Widget>[
         SizedBox(
           width: double.infinity,
-          child: SvgPicture.asset(
-            "assets/images/Onboarding1.svg",
+          child: Image.asset(
+            image!,
             height: getProportionateScreenHeight(407.26),
             width: getProportionateScreenWidth(202.68),
           ),
@@ -140,27 +163,14 @@ class OnboardingContent extends StatelessWidget {
                           horizontal: getProportionateScreenWidth(16),
                           vertical: getProportionateScreenHeight(8),
                         ),
-                        child: RichText(
-                          text: TextSpan(
-                            text: "Welcome to Servis",
-                            style: Theme.of(context)
-                                .textTheme
-                                .displayMedium!
-                                .copyWith(
-                                  color: kPrimaryColor,
-                                ),
-                            children: <TextSpan>[
-                              TextSpan(
-                                text: "Go",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .displayMedium!
-                                    .copyWith(
-                                      color: kCallToAction,
-                                    ),
-                              )
-                            ],
-                          ),
+                        child: Text(
+                          header!,
+                          style: Theme.of(context)
+                              .textTheme
+                              .displayMedium!
+                              .copyWith(
+                                color: kPrimaryColor,
+                              ),
                         ),
                       ),
                       SizedBox(
@@ -172,7 +182,7 @@ class OnboardingContent extends StatelessWidget {
                           vertical: getProportionateScreenHeight(8),
                         ),
                         child: Text(
-                          "We're excited to help you take care of all of your home needs, from cleaning and maintenance to repairs and renovations",
+                          text!,
                           style: Theme.of(context)
                               .textTheme
                               .bodySmall!
