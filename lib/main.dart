@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'features/onboarding/presentation/pages/onboarding_screen.dart';
 
+import 'features/onboarding/presentation/pages/onboarding_screen.dart';
 import 'theme.dart';
 
 void main() {
@@ -21,4 +21,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
