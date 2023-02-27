@@ -17,86 +17,7 @@ class Body extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(height: getProportionateScreenHeight(64)),
-          Stack(
-            children: <Widget>[
-              SizedBox(
-                width: double.infinity,
-                child: SvgPicture.asset("assets/images/Onboarding1.svg"),
-              ),
-              Padding(
-                padding:
-                    EdgeInsets.only(top: getProportionateScreenHeight(288)),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: kBgColor,
-                    boxShadow: [
-                      BoxShadow(
-                        color: kBgColor.withOpacity(0.91),
-                        blurRadius: 25,
-                        offset: const Offset(0, -50),
-                      ),
-                    ],
-                  ),
-                  child: Center(
-                    child: Column(
-                      children: [
-                        Column(
-                          children: <Widget>[
-                            Padding(
-                              padding: EdgeInsets.symmetric(
-                                horizontal: getProportionateScreenWidth(16),
-                                vertical: getProportionateScreenHeight(8),
-                              ),
-                              child: RichText(
-                                text: TextSpan(
-                                  text: "Welcome to Servis",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .displayMedium!
-                                      .copyWith(
-                                        color: kPrimaryColor,
-                                      ),
-                                  children: <TextSpan>[
-                                    TextSpan(
-                                      text: "Go",
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .displayMedium!
-                                          .copyWith(
-                                            color: kCallToAction,
-                                          ),
-                                    )
-                                  ],
-                                ),
-                              ),
-                            ),
-                            SizedBox(
-                              height: getProportionateScreenHeight(8),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.symmetric(
-                                horizontal: getProportionateScreenWidth(8),
-                                vertical: getProportionateScreenHeight(8),
-                              ),
-                              child: Text(
-                                "We're excited to help you take care of all of your home needs, from cleaning and maintenance to repairs and renovations",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodySmall!
-                                    .copyWith(color: kPrimaryColor),
-                                textAlign: TextAlign.center,
-                              ),
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: getProportionateScreenHeight(32)),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ],
-          ),
+          OnboardingContent(),
           Container(
             decoration: BoxDecoration(
               color: kBgColor,
@@ -146,6 +67,99 @@ class Body extends StatelessWidget {
           decoration: const BoxDecoration(
             color: kGreys,
             shape: BoxShape.circle,
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class OnboardingContent extends StatelessWidget {
+  const OnboardingContent({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: <Widget>[
+        SizedBox(
+          width: double.infinity,
+          child: SvgPicture.asset(
+            "assets/images/Onboarding1.svg",
+            height: getProportionateScreenHeight(407.26),
+            width: getProportionateScreenWidth(202.68),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.only(top: getProportionateScreenHeight(288)),
+          child: Container(
+            decoration: BoxDecoration(
+              color: kBgColor,
+              boxShadow: [
+                BoxShadow(
+                  color: kBgColor.withOpacity(0.91),
+                  blurRadius: 25,
+                  offset: const Offset(0, -50),
+                ),
+              ],
+            ),
+            child: Center(
+              child: Column(
+                children: [
+                  Column(
+                    children: <Widget>[
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: getProportionateScreenWidth(16),
+                          vertical: getProportionateScreenHeight(8),
+                        ),
+                        child: RichText(
+                          text: TextSpan(
+                            text: "Welcome to Servis",
+                            style: Theme.of(context)
+                                .textTheme
+                                .displayMedium!
+                                .copyWith(
+                                  color: kPrimaryColor,
+                                ),
+                            children: <TextSpan>[
+                              TextSpan(
+                                text: "Go",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .displayMedium!
+                                    .copyWith(
+                                      color: kCallToAction,
+                                    ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        height: getProportionateScreenHeight(8),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: getProportionateScreenWidth(8),
+                          vertical: getProportionateScreenHeight(8),
+                        ),
+                        child: Text(
+                          "We're excited to help you take care of all of your home needs, from cleaning and maintenance to repairs and renovations",
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodySmall!
+                              .copyWith(color: kPrimaryColor),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: getProportionateScreenHeight(32)),
+                ],
+              ),
+            ),
           ),
         ),
       ],
