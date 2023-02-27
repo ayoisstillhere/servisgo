@@ -6,9 +6,35 @@ import '../../../../size_config.dart';
 
 import '../../../../components/default_button.dart';
 
-class Body extends StatelessWidget {
+class Body extends StatefulWidget {
   const Body({super.key});
 
+  @override
+  State<Body> createState() => _BodyState();
+}
+
+class _BodyState extends State<Body> {
+  int currentPage = 0;
+  List<Map<String, String>> onboardingData = [
+    {
+      "image": "assets/images/Onboarding1.svg",
+      "header": "Welcome to Servis",
+      "text":
+          "We're excited to help you take care of all of your home needs, from cleaning and maintenance to repairs and renovations",
+    },
+    {
+      "image": "assets/images/Onboarding2.svg",
+      "header": "Book Services Providers Now!",
+      "text":
+          "To get started, simply create an account and browse through our available services. When you find something you need, just place an order and we'll match you with a trusted and qualified professional who can help.",
+    },
+    {
+      "image": "assets/images/Onboarding3.svg",
+      "header": "Live Correspondence with Service Providers",
+      "text":
+          "You can track the progress of your order and communicate with your professional directly through the app. And when the job is done, you can leave a review and let us know how we did.",
+    },
+  ];
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -19,7 +45,7 @@ class Body extends StatelessWidget {
           SizedBox(height: getProportionateScreenHeight(64)),
           OnboardingContent(),
           Container(
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               color: kBgColor,
             ),
             child: Column(
