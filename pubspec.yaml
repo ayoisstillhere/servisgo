@@ -45,9 +45,9 @@ dependencies:
 dev_dependencies:
   flutter_launcher_icons: ^0.12.0
   flutter_lints: ^2.0.0
+  flutter_native_splash: ^2.2.18
   flutter_test:
     sdk: flutter
-  flutter_native_splash: ^2.2.18
 
 flutter_native_splash:
   color: "#273a69"
@@ -72,6 +72,9 @@ flutter:
   assets:
     - assets/images/Logo_Icon.png
     - assets/images/ServisGo_Logo.png
+    - assets/images/Onboarding1.svg
+    - assets/images/Onboarding2.svg
+    - assets/images/Onboarding3.svg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see
