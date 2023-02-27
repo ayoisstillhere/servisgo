@@ -25,7 +25,7 @@ class _BodyState extends State<Body> {
       "image": "assets/images/Onboarding2.png",
       "header": "Book Services Providers Now!",
       "text":
-          "To get started, simply create an account and browse through our available services. When you find something you need, just place an order and we'll match you with a trusted and qualified professional who can help.",
+          "Simply create an account and browse through our available services. When you find something you need, just place an order and we'll match you with a trusted and qualified professional who can help.",
     },
     {
       "image": "assets/images/Onboarding3.png",
@@ -41,7 +41,7 @@ class _BodyState extends State<Body> {
           EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(16)),
       child: Column(
         children: [
-          SizedBox(height: getProportionateScreenHeight(64)),
+          SizedBox(height: getProportionateScreenHeight(56)),
           Expanded(
             flex: 5,
             child: PageView.builder(
@@ -171,6 +171,7 @@ class OnboardingContent extends StatelessWidget {
                               .copyWith(
                                 color: kPrimaryColor,
                               ),
+                          textAlign: TextAlign.center,
                         ),
                       ),
                       SizedBox(
@@ -192,7 +193,7 @@ class OnboardingContent extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: getProportionateScreenHeight(32)),
+                  // SizedBox(height: getProportionateScreenHeight(32)),
                 ],
               ),
             ),
