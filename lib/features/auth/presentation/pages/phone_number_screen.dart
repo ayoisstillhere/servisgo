@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:servisgo/components/default_button.dart';
 import 'package:servisgo/constants.dart';
+import 'package:servisgo/features/auth/presentation/pages/phone_verification_screen.dart';
 import '../widgets/form_header.dart';
 
 import '../../../../size_config.dart';
@@ -45,7 +46,14 @@ class PhoneNumberScreen extends StatelessWidget {
                   SizedBox(height: getProportionateScreenHeight(132)),
                   DefaultButton(
                     text: "Send Code",
-                    press: () {},
+                    press: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const PhoneVerificationScreen(),
+                        ),
+                      );
+                    },
                   ),
                 ],
               ),
