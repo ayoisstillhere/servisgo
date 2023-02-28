@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:servisgo/components/default_button.dart';
 import 'package:servisgo/constants.dart';
 import 'package:servisgo/features/auth/presentation/pages/forgot_password_screen.dart';
+import 'package:servisgo/features/auth/presentation/pages/sign_up_screen.dart';
 
 import '../../../../size_config.dart';
 import '../widgets/form_header.dart';
@@ -57,24 +58,29 @@ class SignInScreen extends StatelessWidget {
                   ),
                   SizedBox(height: getProportionateScreenHeight(123)),
                   Center(
-                    child: RichText(
-                      text: TextSpan(
-                          text: "Don't have an account? ",
-                          style:
-                              Theme.of(context).textTheme.bodyLarge!.copyWith(
-                                    color: kGreys,
-                                  ),
-                          children: <TextSpan>[
-                            TextSpan(
-                              text: 'Sign Up',
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyLarge!
-                                  .copyWith(
-                                    color: kCallToAction,
-                                  ),
-                            ),
-                          ]),
+                    child: GestureDetector(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const SignUpScreen()));
+                      },
+                      child: RichText(
+                        text: TextSpan(
+                            text: "Don't have an account? ",
+                            style:
+                                Theme.of(context).textTheme.bodyLarge!.copyWith(
+                                      color: kGreys,
+                                    ),
+                            children: <TextSpan>[
+                              TextSpan(
+                                text: 'Sign Up',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyLarge!
+                                    .copyWith(
+                                      color: kCallToAction,
+                                    ),
+                              ),
+                            ]),
+                      ),
                     ),
                   ),
                 ],
