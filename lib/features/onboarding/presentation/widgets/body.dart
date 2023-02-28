@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../../components/default_button.dart';
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
-import '../../../auth/presentation/pages/sign_in.dart';
+import '../../../auth/presentation/pages/sign_in_screen.dart';
 import 'onboarding_content.dart';
 
 class Body extends StatefulWidget {
