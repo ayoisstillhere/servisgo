@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../../auth/presentation/pages/sign_in.dart';
 
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
+import '../../../auth/presentation/pages/sign_in.dart';
 import '../widgets/body.dart';
 
 class OnboardingScreen extends StatelessWidget {
