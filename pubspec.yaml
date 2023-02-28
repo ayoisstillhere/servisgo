@@ -77,6 +77,7 @@ flutter:
     - assets/images/Onboarding3.png
     - assets/icons/eye-suffix.svg
     - assets/images/or.svg
+    - assets/icons/google_icon.svg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see
