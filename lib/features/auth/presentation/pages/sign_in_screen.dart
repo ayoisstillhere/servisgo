@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:servisgo/components/default_button.dart';
 import 'package:servisgo/constants.dart';
+import 'package:servisgo/features/auth/presentation/pages/forgot_password_screen.dart';
 
 import '../../../../size_config.dart';
 import '../widgets/form_header.dart';
@@ -87,13 +88,18 @@ class SignInScreen extends StatelessWidget {
 
   GestureDetector _buildForgotPassword(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => const ForgotPasswordScreen()));
+      },
       child: Text(
         "Forgot Password?",
         style: Theme.of(context)
             .textTheme
             .bodyLarge!
-            .copyWith(color: kCallToAction),
+            .copyWith(color: kCallToAction, fontWeight: FontWeight.w600),
       ),
     );
   }
