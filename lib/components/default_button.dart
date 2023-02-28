@@ -21,7 +21,7 @@ class DefaultButton extends StatelessWidget {
         decoration: BoxDecoration(
             color: kPrimaryColor,
             borderRadius:
-                BorderRadius.circular(getProportionateScreenWidth(32))),
+                BorderRadius.circular(getProportionateScreenWidth(20))),
         child: Padding(
           padding: EdgeInsets.symmetric(
             horizontal: getProportionateScreenWidth(24),
