@@ -77,5 +77,8 @@ AppBarTheme appBarTheme() {
     centerTitle: true,
     elevation: 0,
     color: kBgColor,
+    iconTheme: IconThemeData(
+      color: kBlacks,
+    ),
   );
 }
