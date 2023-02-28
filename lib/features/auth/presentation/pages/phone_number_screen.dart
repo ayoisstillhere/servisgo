@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:servisgo/components/default_button.dart';
-import 'package:servisgo/constants.dart';
-import 'package:servisgo/features/auth/presentation/pages/phone_verification_screen.dart';
+import '../../../../components/default_button.dart';
+import '../../../../constants.dart';
+import 'phone_verification_screen.dart';
 import '../widgets/form_header.dart';
 
 import '../../../../size_config.dart';

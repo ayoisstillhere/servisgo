@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+
 import '../../../../components/default_button.dart';
 import '../../../../constants.dart';
+import '../../../../size_config.dart';
 import 'phone_number_screen.dart';
 import 'sign_in_screen.dart';
-import '../../../../size_config.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});

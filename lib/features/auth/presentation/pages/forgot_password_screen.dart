@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import '../../../../components/default_button.dart';
-import '../widgets/form_header.dart';
 
+import '../../../../components/default_button.dart';
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
+import '../widgets/form_header.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
   const ForgotPasswordScreen({super.key});
