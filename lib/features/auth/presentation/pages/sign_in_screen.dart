@@ -46,7 +46,7 @@ class SignInScreen extends StatelessWidget {
                   Container(
                     height: getProportionateScreenHeight(56),
                     decoration: BoxDecoration(
-                      border: Border.all(color: Color(0xFFE5E7EB)),
+                      border: Border.all(color: const Color(0xFFE5E7EB)),
                       borderRadius: BorderRadius.circular(
                           getProportionateScreenWidth(20)),
                     ),
