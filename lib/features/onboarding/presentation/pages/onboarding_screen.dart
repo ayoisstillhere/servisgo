@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../auth/presentation/pages/sign_in.dart';
 
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
@@ -22,7 +23,12 @@ class OnboardingScreen extends StatelessWidget {
         Padding(
           padding: EdgeInsets.only(right: getProportionateScreenWidth(16)),
           child: TextButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const SignInScreen()));
+            },
             child: Text(
               "Skip",
               style: Theme.of(context).textTheme.bodyLarge!.copyWith(

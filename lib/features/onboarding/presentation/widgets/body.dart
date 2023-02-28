@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 
 import '../../../../components/default_button.dart';
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
+import '../../../auth/presentation/pages/sign_in.dart';
 import 'onboarding_content.dart';
 
 class Body extends StatefulWidget {
@@ -72,7 +72,12 @@ class _BodyState extends State<Body> {
                   SizedBox(height: getProportionateScreenHeight(32)),
                   DefaultButton(
                     text: 'Get Started',
-                    press: () {},
+                    press: () {
+                      Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => const SignInScreen()));
+                    },
                   ),
                 ],
               ),
