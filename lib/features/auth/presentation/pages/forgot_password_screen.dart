@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:servisgo/components/default_button.dart';
-import 'package:servisgo/features/auth/presentation/widgets/form_header.dart';
+import '../../../../components/default_button.dart';
+import '../widgets/form_header.dart';
 
 import '../../../../constants.dart';
 import '../../../../size_config.dart';

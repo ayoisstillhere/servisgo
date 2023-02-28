@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:servisgo/components/default_button.dart';
-import 'package:servisgo/constants.dart';
-import 'package:servisgo/features/auth/presentation/pages/forgot_password_screen.dart';
-import 'package:servisgo/features/auth/presentation/pages/sign_up_screen.dart';
+import '../../../../components/default_button.dart';
+import '../../../../constants.dart';
+import 'forgot_password_screen.dart';
+import 'sign_up_screen.dart';
 
 import '../../../../size_config.dart';
 import '../widgets/form_header.dart';

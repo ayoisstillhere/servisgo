@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:servisgo/components/default_button.dart';
-import 'package:servisgo/constants.dart';
-import 'package:servisgo/features/auth/presentation/pages/sign_in_screen.dart';
-import 'package:servisgo/size_config.dart';
+import '../../../../components/default_button.dart';
+import '../../../../constants.dart';
+import 'phone_number_screen.dart';
+import 'sign_in_screen.dart';
+import '../../../../size_config.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -54,7 +55,9 @@ class SignUpScreen extends StatelessWidget {
                   SizedBox(height: getProportionateScreenHeight(40)),
                   DefaultButton(
                     text: "Sign Up",
-                    press: () {},
+                    press: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const PhoneNumberScreen()));
+                    },
                   ),
                   SizedBox(height: getProportionateScreenHeight(40)),
                   Center(child: SvgPicture.asset("assets/images/or.svg")),
