@@ -30,6 +30,7 @@ class DefaultButton extends StatelessWidget {
           child: Center(
             child: Text(
               text,
+              textAlign: TextAlign.center,
               style: Theme.of(context)
                   .textTheme
                   .bodyLarge!
