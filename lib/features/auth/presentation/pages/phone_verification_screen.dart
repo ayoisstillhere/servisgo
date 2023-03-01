@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:servisgo/components/default_button.dart';
-import '../widgets/form_header.dart';
+import '../../../../components/default_button.dart';
 import '../../../../size_config.dart';
 
 import '../../../../constants.dart';
@@ -15,43 +14,45 @@ class PhoneVerificationScreen extends StatelessWidget {
       body: Padding(
         padding:
             EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(32)),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            SizedBox(height: getProportionateScreenHeight(106)),
-            _buildFormHeader(context),
-            SizedBox(height: getProportionateScreenHeight(34)),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Expanded(child: OtpTextFormField()),
-                SizedBox(width: getProportionateScreenWidth(17)),
-                const Expanded(child: OtpTextFormField()),
-                SizedBox(width: getProportionateScreenWidth(17)),
-                const Expanded(child: OtpTextFormField()),
-                SizedBox(width: getProportionateScreenWidth(17)),
-                const Expanded(child: OtpTextFormField()),
-                SizedBox(width: getProportionateScreenWidth(17)),
-                const Expanded(child: OtpTextFormField()),
-              ],
-            ),
-            SizedBox(height: getProportionateScreenHeight(40)),
-            Center(
-              child: Text(
-                "Resend Code",
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                      color: kCallToAction,
-                      fontWeight: FontWeight.w600,
-                    ),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              SizedBox(height: getProportionateScreenHeight(106)),
+              _buildFormHeader(context),
+              SizedBox(height: getProportionateScreenHeight(34)),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Expanded(child: OtpTextFormField()),
+                  SizedBox(width: getProportionateScreenWidth(17)),
+                  const Expanded(child: OtpTextFormField()),
+                  SizedBox(width: getProportionateScreenWidth(17)),
+                  const Expanded(child: OtpTextFormField()),
+                  SizedBox(width: getProportionateScreenWidth(17)),
+                  const Expanded(child: OtpTextFormField()),
+                  SizedBox(width: getProportionateScreenWidth(17)),
+                  const Expanded(child: OtpTextFormField()),
+                ],
               ),
-            ),
-            SizedBox(height: getProportionateScreenHeight(72)),
-            DefaultButton(
-              text: "Confirm",
-              press: () {},
-            ),
-          ],
+              SizedBox(height: getProportionateScreenHeight(40)),
+              Center(
+                child: Text(
+                  "Resend Code",
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                        color: kCallToAction,
+                        fontWeight: FontWeight.w600,
+                      ),
+                ),
+              ),
+              SizedBox(height: getProportionateScreenHeight(72)),
+              DefaultButton(
+                text: "Confirm",
+                press: () {},
+              ),
+            ],
+          ),
         ),
       ),
     );

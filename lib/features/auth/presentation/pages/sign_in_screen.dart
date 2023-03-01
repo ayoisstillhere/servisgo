@@ -17,76 +17,83 @@ class SignInScreen extends StatelessWidget {
       body: Padding(
         padding:
             EdgeInsets.symmetric(horizontal: getProportionateScreenWidth(32)),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            SizedBox(height: getProportionateScreenHeight(106)),
-            const FormHeader(
-              title: 'Sign In',
-              subtitle: 'Welcome back, Sign into your account',
-            ),
-            SizedBox(height: getProportionateScreenHeight(40)),
-            Form(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  _buildEmailTextFormField(context),
-                  SizedBox(height: getProportionateScreenHeight(24)),
-                  _buildPasswordTextFormField(context),
-                  SizedBox(height: getProportionateScreenHeight(24)),
-                  _buildForgotPassword(context),
-                  SizedBox(height: getProportionateScreenHeight(24)),
-                  DefaultButton(
-                    text: "Sign In",
-                    press: () {},
-                  ),
-                  SizedBox(height: getProportionateScreenHeight(42)),
-                  Center(child: SvgPicture.asset("assets/images/or.svg")),
-                  SizedBox(height: getProportionateScreenHeight(42)),
-                  Container(
-                    height: getProportionateScreenHeight(56),
-                    decoration: BoxDecoration(
-                      border: Border.all(color: const Color(0xFFE5E7EB)),
-                      borderRadius: BorderRadius.circular(
-                          getProportionateScreenWidth(20)),
-                    ),
-                    child: Center(
-                      child: SvgPicture.asset(
-                        "assets/icons/google_icon.svg",
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: getProportionateScreenHeight(123)),
-                  Center(
-                    child: GestureDetector(
-                      onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => const SignUpScreen()));
-                      },
-                      child: RichText(
-                        text: TextSpan(
-                            text: "Don't have an account? ",
-                            style:
-                                Theme.of(context).textTheme.bodyLarge!.copyWith(
-                                      color: kGreys,
-                                    ),
-                            children: <TextSpan>[
-                              TextSpan(
-                                text: 'Sign Up',
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .bodyLarge!
-                                    .copyWith(
-                                      color: kCallToAction,
-                                    ),
-                              ),
-                            ]),
-                      ),
-                    ),
-                  ),
-                ],
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              SizedBox(height: getProportionateScreenHeight(106)),
+              const FormHeader(
+                title: 'Sign In',
+                subtitle: 'Welcome back, Sign into your account',
               ),
-            ),
-          ],
+              SizedBox(height: getProportionateScreenHeight(40)),
+              Form(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    _buildEmailTextFormField(context),
+                    SizedBox(height: getProportionateScreenHeight(24)),
+                    _buildPasswordTextFormField(context),
+                    SizedBox(height: getProportionateScreenHeight(24)),
+                    _buildForgotPassword(context),
+                    SizedBox(height: getProportionateScreenHeight(24)),
+                    DefaultButton(
+                      text: "Sign In",
+                      press: () {},
+                    ),
+                    SizedBox(height: getProportionateScreenHeight(42)),
+                    Center(child: SvgPicture.asset("assets/images/or.svg")),
+                    SizedBox(height: getProportionateScreenHeight(42)),
+                    Container(
+                      height: getProportionateScreenHeight(56),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: const Color(0xFFE5E7EB)),
+                        borderRadius: BorderRadius.circular(
+                            getProportionateScreenWidth(20)),
+                      ),
+                      child: Center(
+                        child: SvgPicture.asset(
+                          "assets/icons/google_icon.svg",
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: getProportionateScreenHeight(123)),
+                    Center(
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const SignUpScreen()));
+                        },
+                        child: RichText(
+                          text: TextSpan(
+                              text: "Don't have an account? ",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyLarge!
+                                  .copyWith(
+                                    color: kGreys,
+                                  ),
+                              children: <TextSpan>[
+                                TextSpan(
+                                  text: 'Sign Up',
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyLarge!
+                                      .copyWith(
+                                        color: kCallToAction,
+                                      ),
+                                ),
+                              ]),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

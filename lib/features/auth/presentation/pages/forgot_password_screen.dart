@@ -16,25 +16,27 @@ class ForgotPasswordScreen extends StatelessWidget {
         padding: EdgeInsets.symmetric(
           horizontal: getProportionateScreenWidth(32),
         ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            SizedBox(height: getProportionateScreenHeight(106)),
-            SvgPicture.asset("assets/images/Forgot_img.svg"),
-            SizedBox(height: getProportionateScreenHeight(24)),
-            const FormHeader(
-              title: "Forgot Password?",
-              subtitle:
-                  "Enter your email address below to receive password recovery instructions",
-            ),
-            SizedBox(height: getProportionateScreenHeight(42)),
-            _buildEmailTextFormField(context),
-            SizedBox(height: getProportionateScreenHeight(72)),
-            DefaultButton(
-              text: "Send Email",
-              press: () {},
-            ),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              SizedBox(height: getProportionateScreenHeight(106)),
+              SvgPicture.asset("assets/images/Forgot_img.svg"),
+              SizedBox(height: getProportionateScreenHeight(24)),
+              const FormHeader(
+                title: "Forgot Password?",
+                subtitle:
+                    "Enter your email address below to receive password recovery instructions",
+              ),
+              SizedBox(height: getProportionateScreenHeight(42)),
+              _buildEmailTextFormField(context),
+              SizedBox(height: getProportionateScreenHeight(72)),
+              DefaultButton(
+                text: "Send Email",
+                press: () {},
+              ),
+            ],
+          ),
         ),
       ),
     );
