@@ -3,7 +3,7 @@ import 'package:servisgo/features/auth/domain/repositories/firebase_repository.d
 class GetCurrentUidUsecase {
   final FirebaseRepository repository;
 
-  GetCurrentUidUsecase(this.repository);
+  GetCurrentUidUsecase({required this.repository});
 
   Future<String> call() async => await repository.getCurrentUid();
 }

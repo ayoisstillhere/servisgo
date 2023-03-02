@@ -3,7 +3,7 @@ import 'package:servisgo/features/auth/domain/repositories/firebase_repository.d
 class IsSigninUsecase {
   final FirebaseRepository repository;
 
-  IsSigninUsecase(this.repository);
+  IsSigninUsecase({required this.repository});
 
   Future<bool> call() async => await repository.isSignIn();
 }

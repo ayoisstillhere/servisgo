@@ -3,7 +3,7 @@ import 'package:servisgo/features/auth/domain/repositories/firebase_repository.d
 class CreateCurrentUserUsecase {
   final FirebaseRepository repository;
 
-  CreateCurrentUserUsecase(this.repository);
+  CreateCurrentUserUsecase({required this.repository});
 
   Future<void> call(
     String uid,

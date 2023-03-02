@@ -3,7 +3,7 @@ import 'package:servisgo/features/auth/domain/repositories/firebase_repository.d
 class SigninUsecase {
   final FirebaseRepository repository;
 
-  SigninUsecase(this.repository);
+  SigninUsecase({required this.repository});
 
   Future<void> call(String email, String password) {
     return repository.signIn(email, password);
