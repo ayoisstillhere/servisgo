@@ -1,9 +1,9 @@
 import 'package:servisgo/features/auth/domain/repositories/firebase_repository.dart';
 
-class SignUpUsecase {
+class SignupUsecase {
   final FirebaseRepository repository;
 
-  SignUpUsecase(this.repository);
+  SignupUsecase(this.repository);
 
   Future<void> call(String email, String password) async {
     return repository.signUp(email, password);
