@@ -1,33 +1,55 @@
+import 'package:servisgo/features/auth/data/datasources/firebase_remote_datasource.dart';
 import 'package:servisgo/features/auth/domain/repositories/firebase_repository.dart';
 
 class FirebaseRepositoryImpl implements FirebaseRepository {
+  final FirebaseRemoteDatasource firebaseRemoteDatasource;
+  FirebaseRepositoryImpl({
+    required this.firebaseRemoteDatasource,
+  });
+
   @override
-  Future<void> signUp(String email, String password) {
-    // TODO: implement signUp
-    throw UnimplementedError();
-  }
-  
+  Future<void> signUp(
+    String email,
+    String password,
+  ) async =>
+      await firebaseRemoteDatasource.signUp(
+        email,
+        password,
+      );
+
   @override
-  Future<String> getCurrentUid() {
-    // TODO: implement getCurrentUid
-    throw UnimplementedError();
-  }
-  
+  Future<String> getCurrentUid() async =>
+      await firebaseRemoteDatasource.getCurrentUid();
+
   @override
-  Future<bool> isSignIn() {
-    // TODO: implement isSignIn
-    throw UnimplementedError();
-  }
-  
+  Future<bool> isSignIn() async => await firebaseRemoteDatasource.isSignIn();
+
   @override
-  Future<void> signIn(String email, String password) {
-    // TODO: implement signIn
-    throw UnimplementedError();
-  }
-  
+  Future<void> signIn(
+    String email,
+    String password,
+  ) async =>
+      await firebaseRemoteDatasource.signIn(
+        email,
+        password,
+      );
+
   @override
-  Future<void> createCurrentUser(String uid, String name, String email, String phoneNumber, String address, String pfpURL) {
-    // TODO: implement createCurrentUser
-    throw UnimplementedError();
+  Future<void> createCurrentUser(
+    String uid,
+    String name,
+    String email,
+    String phoneNumber,
+    String address,
+    String pfpURL,
+  ) async {
+    return await firebaseRemoteDatasource.createCurrentUser(
+      uid,
+      name,
+      email,
+      phoneNumber,
+      address,
+      pfpURL,
+    );
   }
 }
