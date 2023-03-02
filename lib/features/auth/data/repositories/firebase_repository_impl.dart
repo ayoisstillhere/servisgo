@@ -24,4 +24,10 @@ class FirebaseRepositoryImpl implements FirebaseRepository {
     // TODO: implement signIn
     throw UnimplementedError();
   }
+  
+  @override
+  Future<void> createCurrentUser(String uid, String name, String email, String phoneNumber, String address, String pfpURL) {
+    // TODO: implement createCurrentUser
+    throw UnimplementedError();
+  }
 }
