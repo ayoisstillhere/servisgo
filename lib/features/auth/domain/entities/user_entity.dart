@@ -4,14 +4,14 @@ class UserEntity extends Equatable {
   final String uid;
   final String name;
   final String email;
-  final String phoenNumber;
+  final String phoneNumber;
   final String address;
 
   const UserEntity(
     this.uid,
     this.name,
     this.email,
-    this.phoenNumber,
+    this.phoneNumber,
     this.address,
   );
 
@@ -20,7 +20,7 @@ class UserEntity extends Equatable {
         uid,
         name,
         email,
-        phoenNumber,
+        phoneNumber,
         address,
       ];
 }
