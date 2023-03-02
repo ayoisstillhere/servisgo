@@ -36,7 +36,6 @@ class FirebaseRepositoryImpl implements FirebaseRepository {
 
   @override
   Future<void> createCurrentUser(
-    String uid,
     String name,
     String email,
     String phoneNumber,
@@ -44,7 +43,6 @@ class FirebaseRepositoryImpl implements FirebaseRepository {
     String pfpURL,
   ) async {
     return await firebaseRemoteDatasource.createCurrentUser(
-      uid,
       name,
       email,
       phoneNumber,

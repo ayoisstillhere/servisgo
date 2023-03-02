@@ -4,7 +4,6 @@ abstract class FirebaseRepository {
   Future<bool> isSignIn();
   Future<String> getCurrentUid();
   Future<void> createCurrentUser(
-    String uid,
     String name,
     String email,
     String phoneNumber,

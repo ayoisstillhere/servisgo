@@ -8,7 +8,6 @@ abstract class FirebaseRemoteDatasource {
   Future<bool> isSignIn();
   Future<String> getCurrentUid();
   Future<void> createCurrentUser(
-    String uid,
     String name,
     String email,
     String phoneNumber,
@@ -23,7 +22,6 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDatasource {
 
   @override
   Future<void> createCurrentUser(
-    String uid,
     String name,
     String email,
     String phoneNumber,
@@ -33,7 +31,7 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDatasource {
     _userCollection.doc(_auth.currentUser!.uid).get().then((user) {
       if (!user.exists) {
         final newUser = UserModel(
-          uid: uid,
+          uid: _auth.currentUser!.uid,
           name: name,
           email: email,
           phoneNumber: phoneNumber,

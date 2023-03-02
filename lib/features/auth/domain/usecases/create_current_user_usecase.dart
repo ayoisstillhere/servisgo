@@ -6,7 +6,6 @@ class CreateCurrentUserUsecase {
   CreateCurrentUserUsecase({required this.repository});
 
   Future<void> call(
-    String uid,
     String name,
     String email,
     String phoneNumber,
@@ -14,7 +13,6 @@ class CreateCurrentUserUsecase {
     String pfpURL,
   ) async {
     repository.createCurrentUser(
-      uid,
       name,
       email,
       phoneNumber,
