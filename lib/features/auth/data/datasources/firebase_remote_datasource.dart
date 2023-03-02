@@ -9,5 +9,6 @@ abstract class FirebaseRemoteDatasource {
     String email,
     String phoneNumber,
     String address,
+    String pfpURL,
   );
 }

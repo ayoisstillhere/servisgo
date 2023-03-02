@@ -6,6 +6,7 @@ class UserEntity extends Equatable {
   final String email;
   final String phoneNumber;
   final String address;
+  final String pfpURL;
 
   const UserEntity(
     this.uid,
@@ -13,6 +14,7 @@ class UserEntity extends Equatable {
     this.email,
     this.phoneNumber,
     this.address,
+    this.pfpURL,
   );
 
   @override
@@ -22,5 +24,6 @@ class UserEntity extends Equatable {
         email,
         phoneNumber,
         address,
+        pfpURL,
       ];
 }
