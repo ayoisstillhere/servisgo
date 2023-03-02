@@ -13,11 +13,11 @@ class SigninCubit extends Cubit<SigninState> {
   final SignupUsecase signupUsecase;
   final SigninUsecase signinUsecase;
   final CreateCurrentUserUsecase createCurrentUserUsecase;
-  SigninCubit(
-    this.signupUsecase,
-    this.signinUsecase,
-    this.createCurrentUserUsecase,
-  ) : super(SigninInitial());
+  SigninCubit({
+    required this.signupUsecase,
+    required this.signinUsecase,
+    required this.createCurrentUserUsecase,
+  }) : super(SigninInitial());
 
   Future<void> submitSignin({
     required String email,

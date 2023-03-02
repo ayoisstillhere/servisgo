@@ -8,13 +8,19 @@ import 'package:servisgo/features/auth/domain/usecases/is_signin_usecase.dart';
 import 'package:servisgo/features/auth/domain/usecases/signin_usecase.dart';
 import 'package:servisgo/features/auth/domain/usecases/signup_usecase.dart';
 import 'package:servisgo/features/auth/presentation/bloc/auth_cubit/auth_cubit.dart';
+import 'package:servisgo/features/auth/presentation/bloc/signin_cubit/signin_cubit.dart';
 
 final sl = GetIt.instance;
 
 Future<void> init() async {
   //Features bloc,
-  sl.registerFactory(() =>
+  sl.registerFactory<AuthCubit>(() =>
       AuthCubit(isSigninUsecase: sl.call(), getCurrentUidUsecase: sl.call()));
+  sl.registerFactory<SigninCubit>(() => SigninCubit(
+        signupUsecase: sl.call(),
+        signinUsecase: sl.call(),
+        createCurrentUserUsecase: sl.call(),
+      ));
 
   //!useCae
   sl.registerLazySingleton<IsSigninUsecase>(
