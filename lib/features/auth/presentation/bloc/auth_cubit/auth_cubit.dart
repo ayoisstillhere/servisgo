@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+
 import 'package:servisgo/features/auth/domain/usecases/get_current_uid_usecase.dart';
 
 import '../../../domain/usecases/is_signin_usecase.dart';
@@ -9,9 +10,9 @@ part 'auth_state.dart';
 class AuthCubit extends Cubit<AuthState> {
   final IsSigninUsecase isSigninUsecase;
   final GetCurrentUidUsecase getCurrentUidUsecase;
-  AuthCubit(
-    this.isSigninUsecase,
-    this.getCurrentUidUsecase,
+  AuthCubit({
+    required this.isSigninUsecase,
+    required this.getCurrentUidUsecase,}
   ) : super(AuthInitial());
 
   Future<void> appStarted() async {
