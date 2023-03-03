@@ -179,6 +179,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
           removeError(error: kShortPassError);
         }
       },
+      validator: (value) {
+        if (value!.isEmpty) {
+          addError(error: kPassNullError);
+          return "";
+        } else if (value.length < 8) {
+          addError(error: kShortPassError);
+          return "";
+        }
+        return null;
+      },
       controller: _passwordController,
       style: Theme.of(context).textTheme.bodyLarge!.copyWith(
             fontWeight: FontWeight.w600,
@@ -221,6 +231,15 @@ class _SignUpScreenState extends State<SignUpScreen> {
           removeError(error: kInvalidEmailError);
         }
       },
+      validator: (value) {
+        if (value!.isEmpty) {
+          addError(error: kEmailNullError);
+          return "";
+        } else if (!emailValidatorRegExp.hasMatch(value)) {
+          return "";
+        }
+        return null;
+      },
       controller: _emailController,
       style: Theme.of(context).textTheme.bodyLarge!.copyWith(
             fontWeight: FontWeight.w600,
@@ -245,6 +264,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
           removeError(error: kNameNullError);
         }
       },
+      validator: (value) {
+            if (value!.isEmpty) {
+              addError(error: kNameNullError);
+              return "";
+            }
+            return null;
+          },
       controller: _nameController,
       style: Theme.of(context).textTheme.bodyLarge!.copyWith(
             fontWeight: FontWeight.w600,

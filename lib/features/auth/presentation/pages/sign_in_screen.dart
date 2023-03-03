@@ -168,6 +168,16 @@ class _SignInScreenState extends State<SignInScreen> {
           removeError(error: kShortPassError);
         }
       },
+      validator: (value) {
+        if (value!.isEmpty) {
+          addError(error: kPassNullError);
+          return "";
+        } else if (value.length < 8) {
+          addError(error: kShortPassError);
+          return "";
+        }
+        return null;
+      },
       controller: _passwordController,
       style: Theme.of(context).textTheme.bodyLarge!.copyWith(
             fontWeight: FontWeight.w600,
@@ -209,6 +219,15 @@ class _SignInScreenState extends State<SignInScreen> {
         } else if (emailValidatorRegExp.hasMatch(value)) {
           removeError(error: kInvalidEmailError);
         }
+      },
+      validator: (value) {
+        if (value!.isEmpty) {
+          addError(error: kEmailNullError);
+          return "";
+        } else if (!emailValidatorRegExp.hasMatch(value)) {
+          return "";
+        }
+        return null;
       },
       controller: _emailController,
       style: Theme.of(context).textTheme.bodyLarge!.copyWith(
