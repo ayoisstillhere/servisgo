@@ -16,6 +16,7 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
+  final _signinFormKey = GlobalKey<FormState>();
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   bool hidePassword = true;
@@ -68,6 +69,7 @@ class _SignInScreenState extends State<SignInScreen> {
               ),
               SizedBox(height: getProportionateScreenHeight(40)),
               Form(
+                key: _signinFormKey,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[

@@ -15,6 +15,7 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
+  final _signupFormKey = GlobalKey<FormState>();
   TextEditingController _nameController = TextEditingController();
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
@@ -90,6 +91,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ),
               SizedBox(height: getProportionateScreenHeight(52)),
               Form(
+                key: _signupFormKey,
                 child: Column(
                   children: <Widget>[
                     _buildNameTextFormField(context),
