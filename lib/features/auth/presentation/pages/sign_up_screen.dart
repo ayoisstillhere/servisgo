@@ -238,6 +238,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           addError(error: kEmailNullError);
           return "";
         } else if (!emailValidatorRegExp.hasMatch(value)) {
+          addError(error: kInvalidEmailError);
           return "";
         }
         return null;
