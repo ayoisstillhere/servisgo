@@ -76,12 +76,12 @@ class _SignInScreenState extends State<SignInScreen> {
           }
           return Padding(
             padding: EdgeInsets.symmetric(
-                horizontal: getProportionateScreenWidth(32)),
+              horizontal: getProportionateScreenWidth(32),
+            ).copyWith(top: getProportionateScreenHeight(106)),
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  SizedBox(height: getProportionateScreenHeight(106)),
                   const FormHeader(
                     title: 'Sign In',
                     subtitle: 'Welcome back, Sign into your account',

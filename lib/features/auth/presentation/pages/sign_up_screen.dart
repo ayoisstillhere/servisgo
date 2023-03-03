@@ -78,12 +78,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
           }
           return Padding(
             padding: EdgeInsets.symmetric(
-                horizontal: getProportionateScreenWidth(32)),
+              horizontal: getProportionateScreenWidth(32),
+            ).copyWith(top: getProportionateScreenHeight(106)),
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  SizedBox(height: getProportionateScreenHeight(106)),
                   RichText(
                     text: TextSpan(
                       text: "Create a Servis",
