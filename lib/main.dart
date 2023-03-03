@@ -15,6 +15,8 @@ Future main() async {
 
   await Firebase.initializeApp();
 
+  di.init();
+
   runApp(const MyApp());
 }
 
