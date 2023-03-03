@@ -318,7 +318,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
         name: _nameController.text.trim(),
         phoneNumber: "",
         address: "",
-        pfpURL: "",
+        pfpURL:
+            "https://firebasestorage.googleapis.com/v0/b/servisgo-fyp.appspot.com/o/Default_PFP.png?alt=media&token=c6cec350-3a9b-4c85-a219-a9d5a8a1a3db",
       );
     }
   }
