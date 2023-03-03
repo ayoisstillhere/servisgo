@@ -19,6 +19,7 @@ class OnboardingScreen extends StatelessWidget {
 
   AppBar buildOnboardingAppbar(BuildContext context) {
     return AppBar(
+      leading: Container(),
       actions: <Widget>[
         Padding(
           padding: EdgeInsets.only(right: getProportionateScreenWidth(16)),

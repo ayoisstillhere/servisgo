@@ -20,10 +20,15 @@ InputDecorationTheme inputDecorationTheme() {
     borderRadius: BorderRadius.circular(16),
     borderSide: BorderSide.none,
   );
+  OutlineInputBorder errorInputBorder = OutlineInputBorder(
+    borderRadius: BorderRadius.circular(16),
+    borderSide: const BorderSide(color: Colors.red),
+  );
   return InputDecorationTheme(
     contentPadding: const EdgeInsets.all(16),
     enabledBorder: defaultInputBorder,
     focusedBorder: focusInputBorder,
+    errorBorder: errorInputBorder,
     border: defaultInputBorder,
     fillColor: kLightGreys,
     filled: true,

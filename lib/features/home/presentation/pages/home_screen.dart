@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:servisgo/components/default_button.dart';
 import 'package:servisgo/features/auth/presentation/bloc/auth_cubit/auth_cubit.dart';
 import 'package:servisgo/features/auth/presentation/bloc/signin_cubit/signin_cubit.dart';
+import 'package:servisgo/features/onboarding/presentation/pages/onboarding_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -16,6 +17,10 @@ class HomeScreen extends StatelessWidget {
           press: () {
             BlocProvider.of<AuthCubit>(context).loggedOut();
             BlocProvider.of<SigninCubit>(context).submitSignOut();
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const OnboardingScreen()));
           },
         ),
       ),

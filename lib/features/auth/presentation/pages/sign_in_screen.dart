@@ -66,6 +66,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 context, MaterialPageRoute(builder: (_) => const HomeScreen()));
           }
           if (state is SigninFailure) {
+            errors.clear();
             addError(error: "Invalid Login");
           }
         },
@@ -151,6 +152,9 @@ class _SignInScreenState extends State<SignInScreen> {
                             ),
                           ),
                         ),
+                        SizedBox(
+                          height: getProportionateScreenHeight(56),
+                        ),
                       ],
                     ),
                   ),
@@ -229,7 +233,7 @@ class _SignInScreenState extends State<SignInScreen> {
           color: kGreys,
         ),
       ),
-      obscureText: true,
+      obscureText: hidePassword,
     );
   }
 

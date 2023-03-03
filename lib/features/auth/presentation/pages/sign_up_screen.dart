@@ -68,6 +68,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 MaterialPageRoute(builder: (_) => const PhoneNumberScreen()));
           }
           if (state is SigninFailure) {
+            errors.clear();
             addError(error: "Invalid Login");
           }
         },
@@ -174,6 +175,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             ),
                           ),
                         ),
+                        SizedBox(
+                          height: getProportionateScreenHeight(56),
+                        ),
                       ],
                     ),
                   ),
@@ -234,7 +238,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           color: kGreys,
         ),
       ),
-      obscureText: true,
+      obscureText: hidePassword,
     );
   }
 
