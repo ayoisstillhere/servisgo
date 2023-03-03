@@ -35,7 +35,7 @@ class _SignInScreenState extends State<SignInScreen> {
     super.dispose();
   }
 
-    void addError({required String error}) {
+  void addError({required String error}) {
     if (!errors.contains(error)) {
       setState(() {
         errors.add(error);
@@ -159,6 +159,13 @@ class _SignInScreenState extends State<SignInScreen> {
 
   TextFormField _buildPasswordTextFormField(BuildContext context) {
     return TextFormField(
+      onChanged: (value) {
+        if (value.isNotEmpty) {
+          removeError(error: kPassNullError);
+        } else if (value.length >= 8) {
+          removeError(error: kShortPassError);
+        }
+      },
       controller: _passwordController,
       style: Theme.of(context).textTheme.bodyLarge!.copyWith(
             fontWeight: FontWeight.w600,
@@ -194,6 +201,13 @@ class _SignInScreenState extends State<SignInScreen> {
 
   TextFormField _buildEmailTextFormField(BuildContext context) {
     return TextFormField(
+      onChanged: (value) {
+        if (value.isNotEmpty) {
+          removeError(error: kEmailNullError);
+        } else if (emailValidatorRegExp.hasMatch(value)) {
+          removeError(error: kInvalidEmailError);
+        }
+      },
       controller: _emailController,
       style: Theme.of(context).textTheme.bodyLarge!.copyWith(
             fontWeight: FontWeight.w600,

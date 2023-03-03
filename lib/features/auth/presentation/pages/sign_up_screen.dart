@@ -37,7 +37,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     super.dispose();
   }
 
-    void addError({required String error}) {
+  void addError({required String error}) {
     if (!errors.contains(error)) {
       setState(() {
         errors.add(error);
@@ -170,6 +170,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   TextFormField _buildPasswordTextformField(BuildContext context) {
     return TextFormField(
+      onChanged: (value) {
+        if (value.isNotEmpty) {
+          removeError(error: kPassNullError);
+        } else if (value.length >= 8) {
+          removeError(error: kShortPassError);
+        }
+      },
       controller: _passwordController,
       style: Theme.of(context).textTheme.bodyLarge!.copyWith(
             fontWeight: FontWeight.w600,
@@ -205,6 +212,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   TextFormField _buildEmailTextFormField(BuildContext context) {
     return TextFormField(
+      onChanged: (value) {
+        if (value.isNotEmpty) {
+          removeError(error: kEmailNullError);
+        } else if (emailValidatorRegExp.hasMatch(value)) {
+          removeError(error: kInvalidEmailError);
+        }
+      },
       controller: _emailController,
       style: Theme.of(context).textTheme.bodyLarge!.copyWith(
             fontWeight: FontWeight.w600,
@@ -224,6 +238,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   TextFormField _buildNameTextFormField(BuildContext context) {
     return TextFormField(
+      onChanged: (value) {
+        if (value.isNotEmpty) {
+          removeError(error: kNameNullError);
+        }
+      },
       controller: _nameController,
       style: Theme.of(context).textTheme.bodyLarge!.copyWith(
             fontWeight: FontWeight.w600,
