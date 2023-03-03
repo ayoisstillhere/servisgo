@@ -6,6 +6,7 @@ import '../bloc/signin_cubit/signin_cubit.dart';
 import '../../../../components/default_button.dart';
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
+import '../widgets/form_error.dart';
 import '../widgets/form_header.dart';
 import 'forgot_password_screen.dart';
 import 'sign_up_screen.dart';
@@ -81,6 +82,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     SizedBox(height: getProportionateScreenHeight(24)),
                     _buildForgotPassword(context),
                     SizedBox(height: getProportionateScreenHeight(24)),
+                    FormError(errors: errors),
                     DefaultButton(
                       text: "Sign In",
                       press: _submitSignin,

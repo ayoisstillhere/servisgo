@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import '../../../../components/default_button.dart';
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
+import '../widgets/form_error.dart';
 import 'phone_number_screen.dart';
 import 'sign_in_screen.dart';
 
@@ -100,6 +101,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     SizedBox(height: getProportionateScreenHeight(24)),
                     _buildPasswordTextformField(context),
                     SizedBox(height: getProportionateScreenHeight(40)),
+                    FormError(errors: errors),
                     DefaultButton(
                       text: "Sign Up",
                       press: () {
