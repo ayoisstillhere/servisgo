@@ -35,6 +35,22 @@ class _SignInScreenState extends State<SignInScreen> {
     super.dispose();
   }
 
+    void addError({required String error}) {
+    if (!errors.contains(error)) {
+      setState(() {
+        errors.add(error);
+      });
+    }
+  }
+
+  void removeError({required String error}) {
+    if (errors.contains(error)) {
+      setState(() {
+        errors.remove(error);
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
