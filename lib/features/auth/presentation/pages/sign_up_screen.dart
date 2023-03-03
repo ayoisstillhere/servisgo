@@ -7,8 +7,34 @@ import '../../../../size_config.dart';
 import 'phone_number_screen.dart';
 import 'sign_in_screen.dart';
 
-class SignUpScreen extends StatelessWidget {
+class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
+
+  @override
+  State<SignUpScreen> createState() => _SignUpScreenState();
+}
+
+class _SignUpScreenState extends State<SignUpScreen> {
+  TextEditingController _nameController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  bool hidePassword = true;
+
+  @override
+  void initState() {
+    _nameController = TextEditingController();
+    _emailController = TextEditingController();
+    _passwordController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -127,6 +153,7 @@ class SignUpScreen extends StatelessWidget {
 
   TextFormField _buildPasswordTextformField(BuildContext context) {
     return TextFormField(
+      controller: _passwordController,
       style: Theme.of(context).textTheme.bodyLarge!.copyWith(
             fontWeight: FontWeight.w600,
             color: kPrimaryColor,
@@ -137,8 +164,15 @@ class SignUpScreen extends StatelessWidget {
           padding: EdgeInsets.symmetric(
               vertical: getProportionateScreenHeight(16),
               horizontal: getProportionateScreenWidth(16)),
-          child: SvgPicture.asset(
-            "assets/icons/eye-suffix.svg",
+          child: GestureDetector(
+            onTap: () {
+              setState(() {
+                hidePassword = !hidePassword;
+              });
+            },
+            child: SvgPicture.asset(
+              "assets/icons/eye-suffix.svg",
+            ),
           ),
         ),
         hintStyle: TextStyle(
@@ -154,6 +188,7 @@ class SignUpScreen extends StatelessWidget {
 
   TextFormField _buildEmailTextFormField(BuildContext context) {
     return TextFormField(
+      controller: _emailController,
       style: Theme.of(context).textTheme.bodyLarge!.copyWith(
             fontWeight: FontWeight.w600,
             color: kPrimaryColor,
@@ -172,6 +207,7 @@ class SignUpScreen extends StatelessWidget {
 
   TextFormField _buildNameTextFormField(BuildContext context) {
     return TextFormField(
+      controller: _nameController,
       style: Theme.of(context).textTheme.bodyLarge!.copyWith(
             fontWeight: FontWeight.w600,
             color: kPrimaryColor,

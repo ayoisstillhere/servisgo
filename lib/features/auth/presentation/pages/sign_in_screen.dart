@@ -18,6 +18,7 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
+  bool hidePassword = true;
 
   @override
   void initState() {
@@ -152,8 +153,15 @@ class _SignInScreenState extends State<SignInScreen> {
           padding: EdgeInsets.symmetric(
               vertical: getProportionateScreenHeight(16),
               horizontal: getProportionateScreenWidth(16)),
-          child: SvgPicture.asset(
-            "assets/icons/eye-suffix.svg",
+          child: GestureDetector(
+            onTap: () {
+              setState(() {
+                hidePassword = !hidePassword;
+              });
+            },
+            child: SvgPicture.asset(
+              "assets/icons/eye-suffix.svg",
+            ),
           ),
         ),
         hintStyle: TextStyle(
