@@ -8,8 +8,30 @@ import '../widgets/form_header.dart';
 import 'forgot_password_screen.dart';
 import 'sign_up_screen.dart';
 
-class SignInScreen extends StatelessWidget {
+class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
+
+  @override
+  State<SignInScreen> createState() => _SignInScreenState();
+}
+
+class _SignInScreenState extends State<SignInScreen> {
+  TextEditingController _emailController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+
+  @override
+  void initState() {
+    _emailController = TextEditingController();
+    _passwordController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    _passwordController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -119,6 +141,7 @@ class SignInScreen extends StatelessWidget {
 
   TextFormField _buildPasswordTextFormField(BuildContext context) {
     return TextFormField(
+      controller: _passwordController,
       style: Theme.of(context).textTheme.bodyLarge!.copyWith(
             fontWeight: FontWeight.w600,
             color: kPrimaryColor,
@@ -146,6 +169,7 @@ class SignInScreen extends StatelessWidget {
 
   TextFormField _buildEmailTextFormField(BuildContext context) {
     return TextFormField(
+      controller: _emailController,
       style: Theme.of(context).textTheme.bodyLarge!.copyWith(
             fontWeight: FontWeight.w600,
             color: kPrimaryColor,
