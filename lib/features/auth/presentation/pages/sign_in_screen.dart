@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:servisgo/features/auth/presentation/bloc/signin_cubit/signin_cubit.dart';
 
 import '../../../../components/default_button.dart';
 import '../../../../constants.dart';
@@ -81,7 +83,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     SizedBox(height: getProportionateScreenHeight(24)),
                     DefaultButton(
                       text: "Sign In",
-                      press: () {},
+                      press: _submitSignin,
                     ),
                     SizedBox(height: getProportionateScreenHeight(42)),
                     Center(child: SvgPicture.asset("assets/images/or.svg")),
@@ -244,5 +246,15 @@ class _SignInScreenState extends State<SignInScreen> {
         ),
       ),
     );
+  }
+
+  void _submitSignin() async {
+    if (_signinFormKey.currentState!.validate()) {
+      _signinFormKey.currentState!.save();
+      await BlocProvider.of<SigninCubit>(context).submitSignin(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
+      );
+    }
   }
 }
