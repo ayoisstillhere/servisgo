@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+
 import '../../../../components/default_button.dart';
 import '../../../../constants.dart';
-import 'phone_verification_screen.dart';
-import '../widgets/form_header.dart';
-
 import '../../../../size_config.dart';
+import '../widgets/form_header.dart';
+import 'phone_verification_screen.dart';
 
 class PhoneNumberScreen extends StatelessWidget {
   const PhoneNumberScreen({super.key});

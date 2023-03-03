@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../../../../components/default_button.dart';
-import '../../../../size_config.dart';
 
+import '../../../../components/default_button.dart';
 import '../../../../constants.dart';
+import '../../../../size_config.dart';
 import '../widgets/otp_text_form_field.dart';
 
 class PhoneVerificationScreen extends StatelessWidget {

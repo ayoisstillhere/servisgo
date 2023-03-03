@@ -1,14 +1,14 @@
 import 'package:get_it/get_it.dart';
-import 'package:servisgo/features/auth/data/datasources/firebase_remote_datasource.dart';
-import 'package:servisgo/features/auth/data/repositories/firebase_repository_impl.dart';
-import 'package:servisgo/features/auth/domain/repositories/firebase_repository.dart';
-import 'package:servisgo/features/auth/domain/usecases/create_current_user_usecase.dart';
-import 'package:servisgo/features/auth/domain/usecases/get_current_uid_usecase.dart';
-import 'package:servisgo/features/auth/domain/usecases/is_signin_usecase.dart';
-import 'package:servisgo/features/auth/domain/usecases/signin_usecase.dart';
-import 'package:servisgo/features/auth/domain/usecases/signup_usecase.dart';
-import 'package:servisgo/features/auth/presentation/bloc/auth_cubit/auth_cubit.dart';
-import 'package:servisgo/features/auth/presentation/bloc/signin_cubit/signin_cubit.dart';
+import 'features/auth/data/datasources/firebase_remote_datasource.dart';
+import 'features/auth/data/repositories/firebase_repository_impl.dart';
+import 'features/auth/domain/repositories/firebase_repository.dart';
+import 'features/auth/domain/usecases/create_current_user_usecase.dart';
+import 'features/auth/domain/usecases/get_current_uid_usecase.dart';
+import 'features/auth/domain/usecases/is_signin_usecase.dart';
+import 'features/auth/domain/usecases/signin_usecase.dart';
+import 'features/auth/domain/usecases/signup_usecase.dart';
+import 'features/auth/presentation/bloc/auth_cubit/auth_cubit.dart';
+import 'features/auth/presentation/bloc/signin_cubit/signin_cubit.dart';
 
 final sl = GetIt.instance;
 

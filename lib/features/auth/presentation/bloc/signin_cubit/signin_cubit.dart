@@ -3,9 +3,9 @@ import 'dart:io';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
-import 'package:servisgo/features/auth/domain/usecases/create_current_user_usecase.dart';
-import 'package:servisgo/features/auth/domain/usecases/signin_usecase.dart';
-import 'package:servisgo/features/auth/domain/usecases/signup_usecase.dart';
+import '../../../domain/usecases/create_current_user_usecase.dart';
+import '../../../domain/usecases/signin_usecase.dart';
+import '../../../domain/usecases/signup_usecase.dart';
 
 part 'signin_state.dart';
 

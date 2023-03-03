@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
-import 'package:servisgo/features/auth/domain/usecases/get_current_uid_usecase.dart';
+import '../../../domain/usecases/get_current_uid_usecase.dart';
 
 import '../../../domain/usecases/is_signin_usecase.dart';
 

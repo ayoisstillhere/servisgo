@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:servisgo/features/auth/presentation/bloc/signin_cubit/signin_cubit.dart';
+import '../bloc/signin_cubit/signin_cubit.dart';
 
 import '../../../../components/default_button.dart';
 import '../../../../constants.dart';

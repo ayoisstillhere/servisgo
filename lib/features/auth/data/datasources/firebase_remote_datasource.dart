@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:servisgo/features/auth/data/models/user_model.dart';
+import '../models/user_model.dart';
 
 abstract class FirebaseRemoteDatasource {
   Future<void> signUp(String email, String password);
