@@ -50,4 +50,7 @@ class FirebaseRepositoryImpl implements FirebaseRepository {
       pfpURL,
     );
   }
+
+  @override
+  Future<void> signOut() => firebaseRemoteDatasource.signOut();
 }

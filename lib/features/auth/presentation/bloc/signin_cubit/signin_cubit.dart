@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
+import 'package:servisgo/features/auth/domain/usecases/sign_out_usecase.dart';
+
 import '../../../domain/usecases/create_current_user_usecase.dart';
 import '../../../domain/usecases/signin_usecase.dart';
 import '../../../domain/usecases/signup_usecase.dart';
@@ -13,10 +15,12 @@ class SigninCubit extends Cubit<SigninState> {
   final SignupUsecase signupUsecase;
   final SigninUsecase signinUsecase;
   final CreateCurrentUserUsecase createCurrentUserUsecase;
+  final SignoutUsecase signoutUsecase;
   SigninCubit({
     required this.signupUsecase,
     required this.signinUsecase,
     required this.createCurrentUserUsecase,
+    required this.signoutUsecase,
   }) : super(SigninInitial());
 
   Future<void> submitSignin({
@@ -58,5 +62,11 @@ class SigninCubit extends Cubit<SigninState> {
     } catch (_) {
       emit(const SigninFailure("Firebase Exception"));
     }
+  }
+
+  Future<void> submitSignOut() async {
+    try {
+      await signoutUsecase.call();
+    } on SocketException catch (_) {}
   }
 }

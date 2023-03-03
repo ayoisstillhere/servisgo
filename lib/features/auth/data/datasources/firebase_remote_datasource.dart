@@ -14,6 +14,7 @@ abstract class FirebaseRemoteDatasource {
     String address,
     String pfpURL,
   );
+  Future<void> signOut();
 }
 
 class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDatasource {
@@ -65,5 +66,10 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDatasource {
       email: email,
       password: password,
     );
+  }
+
+  @override
+  Future<void> signOut() async {
+    await _auth.signOut();
   }
 }

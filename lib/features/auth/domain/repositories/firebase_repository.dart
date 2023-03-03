@@ -10,4 +10,5 @@ abstract class FirebaseRepository {
     String address,
     String pfpURL,
   );
+  Future<void> signOut();
 }
