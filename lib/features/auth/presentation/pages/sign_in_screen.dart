@@ -19,6 +19,7 @@ class _SignInScreenState extends State<SignInScreen> {
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
   bool hidePassword = true;
+  final List<String> errors = [];
 
   @override
   void initState() {
