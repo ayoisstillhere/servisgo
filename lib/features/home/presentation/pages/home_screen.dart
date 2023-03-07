@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:servisgo/components/default_button.dart';
-import 'package:servisgo/features/auth/presentation/bloc/auth_cubit/auth_cubit.dart';
-import 'package:servisgo/features/auth/presentation/bloc/signin_cubit/signin_cubit.dart';
-import 'package:servisgo/features/onboarding/presentation/pages/onboarding_screen.dart';
+import '../../../../components/default_button.dart';
+import '../../../auth/presentation/bloc/auth_cubit/auth_cubit.dart';
+import '../../../auth/presentation/bloc/signin_cubit/signin_cubit.dart';
+import '../../../onboarding/presentation/pages/onboarding_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});

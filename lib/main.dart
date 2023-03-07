@@ -1,13 +1,12 @@
-import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'features/auth/presentation/bloc/auth_cubit/auth_cubit.dart';
 import 'features/auth/presentation/bloc/signin_cubit/signin_cubit.dart';
 import 'features/home/presentation/pages/home_screen.dart';
-
-import 'injection_container.dart' as di;
-
 import 'features/onboarding/presentation/pages/onboarding_screen.dart';
+import 'injection_container.dart' as di;
 import 'theme.dart';
 
 Future main() async {

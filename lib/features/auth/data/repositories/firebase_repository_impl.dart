@@ -1,5 +1,5 @@
-import '../datasources/firebase_remote_datasource.dart';
 import '../../domain/repositories/firebase_repository.dart';
+import '../datasources/firebase_remote_datasource.dart';
 
 class FirebaseRepositoryImpl implements FirebaseRepository {
   final FirebaseRemoteDatasource firebaseRemoteDatasource;
