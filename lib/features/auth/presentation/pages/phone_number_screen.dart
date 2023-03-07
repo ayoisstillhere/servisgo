@@ -23,7 +23,7 @@ class PhoneNumberScreen extends StatelessWidget {
               const FormHeader(
                 title: "Phone Number",
                 subtitle:
-                    "Please Enter your phone number so we can send you a code and verify",
+                    "Please Enter your phone number so our Takers can contact you",
               ),
               SizedBox(height: getProportionateScreenHeight(40)),
               Form(
@@ -46,7 +46,7 @@ class PhoneNumberScreen extends StatelessWidget {
                     ),
                     SizedBox(height: getProportionateScreenHeight(132)),
                     DefaultButton(
-                      text: "Send Code",
+                      text: "Continue",
                       press: () {
                         Navigator.push(
                           context,
