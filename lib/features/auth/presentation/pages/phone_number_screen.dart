@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:servisgo/features/home/presentation/pages/home_screen.dart';
 
 import '../../../../components/default_button.dart';
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
 import '../widgets/form_header.dart';
-import 'phone_verification_screen.dart';
 
 class PhoneNumberScreen extends StatelessWidget {
   const PhoneNumberScreen({super.key});
@@ -51,7 +51,7 @@ class PhoneNumberScreen extends StatelessWidget {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const PhoneVerificationScreen(),
+                            builder: (context) => const HomeScreen(),
                           ),
                         );
                       },
