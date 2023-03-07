@@ -289,5 +289,8 @@ class _SignInScreenState extends State<SignInScreen> {
 
   void _googleSignIn() async {
     await BlocProvider.of<SigninCubit>(context).googleSignIn();
+    // ignore: use_build_context_synchronously
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const HomeScreen()));
   }
 }
