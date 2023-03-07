@@ -61,4 +61,9 @@ class FirebaseRepositoryImpl implements FirebaseRepository {
   @override
   Future<void> googleSignUp() async =>
       await firebaseRemoteDatasource.googleSignUp();
+
+  @override
+  Future<void> setPhone(String phoneNumber) async {
+    return await firebaseRemoteDatasource.setPhone(phoneNumber);
+  }
 }

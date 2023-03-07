@@ -16,3 +16,8 @@ const String kInvalidEmailError = "Please Enter Valid Email";
 const String kPassNullError = "Please Enter your password";
 const String kShortPassError = "Password should be 8 or more characters";
 const String kNameNullError = "Please Enter your name";
+final RegExp phoneValidatorRegExp =
+    RegExp(r'^(\+)(234)[0-9]{10}$|^234[0-9]{10}$|^0[789][01][0-9]{8}$');
+
+const String kPhoneNullError = "Please Enter your phone number";
+const String kInvalidPhoneError = "Please Enter Valid Phone Number";

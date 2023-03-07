@@ -5,6 +5,7 @@ import 'package:equatable/equatable.dart';
 
 import 'package:servisgo/features/auth/domain/usecases/google_signin_usecase.dart';
 import 'package:servisgo/features/auth/domain/usecases/google_signup_usecase.dart';
+import 'package:servisgo/features/auth/domain/usecases/set_phone_usecase.dart';
 import 'package:servisgo/features/auth/domain/usecases/sign_out_usecase.dart';
 
 import '../../../domain/usecases/create_current_user_usecase.dart';
@@ -20,6 +21,7 @@ class SigninCubit extends Cubit<SigninState> {
   final SignoutUsecase signoutUsecase;
   final GoogleSigninUsecase googleSigninUsecase;
   final GoogleSignupUsecase googleSignupUsecase;
+  final SetPhoneUsecase setPhoneUsecase;
   SigninCubit({
     required this.signupUsecase,
     required this.signinUsecase,
@@ -27,6 +29,7 @@ class SigninCubit extends Cubit<SigninState> {
     required this.signoutUsecase,
     required this.googleSigninUsecase,
     required this.googleSignupUsecase,
+    required this.setPhoneUsecase,
   }) : super(SigninInitial());
 
   Future<void> submitSignin({
@@ -96,5 +99,15 @@ class SigninCubit extends Cubit<SigninState> {
     } catch (_) {
       emit(const SigninFailure("Firebase Exception"));
     }
+  }
+
+  Future<void> submitPhoneNumber({
+    required String phoneNumber,
+  }) async {
+    try {
+      await setPhoneUsecase.call(
+        phoneNumber,
+      );
+    } on SocketException catch (_) {}
   }
 }

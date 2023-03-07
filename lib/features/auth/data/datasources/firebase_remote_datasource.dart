@@ -18,6 +18,7 @@ abstract class FirebaseRemoteDatasource {
   Future<void> signOut();
   Future<void> googleSignIn();
   Future<void> googleSignUp();
+  Future<void> setPhone(String phoneNumber);
 }
 
 class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDatasource {
@@ -90,7 +91,8 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDatasource {
     if (googleUser == null) return;
     _user = googleUser;
 
-    final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+    final GoogleSignInAuthentication googleAuth =
+        await googleUser.authentication;
 
     final credential = GoogleAuthProvider.credential(
       accessToken: googleAuth.accessToken,
@@ -106,7 +108,8 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDatasource {
     if (googleUser == null) return;
     _user = googleUser;
 
-    final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+    final GoogleSignInAuthentication googleAuth =
+        await googleUser.authentication;
 
     final credential = GoogleAuthProvider.credential(
       accessToken: googleAuth.accessToken,
@@ -129,5 +132,12 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDatasource {
         return;
       }
     });
+  }
+
+  @override
+  Future<void> setPhone(String phoneNumber) async {
+    await _userCollection
+        .doc(_auth.currentUser!.uid)
+        .update({'phoneNumber': phoneNumber});
   }
 }
