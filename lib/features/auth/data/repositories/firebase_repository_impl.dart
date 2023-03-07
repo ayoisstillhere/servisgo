@@ -53,4 +53,12 @@ class FirebaseRepositoryImpl implements FirebaseRepository {
 
   @override
   Future<void> signOut() => firebaseRemoteDatasource.signOut();
+
+  @override
+  Future<void> googleSignIn() async =>
+      await firebaseRemoteDatasource.googleSignIn();
+
+  @override
+  Future<void> googleSignUp() async =>
+      await firebaseRemoteDatasource.googleSignUp();
 }

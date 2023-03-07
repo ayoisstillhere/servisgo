@@ -106,16 +106,20 @@ class _SignInScreenState extends State<SignInScreen> {
                         SizedBox(height: getProportionateScreenHeight(42)),
                         Center(child: SvgPicture.asset("assets/images/or.svg")),
                         SizedBox(height: getProportionateScreenHeight(42)),
-                        Container(
-                          height: getProportionateScreenHeight(56),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: const Color(0xFFE5E7EB)),
-                            borderRadius: BorderRadius.circular(
-                                getProportionateScreenWidth(20)),
-                          ),
-                          child: Center(
-                            child: SvgPicture.asset(
-                              "assets/icons/google_icon.svg",
+                        GestureDetector(
+                          onTap: _googleSignIn,
+                          child: Container(
+                            height: getProportionateScreenHeight(56),
+                            decoration: BoxDecoration(
+                              border:
+                                  Border.all(color: const Color(0xFFE5E7EB)),
+                              borderRadius: BorderRadius.circular(
+                                  getProportionateScreenWidth(20)),
+                            ),
+                            child: Center(
+                              child: SvgPicture.asset(
+                                "assets/icons/google_icon.svg",
+                              ),
                             ),
                           ),
                         ),
@@ -281,5 +285,9 @@ class _SignInScreenState extends State<SignInScreen> {
         password: _passwordController.text.trim(),
       );
     }
+  }
+
+  void _googleSignIn() async {
+    await BlocProvider.of<SigninCubit>(context).googleSignIn();
   }
 }

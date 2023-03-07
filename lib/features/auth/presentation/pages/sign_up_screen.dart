@@ -128,16 +128,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         SizedBox(height: getProportionateScreenHeight(40)),
                         Center(child: SvgPicture.asset("assets/images/or.svg")),
                         SizedBox(height: getProportionateScreenHeight(30)),
-                        Container(
-                          height: getProportionateScreenHeight(56),
-                          decoration: BoxDecoration(
-                            border: Border.all(color: const Color(0xFFE5E7EB)),
-                            borderRadius: BorderRadius.circular(
-                                getProportionateScreenWidth(20)),
-                          ),
-                          child: Center(
-                            child: SvgPicture.asset(
-                              "assets/icons/google_icon.svg",
+                        GestureDetector(
+                          onTap: _googleSignUp,
+                          child: Container(
+                            height: getProportionateScreenHeight(56),
+                            decoration: BoxDecoration(
+                              border: Border.all(color: const Color(0xFFE5E7EB)),
+                              borderRadius: BorderRadius.circular(
+                                  getProportionateScreenWidth(20)),
+                            ),
+                            child: Center(
+                              child: SvgPicture.asset(
+                                "assets/icons/google_icon.svg",
+                              ),
                             ),
                           ),
                         ),
@@ -322,5 +325,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
             "https://firebasestorage.googleapis.com/v0/b/servisgo-fyp.appspot.com/o/Default_PFP.png?alt=media&token=c6cec350-3a9b-4c85-a219-a9d5a8a1a3db",
       );
     }
+  }
+
+  void _googleSignUp() async {
+    await BlocProvider.of<SigninCubit>(context).googleSignUp();
   }
 }

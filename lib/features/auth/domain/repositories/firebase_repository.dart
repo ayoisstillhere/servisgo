@@ -11,4 +11,6 @@ abstract class FirebaseRepository {
     String pfpURL,
   );
   Future<void> signOut();
+  Future<void> googleSignIn();
+  Future<void> googleSignUp();
 }

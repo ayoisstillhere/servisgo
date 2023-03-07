@@ -1,4 +1,6 @@
 import 'package:get_it/get_it.dart';
+import 'package:servisgo/features/auth/domain/usecases/google_signin_usecase.dart';
+import 'package:servisgo/features/auth/domain/usecases/google_signup_usecase.dart';
 import 'package:servisgo/features/auth/domain/usecases/sign_out_usecase.dart';
 import 'features/auth/data/datasources/firebase_remote_datasource.dart';
 import 'features/auth/data/repositories/firebase_repository_impl.dart';
@@ -21,7 +23,7 @@ Future<void> init() async {
         signupUsecase: sl.call(),
         signinUsecase: sl.call(),
         createCurrentUserUsecase: sl.call(),
-        signoutUsecase: sl.call(),
+        signoutUsecase: sl.call(), googleSigninUsecase: sl.call(), googleSignupUsecase: sl.call(),
       ));
 
   //!useCae
@@ -37,6 +39,10 @@ Future<void> init() async {
       () => SignupUsecase(repository: sl.call()));
   sl.registerLazySingleton<SignoutUsecase>(
       () => SignoutUsecase(repository: sl.call()));
+  sl.registerLazySingleton<GoogleSigninUsecase>(
+      () => GoogleSigninUsecase(repository: sl.call()));
+  sl.registerLazySingleton<GoogleSignupUsecase>(
+      () => GoogleSignupUsecase(repository: sl.call()));
 
   //repository
   sl.registerLazySingleton<FirebaseRepository>(
