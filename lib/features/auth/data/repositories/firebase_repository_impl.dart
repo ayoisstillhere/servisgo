@@ -66,4 +66,8 @@ class FirebaseRepositoryImpl implements FirebaseRepository {
   Future<void> setPhone(String phoneNumber) async {
     return await firebaseRemoteDatasource.setPhone(phoneNumber);
   }
+
+  @override
+  Future<void> resetPassword(String email) async =>
+      await firebaseRemoteDatasource.resetPassword(email);
 }

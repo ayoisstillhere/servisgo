@@ -1,13 +1,53 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:servisgo/features/auth/presentation/bloc/signin_cubit/signin_cubit.dart';
+import 'package:servisgo/features/auth/presentation/widgets/form_error.dart';
 
 import '../../../../components/default_button.dart';
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
 import '../widgets/form_header.dart';
 
-class ForgotPasswordScreen extends StatelessWidget {
+class ForgotPasswordScreen extends StatefulWidget {
   const ForgotPasswordScreen({super.key});
+
+  @override
+  State<ForgotPasswordScreen> createState() => _ForgotPasswordScreenState();
+}
+
+class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
+  final _forgotFormKey = GlobalKey<FormState>();
+  TextEditingController _emailController = TextEditingController();
+  final List<String> errors = [];
+
+  @override
+  void initState() {
+    _emailController = TextEditingController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _emailController.dispose();
+    super.dispose();
+  }
+
+  void addError({required String error}) {
+    if (!errors.contains(error)) {
+      setState(() {
+        errors.add(error);
+      });
+    }
+  }
+
+  void removeError({required String error}) {
+    if (errors.contains(error)) {
+      setState(() {
+        errors.remove(error);
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,11 +69,29 @@ class ForgotPasswordScreen extends StatelessWidget {
                     "Enter your email address below to receive password recovery instructions",
               ),
               SizedBox(height: getProportionateScreenHeight(42)),
-              _buildEmailTextFormField(context),
-              SizedBox(height: getProportionateScreenHeight(72)),
-              DefaultButton(
-                text: "Send Email",
-                press: () {},
+              Form(
+                key: _forgotFormKey,
+                child: Column(
+                  children: [
+                    _buildEmailTextFormField(context),
+                    SizedBox(height: getProportionateScreenHeight(72)),
+                    FormError(errors: errors),
+                    DefaultButton(
+                      text: "Send Email",
+                      press: () async {
+                        if (_forgotFormKey.currentState!.validate()) {
+                          _forgotFormKey.currentState!.save();
+                          await BlocProvider.of<SigninCubit>(context)
+                              .resetPassword(
+                            email: _emailController.text.trim(),
+                          );
+                          // ignore: use_build_context_synchronously
+                          Navigator.pop(context);
+                        }
+                      },
+                    ),
+                  ],
+                ),
               ),
             ],
           ),
@@ -44,6 +102,24 @@ class ForgotPasswordScreen extends StatelessWidget {
 
   TextFormField _buildEmailTextFormField(BuildContext context) {
     return TextFormField(
+      onChanged: (value) {
+        if (value.isNotEmpty) {
+          removeError(error: kEmailNullError);
+        } else if (emailValidatorRegExp.hasMatch(value)) {
+          removeError(error: kInvalidEmailError);
+        }
+      },
+      validator: (value) {
+        if (value!.isEmpty) {
+          addError(error: kEmailNullError);
+          return "";
+        } else if (!emailValidatorRegExp.hasMatch(value)) {
+          addError(error: kInvalidEmailError);
+          return "";
+        }
+        return null;
+      },
+      controller: _emailController,
       style: Theme.of(context).textTheme.bodyLarge!.copyWith(
             fontWeight: FontWeight.w600,
             color: kPrimaryColor,

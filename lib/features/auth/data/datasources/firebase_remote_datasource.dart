@@ -20,6 +20,7 @@ abstract class FirebaseRemoteDatasource {
   Future<void> googleSignIn();
   Future<void> googleSignUp();
   Future<void> setPhone(String phoneNumber);
+  Future<void> resetPassword(String email);
 }
 
 class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDatasource {
@@ -140,5 +141,10 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDatasource {
     await _userCollection
         .doc(_auth.currentUser!.uid)
         .update({'phoneNumber': phoneNumber});
+  }
+
+  @override
+  Future<void> resetPassword(String email) async {
+    await _auth.sendPasswordResetEmail(email: email);
   }
 }

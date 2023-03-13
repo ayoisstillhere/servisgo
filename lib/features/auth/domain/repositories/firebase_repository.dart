@@ -14,4 +14,5 @@ abstract class FirebaseRepository {
   Future<void> googleSignIn();
   Future<void> googleSignUp();
   Future<void> setPhone(String phoneNumber);
+  Future<void> resetPassword(String email);
 }

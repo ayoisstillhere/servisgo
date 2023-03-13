@@ -1,15 +1,15 @@
 import 'dart:io';
 
-
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'package:servisgo/features/auth/domain/usecases/reset_password_usecase.dart';
+
+import '../../../domain/usecases/create_current_user_usecase.dart';
 import '../../../domain/usecases/google_signin_usecase.dart';
 import '../../../domain/usecases/google_signup_usecase.dart';
 import '../../../domain/usecases/set_phone_usecase.dart';
 import '../../../domain/usecases/sign_out_usecase.dart';
-
-import '../../../domain/usecases/create_current_user_usecase.dart';
 import '../../../domain/usecases/signin_usecase.dart';
 import '../../../domain/usecases/signup_usecase.dart';
 
@@ -23,6 +23,7 @@ class SigninCubit extends Cubit<SigninState> {
   final GoogleSigninUsecase googleSigninUsecase;
   final GoogleSignupUsecase googleSignupUsecase;
   final SetPhoneUsecase setPhoneUsecase;
+  final ResetPasswordUsecase resetPasswordUsecase;
   SigninCubit({
     required this.signupUsecase,
     required this.signinUsecase,
@@ -31,6 +32,7 @@ class SigninCubit extends Cubit<SigninState> {
     required this.googleSigninUsecase,
     required this.googleSignupUsecase,
     required this.setPhoneUsecase,
+    required this.resetPasswordUsecase,
   }) : super(SigninInitial());
 
   Future<void> submitSignin({
@@ -108,6 +110,16 @@ class SigninCubit extends Cubit<SigninState> {
     try {
       await setPhoneUsecase.call(
         phoneNumber,
+      );
+    } on SocketException catch (_) {}
+  }
+
+  Future<void> resetPassword({
+    required String email,
+  }) async {
+    try {
+      await resetPasswordUsecase.call(
+        email,
       );
     } on SocketException catch (_) {}
   }

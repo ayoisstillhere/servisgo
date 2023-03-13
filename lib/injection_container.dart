@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:servisgo/features/auth/domain/usecases/reset_password_usecase.dart';
 import 'features/auth/domain/usecases/google_signin_usecase.dart';
 import 'features/auth/domain/usecases/google_signup_usecase.dart';
 import 'features/auth/domain/usecases/set_phone_usecase.dart';
@@ -28,6 +29,7 @@ Future<void> init() async {
         googleSigninUsecase: sl.call(),
         googleSignupUsecase: sl.call(),
         setPhoneUsecase: sl.call(),
+        resetPasswordUsecase: sl.call(),
       ));
 
   //!useCae
@@ -49,6 +51,8 @@ Future<void> init() async {
       () => GoogleSignupUsecase(repository: sl.call()));
   sl.registerLazySingleton<SetPhoneUsecase>(
       () => SetPhoneUsecase(repository: sl.call()));
+  sl.registerLazySingleton<ResetPasswordUsecase>(
+      () => ResetPasswordUsecase(repository: sl.call()));
 
   //repository
   sl.registerLazySingleton<FirebaseRepository>(
