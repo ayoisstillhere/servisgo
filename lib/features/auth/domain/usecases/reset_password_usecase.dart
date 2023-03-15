@@ -1,4 +1,4 @@
-import 'package:servisgo/features/auth/domain/repositories/firebase_repository.dart';
+import '../repositories/firebase_repository.dart';
 
 class ResetPasswordUsecase {
   final FirebaseRepository repository;
