@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -30,7 +29,13 @@ class NavbarButton extends StatelessWidget {
             height: getProportionateScreenHeight(24),
           ),
           SizedBox(height: getProportionateScreenHeight(4)),
-          Text(label),
+          Text(
+            label,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              color: kGreys,
+            ),
+          ),
         ],
       ),
     );
