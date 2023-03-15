@@ -89,6 +89,13 @@ flutter:
     - assets/icons/Notifications-none.svg
     - assets/icons/Notifications.svg
     - assets/images/cleanerNobg.png
+    - assets/icons/CleaningIcon.png
+    - assets/icons/ElectricalIcon.png
+    - assets/icons/GardeningIcon.png
+    - assets/icons/HandymanIcon.png
+    - assets/icons/HomeImprovementIcon.png
+    - assets/icons/PaintingIcon.png
+    - assets/icons/PlumbingIcon.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see
