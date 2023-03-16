@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../../../../constants.dart';
@@ -13,13 +12,13 @@ class BottomNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      height: getProportionateScreenHeight(84),
       decoration: const BoxDecoration(
         border: Border(
           top: BorderSide(color: kOutlineVariant),
         ),
       ),
-      padding:
-          EdgeInsets.symmetric(vertical: getProportionateScreenHeight(20)),
+      padding: EdgeInsets.only(top: getProportionateScreenHeight(20)),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
