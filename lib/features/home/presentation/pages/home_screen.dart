@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
 import 'package:servisgo/constants.dart';
 import 'package:servisgo/size_config.dart';
 
 import '../widgets/bottom_navbar.dart';
+import '../widgets/service_button.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -53,13 +55,13 @@ class HomeScreen extends StatelessWidget {
           SizedBox(
             height: getProportionateScreenHeight(16),
           ),
-          Padding(
-            padding: EdgeInsets.symmetric(
-                horizontal: getProportionateScreenWidth(32)),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Stack(
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: getProportionateScreenWidth(32)),
+                child: Stack(
                   children: [
                     Container(
                       width: double.infinity,
@@ -122,35 +124,251 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(
-                  height: getProportionateScreenHeight(28),
-                ),
-                Text(
+              ),
+              SizedBox(
+                height: getProportionateScreenHeight(28),
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: getProportionateScreenWidth(32)),
+                child: Text(
                   "Our Services",
                   style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                         fontWeight: FontWeight.w600,
                         color: kBlacks,
                       ),
                 ),
-                SizedBox(
-                  height: getProportionateScreenHeight(8),
+              ),
+              SizedBox(
+                height: getProportionateScreenHeight(8),
+              ),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: <Widget>[
+                    SizedBox(width: getProportionateScreenWidth(32)),
+                    ServiceButton(
+                      color: const Color(0XFFFA99D3),
+                      icon: "assets/icons/CleaningIcon.png",
+                      serviceName: "Cleaning",
+                      press: () {},
+                    ),
+                    SizedBox(width: getProportionateScreenWidth(28)),
+                    ServiceButton(
+                      color: const Color(0XFFF78273),
+                      icon: "assets/icons/GardeningIcon.png",
+                      serviceName: "Gardening",
+                      press: () {},
+                    ),
+                    SizedBox(width: getProportionateScreenWidth(28)),
+                    ServiceButton(
+                      color: const Color(0XFFC45E84),
+                      icon: "assets/icons/PlumbingIcon.png",
+                      serviceName: "Plumbing",
+                      press: () {},
+                    ),
+                    SizedBox(width: getProportionateScreenWidth(28)),
+                    ServiceButton(
+                      color: const Color(0XFFBDA5A6),
+                      icon: "assets/icons/ElectricalIcon.png",
+                      serviceName: "Electrical",
+                      press: () {},
+                    ),
+                    SizedBox(width: getProportionateScreenWidth(28)),
+                    ServiceButton(
+                      color: kCallToAction,
+                      icon: "assets/icons/HandymanIcon.png",
+                      serviceName: "Handyman",
+                      press: () {},
+                    ),
+                    SizedBox(width: getProportionateScreenWidth(28)),
+                    ServiceButton(
+                      color: const Color(0XFFA05338),
+                      icon: "assets/icons/PaintingIcon.png",
+                      serviceName: "Painting",
+                      press: () {},
+                    ),
+                    SizedBox(width: getProportionateScreenWidth(28)),
+                    ServiceButton(
+                      color: const Color(0XFF5EECBE),
+                      icon: "assets/icons/HomeImprovementIcon.png",
+                      serviceName: "Improve",
+                      press: () {},
+                    ),
+                    SizedBox(width: getProportionateScreenWidth(32)),
+                  ],
                 ),
-                SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: <Widget> [
-                      Container(
-                        child: ,
+              ),
+              SizedBox(height: getProportionateScreenHeight(24)),
+              Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: getProportionateScreenWidth(32)),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      "Top Service Providers",
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyLarge!
+                          .copyWith(fontWeight: FontWeight.w600),
+                    ),
+                    GestureDetector(
+                      onTap: () {},
+                      child: Text(
+                        "View More",
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyMedium!
+                            .copyWith(color: kCallToAction),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+              SizedBox(height: getProportionateScreenHeight(8)),
+              SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: <Widget>[
+                    SizedBox(width: getProportionateScreenWidth(32)),
+                    const ServiceProviderCard(
+                      image:
+                          "https://cdn.pixabay.com/photo/2021/03/21/13/28/woman-6112091_1280.jpg",
+                      name: "Judith Omole",
+                      location: "Surulere",
+                      rating: "4.5 ",
+                      reviews: "(1234)",
+                    ),
+                    SizedBox(width: getProportionateScreenWidth(12)),
+                    const ServiceProviderCard(
+                      image:
+                          "https://cdn.pixabay.com/photo/2020/01/20/17/30/look-4780865__480.jpg",
+                      name: "Stephen Anyanwu",
+                      location: "Surulere",
+                      rating: "4.5 ",
+                      reviews: "(1234)",
+                    ),
+                    SizedBox(width: getProportionateScreenWidth(12)),
+                    const ServiceProviderCard(
+                      image:
+                          "https://images.unsplash.com/photo-1530785602389-07594beb8b73?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fG5pZ2VyaWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=900&q=60",
+                      name: "Blessing Ornu",
+                      location: "Surulere",
+                      rating: "4.5 ",
+                      reviews: "(1234)",
+                    ),
+                    SizedBox(width: getProportionateScreenWidth(12)),
+                    const ServiceProviderCard(
+                      image:
+                          "https://cdn.pixabay.com/photo/2018/10/11/15/35/angry-boy-3740043__480.jpg",
+                      name: "Tobi Odusayo",
+                      location: "Surulere",
+                      rating: "4.5 ",
+                      reviews: "(1234)",
+                    ),
+                    SizedBox(width: getProportionateScreenWidth(12)),
+                    const ServiceProviderCard(
+                      image:
+                          "https://images.unsplash.com/photo-1594564190328-0bed16a89837?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bmlnZXJpYW58ZW58MHx8MHx8&auto=format&fit=crop&w=900&q=60",
+                      name: "Akpan Ibisi",
+                      location: "Surulere",
+                      rating: "4.5 ",
+                      reviews: "(1234)",
+                    ),
+                    SizedBox(width: getProportionateScreenWidth(32)),
+                  ],
+                ),
+              ),
+            ],
           ),
         ],
       ),
       // bottomNavigationBar: const BottomNavBar(),
+    );
+  }
+}
+
+class ServiceProviderCard extends StatelessWidget {
+  const ServiceProviderCard({
+    Key? key,
+    required this.image,
+    required this.name,
+    required this.location,
+    required this.rating,
+    required this.reviews,
+  }) : super(key: key);
+  final String image;
+  final String name;
+  final String location;
+  final String rating;
+  final String reviews;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.symmetric(
+        horizontal: getProportionateScreenWidth(12),
+      ).copyWith(
+          top: getProportionateScreenHeight(12),
+          bottom: getProportionateScreenHeight(16)),
+      decoration: BoxDecoration(
+        color: kBgColor,
+        border: Border.all(
+          color: kOutlineVariant,
+        ),
+        borderRadius: BorderRadius.circular(4),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Image.network(
+            image,
+            height: getProportionateScreenHeight(96),
+            width: getProportionateScreenWidth(128),
+            fit: BoxFit.cover,
+          ),
+          SizedBox(height: getProportionateScreenHeight(8)),
+          Text(
+            name,
+            style: Theme.of(context)
+                .textTheme
+                .bodyMedium!
+                .copyWith(fontWeight: FontWeight.bold),
+          ),
+          SizedBox(height: getProportionateScreenHeight(4)),
+          Text(
+            location,
+            style:
+                Theme.of(context).textTheme.bodySmall!.copyWith(color: kGreys),
+          ),
+          SizedBox(height: getProportionateScreenHeight(4)),
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SvgPicture.asset(
+                "assets/icons/ratingStar.svg",
+                height: getProportionateScreenHeight(14),
+                width: getProportionateScreenWidth(14),
+              ),
+              SizedBox(width: getProportionateScreenWidth(4)),
+              RichText(
+                text: TextSpan(
+                    text: rating,
+                    style: Theme.of(context).textTheme.bodySmall,
+                    children: <TextSpan>[
+                      TextSpan(
+                        text: reviews,
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodySmall!
+                            .copyWith(color: kGreys),
+                      ),
+                    ]),
+              ),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
