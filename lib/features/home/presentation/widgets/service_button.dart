@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../../../../constants.dart';
 
 import '../../../../size_config.dart';
+import '../pages/select_provider.dart';
 
 class ServiceButton extends StatelessWidget {
   const ServiceButton({
@@ -21,7 +22,12 @@ class ServiceButton extends StatelessWidget {
     return Column(
       children: [
         GestureDetector(
-          onTap: press,
+          onTap: () {
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const SelectProvider()));
+          },
           child: Container(
             decoration: BoxDecoration(
               color: color,

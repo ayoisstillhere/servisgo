@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:servisgo/features/home/presentation/pages/select_provider.dart';
 
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
@@ -214,7 +215,9 @@ class HomeScreen extends StatelessWidget {
                           .copyWith(fontWeight: FontWeight.w600),
                     ),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const SelectProvider()));
+                      },
                       child: Text(
                         "View More",
                         style: Theme.of(context)
