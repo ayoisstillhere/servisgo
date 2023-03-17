@@ -216,7 +216,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => const SelectProvider()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) =>  SelectProvider()));
                       },
                       child: Text(
                         "View More",

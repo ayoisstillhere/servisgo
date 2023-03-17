@@ -23,10 +23,8 @@ class ServiceButton extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const SelectProvider()));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => SelectProvider()));
           },
           child: Container(
             decoration: BoxDecoration(
