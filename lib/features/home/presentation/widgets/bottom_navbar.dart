@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:servisgo/features/home/presentation/pages/home_screen.dart';
+import '../pages/home_screen.dart';
 
 import '../../../../constants.dart';
 import '../../../../size_config.dart';

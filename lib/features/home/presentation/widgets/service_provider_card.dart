@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:servisgo/features/details/presentation/pages/service_provider_details_screen.dart';
+import '../../../details/presentation/pages/service_provider_details_screen.dart';
 
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
