@@ -101,6 +101,14 @@ flutter:
     - assets/icons/clock.svg
     - assets/icons/money.svg
     - assets/icons/Star.svg
+    - assets/icons/Edit.svg
+    - assets/icons/Document.svg
+    - assets/icons/InfoCircle.svg
+    - assets/icons/Logout.svg
+    - assets/icons/Notification.svg
+    - assets/icons/Setting.svg
+    - assets/icons/ShieldDone.svg
+    - assets/icons/Wallet.svg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see
