@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:servisgo/features/home/presentation/pages/home_screen.dart';
 
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
+import '../../../menu/presentation/pages/menu_screen.dart';
 import 'navbar_button.dart';
 
 class BottomNavBar extends StatelessWidget {
@@ -25,27 +27,42 @@ class BottomNavBar extends StatelessWidget {
           NavbarButton(
             iconUrl: "assets/icons/home_icon.svg",
             label: "Home",
-            press: () {},
+            press: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const HomeScreen()));
+            },
           ),
           NavbarButton(
             iconUrl: "assets/icons/history_icon.svg",
             label: "History",
-            press: () {},
+            press: () {
+              // Navigator.push(context,
+              //     MaterialPageRoute(builder: (context) => const HistoryScreen()));
+            },
           ),
           NavbarButton(
             iconUrl: "assets/icons/Location_icon.svg",
             label: "Tracker",
-            press: () {},
+            press: () {
+              // Navigator.push(context,
+              //     MaterialPageRoute(builder: (context) => const TrackerScreen()));
+            },
           ),
           NavbarButton(
             iconUrl: "assets/icons/chat_icon.svg",
             label: "Chat",
-            press: () {},
+            press: () {
+              // Navigator.push(context,
+              //     MaterialPageRoute(builder: (context) => const ChatScreen()));
+            },
           ),
           NavbarButton(
             iconUrl: "assets/icons/Menu_icon.svg",
             label: "Menu",
-            press: () {},
+            press: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const MenuScreen()));
+            },
           ),
         ],
       ),
