@@ -12,7 +12,7 @@ class MessagesScreen extends StatelessWidget {
     [
       "https://cdn.pixabay.com/photo/2021/03/21/13/28/woman-6112091_1280.jpg",
       "Judith Omole",
-      "Im on My Way",
+      "I'm on My Way",
       "17:38",
       2
     ],

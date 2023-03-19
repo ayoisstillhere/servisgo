@@ -110,6 +110,8 @@ flutter:
     - assets/icons/ShieldDone.svg
     - assets/icons/Wallet.svg
     - assets/icons/Camera.svg
+    - assets/icons/addIcon.svg
+    - assets/icons/Send.svg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see
