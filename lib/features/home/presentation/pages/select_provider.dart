@@ -5,7 +5,7 @@ import '../widgets/service_provider_card.dart';
 
 class SelectProvider extends StatelessWidget {
   SelectProvider({super.key});
-  final List serviceProvidersList = [
+  final List<ServiceProviderCard> serviceProvidersList = [
     const ServiceProviderCard(
       image:
           "https://cdn.pixabay.com/photo/2021/03/21/13/28/woman-6112091_1280.jpg",
@@ -68,7 +68,13 @@ class SelectProvider extends StatelessWidget {
         ),
         itemCount: serviceProvidersList.length,
         itemBuilder: (BuildContext context, int index) {
-          return serviceProvidersList[index];
+          return ServiceProviderCard(
+            image: serviceProvidersList[index].image,
+            name: serviceProvidersList[index].name,
+            location: serviceProvidersList[index].location,
+            rating: serviceProvidersList[index].rating,
+            reviews: serviceProvidersList[index].reviews,
+          );
         },
       ),
     );

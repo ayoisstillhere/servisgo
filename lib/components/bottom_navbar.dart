@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:servisgo/features/chat/presentation/pages/messages_screen.dart';
 
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
@@ -52,8 +53,8 @@ class BottomNavBar extends StatelessWidget {
             iconUrl: "assets/icons/chat_icon.svg",
             label: "Chat",
             press: () {
-              // Navigator.push(context,
-              //     MaterialPageRoute(builder: (context) => const ChatScreen()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => MessagesScreen()));
             },
           ),
           NavbarButton(

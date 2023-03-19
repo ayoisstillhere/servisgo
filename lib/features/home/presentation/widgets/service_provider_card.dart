@@ -23,7 +23,12 @@ class ServiceProviderCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ServiceProviderDetails(imageUrl: image,))),
+      onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => ServiceProviderDetails(
+                    imageUrl: image,
+                  ))),
       child: Container(
         padding: EdgeInsets.symmetric(
           horizontal: getProportionateScreenWidth(12),
@@ -43,11 +48,14 @@ class ServiceProviderCard extends StatelessWidget {
             Hero(
               tag: image,
               transitionOnUserGestures: true,
-              child: Image.network(
-                image,
-                height: getProportionateScreenHeight(96),
-                width: getProportionateScreenWidth(128),
-                fit: BoxFit.cover,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(4),
+                child: Image.network(
+                  image,
+                  height: getProportionateScreenHeight(96),
+                  width: getProportionateScreenWidth(128),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
             SizedBox(height: getProportionateScreenHeight(8)),
@@ -61,8 +69,10 @@ class ServiceProviderCard extends StatelessWidget {
             SizedBox(height: getProportionateScreenHeight(4)),
             Text(
               location,
-              style:
-                  Theme.of(context).textTheme.bodySmall!.copyWith(color: kGreys),
+              style: Theme.of(context)
+                  .textTheme
+                  .bodySmall!
+                  .copyWith(color: kGreys),
             ),
             SizedBox(height: getProportionateScreenHeight(4)),
             Row(
