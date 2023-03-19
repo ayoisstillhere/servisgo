@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../../components/bottom_navbar.dart';
 import '../../../../constants.dart';
-import '../../../home/presentation/widgets/bottom_navbar.dart';
 import '../../../../size_config.dart';
-
 import '../widgets/menu_item_tile.dart';
 import 'profile_screen.dart';
 

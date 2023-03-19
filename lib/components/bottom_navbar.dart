@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../pages/home_screen.dart';
 
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
-import '../../../menu/presentation/pages/menu_screen.dart';
+import '../features/home/presentation/pages/home_screen.dart';
+import '../features/menu/presentation/pages/menu_screen.dart';
 import 'navbar_button.dart';
 
 class BottomNavBar extends StatelessWidget {

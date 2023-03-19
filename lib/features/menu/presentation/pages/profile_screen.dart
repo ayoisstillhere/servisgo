@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
 import '../../../../components/default_button.dart';
-
-import '../../../../size_config.dart';
-
 import '../../../../constants.dart';
+import '../../../../size_config.dart';
 import '../widgets/profile_item_tile.dart';
 
 class ProfileScreen extends StatelessWidget {

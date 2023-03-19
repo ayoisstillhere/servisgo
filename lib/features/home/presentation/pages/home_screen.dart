@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'select_provider.dart';
 
+import '../../../../components/bottom_navbar.dart';
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
-
-import '../widgets/bottom_navbar.dart';
 import '../widgets/service_button.dart';
 import '../widgets/service_provider_card.dart';
+import 'select_provider.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
