@@ -5,6 +5,7 @@ import '../../../../constants.dart';
 import '../../../../size_config.dart';
 import '../features/home/presentation/pages/home_screen.dart';
 import '../features/menu/presentation/pages/menu_screen.dart';
+import '../features/tracker/presentation/pages/tracker_screen.dart';
 import 'navbar_button.dart';
 
 class BottomNavBar extends StatelessWidget {
@@ -45,8 +46,8 @@ class BottomNavBar extends StatelessWidget {
             iconUrl: "assets/icons/Location_icon.svg",
             label: "Tracker",
             press: () {
-              // Navigator.push(context,
-              //     MaterialPageRoute(builder: (context) => const TrackerScreen()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const TrackerScreen()));
             },
           ),
           NavbarButton(
