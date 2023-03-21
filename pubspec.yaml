@@ -113,6 +113,10 @@ flutter:
     - assets/icons/addIcon.svg
     - assets/icons/Send.svg
     - assets/images/notFound.svg
+    - assets/icons/calendarConfirm.svg
+    - assets/icons/ClockConfirm.svg
+    - assets/icons/DollarConfirm.svg
+    - assets/icons/locationPinConfirm.svg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:servisgo/features/confirmBooking/presentation/pages/confirm_booking_screen.dart';
 
+import '../../../../components/bullet_point.dart';
 import '../../../../components/default_button.dart';
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
@@ -196,52 +198,22 @@ class ServiceProviderDetails extends StatelessWidget {
                         'General Cleaning which involves dusting and wiping down baseboards, cleaning windows and window sills, and vacuuming or sweeping all floors throughout the home.',
                   ),
                   SizedBox(height: getProportionateScreenHeight(36)),
-                  DefaultButton(text: "Book Now - #2000/hr", press: () {}),
+                  DefaultButton(
+                    text: "Book Now - #2000/hr",
+                    press: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const ConfirmBookingScreen()));
+                    },
+                  ),
                   SizedBox(height: getProportionateScreenHeight(64)),
                 ],
               ),
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class BulletPoint extends StatelessWidget {
-  final String text;
-  const BulletPoint({
-    Key? key,
-    required this.text,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding:
-          EdgeInsets.symmetric(horizontal: getProportionateScreenHeight(4)),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: EdgeInsets.only(
-                top: getProportionateScreenHeight(5),
-                right: getProportionateScreenWidth(10)),
-            child: const Icon(
-              Icons.circle,
-              size: 8,
-              color: kGreys,
-            ),
-          ),
-          Expanded(
-            child: Text(text,
-                textAlign: TextAlign.justify,
-                style: Theme.of(context)
-                    .textTheme
-                    .bodySmall!
-                    .copyWith(color: kGreys)),
-          ),
-        ],
       ),
     );
   }
