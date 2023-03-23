@@ -1,9 +1,15 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:servisgo/main.dart';
 
 import '../../../../components/bottom_navbar.dart';
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
+import '../../../auth/presentation/bloc/auth_cubit/auth_cubit.dart';
+import '../../../auth/presentation/bloc/signin_cubit/signin_cubit.dart';
 import '../widgets/menu_item_tile.dart';
 import 'profile_screen.dart';
 
@@ -28,7 +34,10 @@ class MenuScreen extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfileScreen()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ProfileScreen()));
               },
               child: Stack(
                 children: [
@@ -125,10 +134,18 @@ class MenuScreen extends StatelessWidget {
             ),
             SizedBox(height: getProportionateScreenHeight(24)),
             MenuItemTile(
-              press: () {},
+              press: () async {
+                await BlocProvider.of<AuthCubit>(context).loggedOut();
+                await BlocProvider.of<SigninCubit>(context).submitSignOut();
+                Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MyApp()),
+                    (route) => false);
+              },
               icon: "assets/icons/Logout.svg",
               text: "Logout",
             ),
+            SizedBox(height: getProportionateScreenHeight(24)),
           ],
         ),
       )),
