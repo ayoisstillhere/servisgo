@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:servisgo/components/bottom_navbar.dart';
+import '../../../../components/bottom_navbar.dart';
 
 import '../widgets/no_results_body.dart';
 

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:servisgo/features/confirmBooking/presentation/pages/confirm_booking_screen.dart';
 
 import '../../../../components/bullet_point.dart';
 import '../../../../components/default_button.dart';
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
+import '../../../confirmBooking/presentation/pages/confirm_booking_screen.dart';
 
 class ServiceProviderDetails extends StatelessWidget {
   const ServiceProviderDetails({

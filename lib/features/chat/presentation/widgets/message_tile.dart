@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:servisgo/features/chat/presentation/pages/chat_screen.dart';
+import '../pages/chat_screen.dart';
 
 import '../../../../constants.dart';
 import '../../../../size_config.dart';

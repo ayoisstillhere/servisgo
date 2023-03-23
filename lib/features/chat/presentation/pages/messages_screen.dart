@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:servisgo/components/bottom_navbar.dart';
-import 'package:servisgo/constants.dart';
-import 'package:servisgo/size_config.dart';
+import '../../../../components/bottom_navbar.dart';
+import '../../../../constants.dart';
+import '../../../../size_config.dart';
 
 import '../widgets/message_tile.dart';
 

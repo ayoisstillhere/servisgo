@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:servisgo/components/default_button.dart';
-import 'package:servisgo/constants.dart';
-import 'package:servisgo/size_config.dart';
+import '../../../../components/default_button.dart';
+import '../../../../constants.dart';
+import '../../../../size_config.dart';
 
 class ConfirmBookingScreen extends StatefulWidget {
   const ConfirmBookingScreen({super.key});
