@@ -215,20 +215,21 @@ class _SignInScreenState extends State<SignInScreen> {
           ),
       decoration: InputDecoration(
         hintText: "Password",
-        suffixIcon: Padding(
-          padding: EdgeInsets.symmetric(
-              vertical: getProportionateScreenHeight(16),
-              horizontal: getProportionateScreenWidth(16)),
-          child: GestureDetector(
-            onTap: () {
-              setState(() {
-                hidePassword = !hidePassword;
-              });
-            },
-            child: SvgPicture.asset(
-              "assets/icons/eye-suffix.svg",
-            ),
-          ),
+        suffixIcon: IconButton(
+          onPressed: () {
+            setState(() {
+              hidePassword = !hidePassword;
+            });
+          },
+          icon: hidePassword == true
+              ? const Icon(
+                  Icons.visibility_off,
+                  color: kGreys,
+                )
+              : const Icon(
+                  Icons.visibility,
+                  color: kGreys,
+                ),
         ),
         hintStyle: TextStyle(
           fontSize: getProportionateScreenWidth(16),

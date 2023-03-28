@@ -132,7 +132,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           child: Container(
                             height: getProportionateScreenHeight(56),
                             decoration: BoxDecoration(
-                              border: Border.all(color: const Color(0xFFE5E7EB)),
+                              border:
+                                  Border.all(color: const Color(0xFFE5E7EB)),
                               borderRadius: BorderRadius.circular(
                                   getProportionateScreenWidth(20)),
                             ),
@@ -218,20 +219,21 @@ class _SignUpScreenState extends State<SignUpScreen> {
           ),
       decoration: InputDecoration(
         hintText: "Password",
-        suffixIcon: Padding(
-          padding: EdgeInsets.symmetric(
-              vertical: getProportionateScreenHeight(16),
-              horizontal: getProportionateScreenWidth(16)),
-          child: GestureDetector(
-            onTap: () {
-              setState(() {
-                hidePassword = !hidePassword;
-              });
-            },
-            child: SvgPicture.asset(
-              "assets/icons/eye-suffix.svg",
-            ),
-          ),
+        suffixIcon: IconButton(
+          onPressed: () {
+            setState(() {
+              hidePassword = !hidePassword;
+            });
+          },
+          icon: hidePassword == true
+              ? const Icon(
+                  Icons.visibility_off,
+                  color: kGreys,
+                )
+              : const Icon(
+                  Icons.visibility,
+                  color: kGreys,
+                ),
         ),
         hintStyle: TextStyle(
           fontSize: getProportionateScreenWidth(16),
