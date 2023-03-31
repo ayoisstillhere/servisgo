@@ -18,6 +18,10 @@ class MenuScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final primaryColor =
+        MediaQuery.of(context).platformBrightness == Brightness.dark
+            ? kDarkPrimaryColor
+            : kPrimaryColor;
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -86,7 +90,7 @@ class MenuScreen extends StatelessWidget {
               style: Theme.of(context)
                   .textTheme
                   .displaySmall!
-                  .copyWith(color: kPrimaryColor),
+                  .copyWith(color: primaryColor),
             ),
             SizedBox(height: getProportionateScreenHeight(8)),
             Text(

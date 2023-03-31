@@ -13,6 +13,10 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bannerColor =
+        MediaQuery.of(context).platformBrightness == Brightness.dark
+            ? kDarkBannerColor
+            : kPrimaryColor;
     return Scaffold(
       body: Column(
         children: [
@@ -22,7 +26,7 @@ class HomeScreen extends StatelessWidget {
             ).copyWith(
                 top: getProportionateScreenHeight(48),
                 bottom: getProportionateScreenHeight(18)),
-            color: kPrimaryColor,
+            color: bannerColor,
             height: getProportionateScreenHeight(128),
             width: double.infinity,
             child: Row(
@@ -135,7 +139,10 @@ class HomeScreen extends StatelessWidget {
                   "Our Services",
                   style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                         fontWeight: FontWeight.w600,
-                        color: kBlacks,
+                        color: MediaQuery.of(context).platformBrightness ==
+                                Brightness.dark
+                            ? Colors.white
+                            : kBlacks,
                       ),
                 ),
               ),
@@ -215,7 +222,10 @@ class HomeScreen extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) =>  SelectProvider()));
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => SelectProvider()));
                       },
                       child: Text(
                         "View More",

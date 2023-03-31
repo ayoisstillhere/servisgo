@@ -58,7 +58,7 @@ class ChatScreen extends StatelessWidget {
                   height: getProportionateScreenHeight(56),
                   width: getProportionateScreenWidth(256),
                   decoration: BoxDecoration(
-                    color: kBgColor,
+                    // color: kBgColor,
                     borderRadius: BorderRadius.circular(
                       getProportionateScreenWidth(16),
                     ),
@@ -78,7 +78,7 @@ class ChatScreen extends StatelessWidget {
                             contentPadding: EdgeInsets.only(
                                 right: getProportionateScreenWidth(72),
                                 left: getProportionateScreenWidth(16)),
-                            fillColor: kBgColor,
+                            // fillColor: kBgColor,
                             focusedBorder: OutlineInputBorder(
                               borderSide: BorderSide.none,
                               borderRadius: BorderRadius.circular(

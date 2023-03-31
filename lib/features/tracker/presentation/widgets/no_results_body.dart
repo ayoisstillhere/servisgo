@@ -13,6 +13,10 @@ class NoResultsBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final primaryColor =
+        MediaQuery.of(context).platformBrightness == Brightness.dark
+            ? kDarkPrimaryColor
+            : kPrimaryColor;
     return Padding(
       padding: EdgeInsets.symmetric(
         horizontal: getProportionateScreenWidth(32),
@@ -29,25 +33,21 @@ class NoResultsBody extends StatelessWidget {
             style: Theme.of(context)
                 .textTheme
                 .displayLarge!
-                .copyWith(color: kPrimaryColor),
+                .copyWith(color: primaryColor),
           ),
           SizedBox(height: getProportionateScreenHeight(16)),
           Text(
             "Seems like you don’t have any active bookings at the moment",
             textAlign: TextAlign.center,
-            style: Theme.of(context)
-                .textTheme
-                .bodyLarge!
-                .copyWith(color: kGreys),
+            style:
+                Theme.of(context).textTheme.bodyLarge!.copyWith(color: kGreys),
           ),
           SizedBox(height: getProportionateScreenHeight(32)),
           DefaultButton(
             text: "Return Home",
             press: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const HomeScreen()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const HomeScreen()));
             },
           ),
         ],

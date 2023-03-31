@@ -45,8 +45,12 @@ class ServiceButton extends StatelessWidget {
         SizedBox(height: getProportionateScreenHeight(4)),
         Text(
           serviceName,
-          style:
-              Theme.of(context).textTheme.bodyMedium!.copyWith(color: kGreys),
+          style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                color:
+                    MediaQuery.of(context).platformBrightness == Brightness.dark
+                        ? Colors.white
+                        : kGreys,
+              ),
         ),
       ],
     );

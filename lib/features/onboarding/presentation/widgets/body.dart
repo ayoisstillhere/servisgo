@@ -62,25 +62,20 @@ class _BodyState extends State<Body> {
           ),
           Expanded(
             flex: 2,
-            child: Container(
-              decoration: const BoxDecoration(
-                color: kBgColor,
-              ),
-              child: Column(
-                children: [
-                  _buildSliderIndicator(),
-                  SizedBox(height: getProportionateScreenHeight(32)),
-                  DefaultButton(
-                    text: 'Get Started',
-                    press: () {
-                      Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const SignInScreen()));
-                    },
-                  ),
-                ],
-              ),
+            child: Column(
+              children: [
+                _buildSliderIndicator(),
+                SizedBox(height: getProportionateScreenHeight(32)),
+                DefaultButton(
+                  text: 'Get Started',
+                  press: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const SignInScreen()));
+                  },
+                ),
+              ],
             ),
           ),
         ],
@@ -102,12 +97,16 @@ class _BodyState extends State<Body> {
   }
 
   Container _buildDot(int index) {
+    final primaryColor =
+        MediaQuery.of(context).platformBrightness == Brightness.dark
+            ? kDarkPrimaryColor
+            : kPrimaryColor;
     return currentPage == index
         ? Container(
             height: getProportionateScreenHeight(8),
             width: getProportionateScreenWidth(32),
             decoration: BoxDecoration(
-                color: kPrimaryColor,
+                color: primaryColor,
                 borderRadius: BorderRadius.circular(
                   getProportionateScreenWidth(24),
                 )),

@@ -59,6 +59,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final primaryColor =
+        MediaQuery.of(context).platformBrightness == Brightness.dark
+            ? kDarkPrimaryColor
+            : kPrimaryColor;
     return Scaffold(
       body: BlocConsumer<SigninCubit, SigninState>(
         listener: (context, state) {
@@ -88,7 +92,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       text: "Create a Servis",
                       style:
                           Theme.of(context).textTheme.displayMedium!.copyWith(
-                                color: kPrimaryColor,
+                                color: primaryColor,
                               ),
                       children: <TextSpan>[
                         TextSpan(
@@ -103,7 +107,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           style: Theme.of(context)
                               .textTheme
                               .displayMedium!
-                              .copyWith(color: kPrimaryColor),
+                              .copyWith(color: primaryColor),
                         ),
                       ],
                     ),
@@ -194,6 +198,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   TextFormField _buildPasswordTextformField(BuildContext context) {
+    final primaryColor =
+        MediaQuery.of(context).platformBrightness == Brightness.dark
+            ? kDarkPrimaryColor
+            : kPrimaryColor;
     return TextFormField(
       onChanged: (value) {
         if (value.isNotEmpty) {
@@ -215,7 +223,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       controller: _passwordController,
       style: Theme.of(context).textTheme.bodyLarge!.copyWith(
             fontWeight: FontWeight.w600,
-            color: kPrimaryColor,
+            color: primaryColor,
           ),
       decoration: InputDecoration(
         hintText: "Password",
@@ -247,6 +255,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   TextFormField _buildEmailTextFormField(BuildContext context) {
+    final primaryColor =
+        MediaQuery.of(context).platformBrightness == Brightness.dark
+            ? kDarkPrimaryColor
+            : kPrimaryColor;
     return TextFormField(
       onChanged: (value) {
         if (value.isNotEmpty) {
@@ -268,7 +280,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       controller: _emailController,
       style: Theme.of(context).textTheme.bodyLarge!.copyWith(
             fontWeight: FontWeight.w600,
-            color: kPrimaryColor,
+            color: primaryColor,
           ),
       decoration: InputDecoration(
         hintText: "Email",
@@ -283,6 +295,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
   }
 
   TextFormField _buildNameTextFormField(BuildContext context) {
+    final primaryColor =
+        MediaQuery.of(context).platformBrightness == Brightness.dark
+            ? kDarkPrimaryColor
+            : kPrimaryColor;
     return TextFormField(
       onChanged: (value) {
         if (value.isNotEmpty) {
@@ -299,7 +315,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       controller: _nameController,
       style: Theme.of(context).textTheme.bodyLarge!.copyWith(
             fontWeight: FontWeight.w600,
-            color: kPrimaryColor,
+            color: primaryColor,
           ),
       decoration: InputDecoration(
         hintText: "Full Name",

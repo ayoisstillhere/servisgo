@@ -36,7 +36,6 @@ class ServiceProviderCard extends StatelessWidget {
             top: getProportionateScreenHeight(12),
             bottom: getProportionateScreenHeight(16)),
         decoration: BoxDecoration(
-          color: kBgColor,
           border: Border.all(
             color: kOutlineVariant,
           ),

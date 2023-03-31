@@ -14,12 +14,20 @@ class DefaultButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final primaryColor =
+        MediaQuery.of(context).platformBrightness == Brightness.dark
+            ? kDarkPrimaryColor
+            : kPrimaryColor;
+    final textColor =
+        MediaQuery.of(context).platformBrightness == Brightness.dark
+            ? kBlacks
+            : kBgColor;
     return GestureDetector(
       onTap: press,
       child: Container(
         width: double.infinity,
         decoration: BoxDecoration(
-            color: kPrimaryColor,
+            color: primaryColor,
             borderRadius:
                 BorderRadius.circular(getProportionateScreenWidth(20))),
         child: Padding(
@@ -34,7 +42,7 @@ class DefaultButton extends StatelessWidget {
               style: Theme.of(context)
                   .textTheme
                   .bodyLarge!
-                  .copyWith(color: Colors.white, fontWeight: FontWeight.w600),
+                  .copyWith(color: textColor, fontWeight: FontWeight.w600),
             ),
           ),
         ),

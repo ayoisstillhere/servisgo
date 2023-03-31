@@ -21,6 +21,10 @@ class MessageTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final primaryColor =
+        MediaQuery.of(context).platformBrightness == Brightness.dark
+            ? kDarkPrimaryColor
+            : kPrimaryColor;
     return GestureDetector(
       onTap: () {
         Navigator.push(context,
@@ -106,9 +110,9 @@ class MessageTile extends StatelessWidget {
                         ? Container(
                             height: getProportionateScreenHeight(24),
                             width: getProportionateScreenWidth(24),
-                            decoration: const BoxDecoration(
+                            decoration: BoxDecoration(
                               shape: BoxShape.circle,
-                              color: kPrimaryColor,
+                              color: primaryColor,
                             ),
                             child: Center(
                               child: Text(
@@ -116,7 +120,12 @@ class MessageTile extends StatelessWidget {
                                 style: Theme.of(context)
                                     .textTheme
                                     .bodyMedium!
-                                    .copyWith(color: kBgColor),
+                                    .copyWith(
+                                        color: MediaQuery.of(context)
+                                                    .platformBrightness ==
+                                                Brightness.dark
+                                            ? Colors.black
+                                            : Colors.white),
                               ),
                             ),
                           )

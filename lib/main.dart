@@ -38,8 +38,10 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        theme: theme(),
+        title: 'ServisGo',
+        themeMode: ThemeMode.system,
+        theme: MyThemes.lightTheme,
+        darkTheme: MyThemes.darktheme,
         home: BlocBuilder<AuthCubit, AuthState>(
           builder: (context, authState) {
             if (authState is Authenticated) {

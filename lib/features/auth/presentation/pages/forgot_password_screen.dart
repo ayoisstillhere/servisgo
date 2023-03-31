@@ -101,6 +101,10 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   }
 
   TextFormField _buildEmailTextFormField(BuildContext context) {
+    final primaryColor =
+        MediaQuery.of(context).platformBrightness == Brightness.dark
+            ? kDarkPrimaryColor
+            : kPrimaryColor;
     return TextFormField(
       onChanged: (value) {
         if (value.isNotEmpty) {
@@ -122,7 +126,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
       controller: _emailController,
       style: Theme.of(context).textTheme.bodyLarge!.copyWith(
             fontWeight: FontWeight.w600,
-            color: kPrimaryColor,
+            color: primaryColor,
           ),
       decoration: InputDecoration(
         hintText: "Email",

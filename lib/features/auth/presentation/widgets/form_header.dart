@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../../../../constants.dart';
@@ -15,13 +14,17 @@ class FormHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final primaryColor =
+        MediaQuery.of(context).platformBrightness == Brightness.dark
+            ? kDarkPrimaryColor
+            : kPrimaryColor;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           title,
           style: Theme.of(context).textTheme.displayMedium!.copyWith(
-                color: kPrimaryColor,
+                color: primaryColor,
               ),
         ),
         SizedBox(height: getProportionateScreenHeight(16)),

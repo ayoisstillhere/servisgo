@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../../../../constants.dart';
@@ -17,6 +16,13 @@ class OnboardingContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bgColor = MediaQuery.of(context).platformBrightness == Brightness.dark
+        ? kDarkBgColor
+        : kBgColor;
+    final primaryColor =
+        MediaQuery.of(context).platformBrightness == Brightness.dark
+            ? kDarkPrimaryColor
+            : kPrimaryColor;
     return Stack(
       children: <Widget>[
         SizedBox(
@@ -31,10 +37,10 @@ class OnboardingContent extends StatelessWidget {
           padding: EdgeInsets.only(top: getProportionateScreenHeight(288)),
           child: Container(
             decoration: BoxDecoration(
-              color: kBgColor,
+              color: bgColor,
               boxShadow: [
                 BoxShadow(
-                  color: kBgColor.withOpacity(0.91),
+                  color: bgColor.withOpacity(0.91),
                   blurRadius: 25,
                   offset: const Offset(0, -50),
                 ),
@@ -56,7 +62,7 @@ class OnboardingContent extends StatelessWidget {
                               .textTheme
                               .displayMedium!
                               .copyWith(
-                                color: kPrimaryColor,
+                                color: primaryColor,
                               ),
                           textAlign: TextAlign.center,
                         ),
@@ -74,7 +80,7 @@ class OnboardingContent extends StatelessWidget {
                           style: Theme.of(context)
                               .textTheme
                               .bodySmall!
-                              .copyWith(color: kPrimaryColor),
+                              .copyWith(color: kGreys),
                           textAlign: TextAlign.center,
                         ),
                       ),
