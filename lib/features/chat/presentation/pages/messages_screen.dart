@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-import '../../../../components/bottom_navbar.dart';
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
 
@@ -57,7 +55,6 @@ class MessagesScreen extends StatelessWidget {
           ),
         ],
       ),
-      bottomNavigationBar: const BottomNavBar(),
       body: ListView.builder(
         padding: EdgeInsets.symmetric(
           horizontal: getProportionateScreenWidth(32),

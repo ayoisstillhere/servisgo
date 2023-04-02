@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:servisgo/main.dart';
-
-import '../../../../components/bottom_navbar.dart';
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
 import '../../../auth/presentation/bloc/auth_cubit/auth_cubit.dart';
@@ -29,7 +27,6 @@ class MenuScreen extends StatelessWidget {
           style: Theme.of(context).textTheme.bodyMedium,
         ),
       ),
-      bottomNavigationBar: const BottomNavBar(),
       body: SingleChildScrollView(
           child: Padding(
         padding:

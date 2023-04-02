@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import '../../../../components/bottom_navbar.dart';
-
 import '../widgets/no_results_body.dart';
 
 class TrackerScreen extends StatelessWidget {
@@ -16,7 +14,6 @@ class TrackerScreen extends StatelessWidget {
           style: Theme.of(context).textTheme.bodyMedium,
         ),
       ),
-      bottomNavigationBar: const BottomNavBar(),
       body: const NoResultsBody(),
     );
   }
