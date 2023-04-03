@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import '../../../../components/nav_page.dart';
 
 import '../../../../components/default_button.dart';
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
-import '../../../home/presentation/pages/home_screen.dart';
 
 class NoResultsBody extends StatelessWidget {
   const NoResultsBody({
@@ -47,7 +47,7 @@ class NoResultsBody extends StatelessWidget {
             text: "Return Home",
             press: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const HomeScreen()));
+                  MaterialPageRoute(builder: (context) => const NavPage()));
             },
           ),
         ],

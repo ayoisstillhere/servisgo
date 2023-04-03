@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../pages/chat_screen.dart';
 
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
+import '../pages/chat_screen.dart';
 
 class MessageTile extends StatelessWidget {
   const MessageTile({

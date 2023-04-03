@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:servisgo/constants.dart';
-import 'package:servisgo/features/chat/presentation/pages/messages_screen.dart';
-import 'package:servisgo/features/history/presentation/pages/history_screen.dart';
-import 'package:servisgo/features/home/presentation/pages/home_screen.dart';
-import 'package:servisgo/features/menu/presentation/pages/menu_screen.dart';
-import 'package:servisgo/features/tracker/presentation/pages/tracker_screen.dart';
+import '../constants.dart';
+import '../features/chat/presentation/pages/messages_screen.dart';
+import '../features/history/presentation/pages/history_screen.dart';
+import '../features/home/presentation/pages/home_screen.dart';
+import '../features/menu/presentation/pages/menu_screen.dart';
+import '../features/tracker/presentation/pages/tracker_screen.dart';
 
 import '../size_config.dart';
 
