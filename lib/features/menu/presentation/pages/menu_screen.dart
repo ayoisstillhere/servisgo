@@ -112,12 +112,6 @@ class MenuScreen extends StatelessWidget {
             SizedBox(height: getProportionateScreenHeight(24)),
             MenuItemTile(
               press: () {},
-              icon: "assets/icons/Setting.svg",
-              text: "Settings",
-            ),
-            SizedBox(height: getProportionateScreenHeight(24)),
-            MenuItemTile(
-              press: () {},
               icon: "assets/icons/ShieldDone.svg",
               text: "Security",
             ),
