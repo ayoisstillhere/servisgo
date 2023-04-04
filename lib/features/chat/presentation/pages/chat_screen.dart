@@ -24,7 +24,6 @@ class ChatScreen extends StatelessWidget {
             onPressed: () {},
             icon: const Icon(
               Icons.more_vert_sharp,
-              color: kBlacks,
             ),
           ),
         ],

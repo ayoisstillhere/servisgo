@@ -5,6 +5,26 @@ class NotificationsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+       appBar: AppBar(
+        title: Text(
+          "Notifications",
+          style: Theme.of(context).textTheme.bodyMedium,
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.more_vert_sharp,
+            ),
+          ),
+        ],
+      ),
+      body: Column(
+        children: [
+          
+        ],
+      ),
+    );
   }
 }
