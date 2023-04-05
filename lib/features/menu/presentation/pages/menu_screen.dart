@@ -3,12 +3,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:servisgo/features/notifications/presentation/pages/notifications.dart';
 import 'package:servisgo/main.dart';
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
 import '../../../auth/presentation/bloc/auth_cubit/auth_cubit.dart';
 import '../../../auth/presentation/bloc/signin_cubit/signin_cubit.dart';
+import '../../../notifications/presentation/pages/notifications_screen.dart';
 import '../widgets/menu_item_tile.dart';
 import 'profile_screen.dart';
 

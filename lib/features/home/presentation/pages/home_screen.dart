@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:servisgo/features/notifications/presentation/pages/notifications.dart';
 
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
+import '../../../notifications/presentation/pages/notifications_screen.dart';
 import '../widgets/service_button.dart';
 import '../widgets/service_provider_card.dart';
 import 'select_provider.dart';
