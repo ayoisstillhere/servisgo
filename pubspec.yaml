@@ -121,6 +121,8 @@ flutter:
     - assets/icons/Iconly/Broken/Lock.svg
     - assets/icons/Iconly/Broken/Send.svg
     - assets/icons/Iconly/Broken/Star.svg
+    - assets/icons/calendar.svg
+    - assets/icons/work.svg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see

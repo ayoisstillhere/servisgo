@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../../../../constants.dart';
@@ -38,16 +37,20 @@ class NotificationsBox extends StatelessWidget {
             //   width: 1,
             // ),
             color: MediaQuery.of(context).platformBrightness == Brightness.dark
-                ? kDarkBgColor
+                ? const Color(0xFF2A2A2A)
                 : kBgColor,
             borderRadius: BorderRadius.circular(16),
             boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.06),
-                offset: const Offset(0, 8),
-                blurRadius: 30,
-                spreadRadius: 0,
-              ),
+              MediaQuery.of(context).platformBrightness == Brightness.dark
+                  ? const BoxShadow(
+                      color: Colors.transparent,
+                    )
+                  : BoxShadow(
+                      color: kBlacks.withOpacity(0.06),
+                      spreadRadius: 0,
+                      blurRadius: 30,
+                      offset: const Offset(0, 8),
+                    ),
             ],
           ),
           child: Column(
