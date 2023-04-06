@@ -12,6 +12,7 @@ import '../../../auth/presentation/bloc/signin_cubit/signin_cubit.dart';
 import '../../../notifications/presentation/pages/notifications_screen.dart';
 import '../widgets/menu_item_tile.dart';
 import 'faq_screen.dart';
+import 'help_support_screen.dart';
 import 'profile_screen.dart';
 
 class MenuScreen extends StatelessWidget {
@@ -130,7 +131,12 @@ class MenuScreen extends StatelessWidget {
             ),
             SizedBox(height: getProportionateScreenHeight(24)),
             MenuItemTile(
-              press: () {},
+              press: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const HelpSupportScreen()));
+              },
               icon: "assets/icons/InfoCircle.svg",
               text: "Help & Support",
             ),
