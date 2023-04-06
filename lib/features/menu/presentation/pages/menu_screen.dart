@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:servisgo/features/menu/presentation/pages/security_screen.dart';
 import 'package:servisgo/main.dart';
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
@@ -118,7 +119,12 @@ class MenuScreen extends StatelessWidget {
             ),
             SizedBox(height: getProportionateScreenHeight(24)),
             MenuItemTile(
-              press: () {},
+              press: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const SecurityScreen()));
+              },
               icon: "assets/icons/ShieldDone.svg",
               text: "Security",
             ),
