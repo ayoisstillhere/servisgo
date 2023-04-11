@@ -51,6 +51,9 @@ dev_dependencies:
     sdk: flutter
 
 flutter_native_splash:
+  android: true
+  ios: true
+  web: false
   color: "#273a69"
   image: "assets/images/ServisGo_Logo.png"
 
