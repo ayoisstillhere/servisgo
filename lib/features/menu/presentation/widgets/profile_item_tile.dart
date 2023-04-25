@@ -23,7 +23,7 @@ class ProfileItemTile extends StatelessWidget {
           child: Text(
             field,
             style:
-                Theme.of(context).textTheme.bodyMedium!.copyWith(color: kGreys),
+                Theme.of(context).textTheme.bodyLarge!.copyWith(color: kGreys),
           ),
         ),
         SizedBox(width: getProportionateScreenWidth(64)),
