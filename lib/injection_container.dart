@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:servisgo/features/home/domain/usecases/get_users_usecase.dart';
 
 import 'features/auth/data/datasources/firebase_remote_datasource.dart';
 import 'features/auth/data/repositories/firebase_repository_impl.dart';
@@ -54,6 +55,8 @@ Future<void> init() async {
       () => SetPhoneUsecase(repository: sl.call()));
   sl.registerLazySingleton<ResetPasswordUsecase>(
       () => ResetPasswordUsecase(repository: sl.call()));
+  sl.registerLazySingleton<GetUsersUsecase>(
+      () => GetUsersUsecase(repository: sl.call()));
 
   //repository
   sl.registerLazySingleton<FirebaseRepository>(

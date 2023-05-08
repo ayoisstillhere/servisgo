@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:servisgo/components/nav_page.dart';
+import 'package:servisgo/features/home/presentation/bloc/user_cubit/user_cubit.dart';
 
 import 'features/auth/presentation/bloc/auth_cubit/auth_cubit.dart';
 import 'features/auth/presentation/bloc/signin_cubit/signin_cubit.dart';
@@ -34,7 +35,10 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<SigninCubit>(
           create: (_) => di.sl<SigninCubit>(),
-        )
+        ),
+        BlocProvider<UserCubit>(
+          create: (_) => di.sl<UserCubit>(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,

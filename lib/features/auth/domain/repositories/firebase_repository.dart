@@ -1,3 +1,5 @@
+import 'package:servisgo/features/auth/domain/entities/user_entity.dart';
+
 abstract class FirebaseRepository {
   Future<void> signUp(String email, String password);
   Future<void> signIn(String email, String password);
@@ -15,4 +17,5 @@ abstract class FirebaseRepository {
   Future<void> googleSignUp();
   Future<void> setPhone(String phoneNumber);
   Future<void> resetPassword(String email);
+  Stream<List<UserEntity>> getUsers();
 }

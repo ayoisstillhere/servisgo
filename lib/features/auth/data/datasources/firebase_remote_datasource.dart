@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+import '../../domain/entities/user_entity.dart';
 import '../models/user_model.dart';
 
 abstract class FirebaseRemoteDatasource {
@@ -21,6 +22,7 @@ abstract class FirebaseRemoteDatasource {
   Future<void> googleSignUp();
   Future<void> setPhone(String phoneNumber);
   Future<void> resetPassword(String email);
+  Stream<List<UserEntity>> getUsers();
 }
 
 class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDatasource {
@@ -146,5 +148,12 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDatasource {
   @override
   Future<void> resetPassword(String email) async {
     await _auth.sendPasswordResetEmail(email: email);
+  }
+
+  @override
+  Stream<List<UserEntity>> getUsers() {
+    return _userCollection.snapshots().map((querySnapshot) => querySnapshot.docs
+        .map((docSnapshot) => UserModel.fromSnapshot(docSnapshot))
+        .toList());
   }
 }

@@ -1,3 +1,5 @@
+import 'package:servisgo/features/auth/domain/entities/user_entity.dart';
+
 import '../../domain/repositories/firebase_repository.dart';
 import '../datasources/firebase_remote_datasource.dart';
 
@@ -70,4 +72,9 @@ class FirebaseRepositoryImpl implements FirebaseRepository {
   @override
   Future<void> resetPassword(String email) async =>
       await firebaseRemoteDatasource.resetPassword(email);
+
+  @override
+  Stream<List<UserEntity>> getUsers() {
+    return firebaseRemoteDatasource.getUsers();
+  }
 }
