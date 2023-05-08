@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:servisgo/features/menu/presentation/pages/security_screen.dart';
-import 'package:servisgo/main.dart';
+import 'package:servisgo/features/onboarding/presentation/pages/onboarding_screen.dart';
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
 import '../../../auth/presentation/bloc/auth_cubit/auth_cubit.dart';
@@ -155,9 +155,10 @@ class MenuScreen extends StatelessWidget {
                 await BlocProvider.of<AuthCubit>(context).loggedOut();
                 await BlocProvider.of<SigninCubit>(context).submitSignOut();
                 Navigator.pushAndRemoveUntil(
-                    context,
-                    MaterialPageRoute(builder: (context) => const MyApp()),
-                    (route) => false);
+                  context,
+                  MaterialPageRoute(builder: (context) => const OnboardingScreen()),
+                  (route) => false,
+                );
               },
               icon: "assets/icons/Logout.svg",
               text: "Logout",

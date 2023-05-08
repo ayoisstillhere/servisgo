@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:servisgo/components/nav_page.dart';
 
 import '../../../../components/default_button.dart';
 import '../../../../constants.dart';
@@ -95,7 +96,7 @@ class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
       BlocProvider.of<SigninCubit>(context)
           .submitPhoneNumber(phoneNumber: _phoneController.text.trim());
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+          context, MaterialPageRoute(builder: (context) => const NavPage()));
     }
   }
 

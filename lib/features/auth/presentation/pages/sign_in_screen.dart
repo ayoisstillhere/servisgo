@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:servisgo/components/nav_page.dart';
 
 import '../../../../components/default_button.dart';
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
-import '../../../home/presentation/pages/home_screen.dart';
 import '../bloc/signin_cubit/signin_cubit.dart';
 import '../widgets/form_error.dart';
 import '../widgets/form_header.dart';
@@ -63,7 +63,7 @@ class _SignInScreenState extends State<SignInScreen> {
         listener: (context, state) {
           if (state is SigninSuccess) {
             Navigator.push(
-                context, MaterialPageRoute(builder: (_) => const HomeScreen()));
+                context, MaterialPageRoute(builder: (_) => const NavPage()));
           }
           if (state is SigninFailure) {
             errors.clear();
@@ -190,7 +190,6 @@ class _SignInScreenState extends State<SignInScreen> {
   }
 
   TextFormField _buildPasswordTextFormField(BuildContext context) {
-
     final primaryColor =
         MediaQuery.of(context).platformBrightness == Brightness.dark
             ? kDarkPrimaryColor
@@ -248,7 +247,6 @@ class _SignInScreenState extends State<SignInScreen> {
   }
 
   TextFormField _buildEmailTextFormField(BuildContext context) {
-
     final primaryColor =
         MediaQuery.of(context).platformBrightness == Brightness.dark
             ? kDarkPrimaryColor
@@ -301,7 +299,7 @@ class _SignInScreenState extends State<SignInScreen> {
   void _googleSignIn() async {
     await BlocProvider.of<SigninCubit>(context).googleSignIn();
     // ignore: use_build_context_synchronously
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+    // Navigator.push(
+    //     context, MaterialPageRoute(builder: (context) => const NavPage()));
   }
 }

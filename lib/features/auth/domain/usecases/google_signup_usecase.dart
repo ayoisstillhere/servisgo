@@ -6,7 +6,5 @@ class GoogleSignupUsecase {
     required this.repository,
   });
 
-  Future<void> call() async {
-    repository.googleSignUp();
-  }
+  Future<void> call() async => await repository.googleSignUp();
 }

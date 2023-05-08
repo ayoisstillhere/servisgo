@@ -84,7 +84,7 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDatasource {
   @override
   Future<void> signOut() async {
     if (await googleSignin.isSignedIn()) {
-      googleSignin.disconnect();
+      await googleSignin.disconnect();
     }
     await _auth.signOut();
   }

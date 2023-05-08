@@ -1,5 +1,9 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:servisgo/features/auth/data/models/user_model.dart';
+import 'package:servisgo/features/home/presentation/bloc/user_cubit/user_cubit.dart';
 
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
@@ -8,8 +12,19 @@ import '../widgets/service_button.dart';
 import '../widgets/service_provider_card.dart';
 import 'select_provider.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    BlocProvider.of<UserCubit>(context).getUsers();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +32,29 @@ class HomeScreen extends StatelessWidget {
         MediaQuery.of(context).platformBrightness == Brightness.dark
             ? kDarkBannerColor
             : kPrimaryColor;
+    return BlocBuilder<UserCubit, UserState>(
+      builder: (_, state) {
+        if (state is UserLoaded) {
+          return _homeBody(bannerColor, context, state);
+        }
+        return const Center(child: CircularProgressIndicator());
+      },
+    );
+  }
+
+  Scaffold _homeBody(
+      Color bannerColor, BuildContext context, UserLoaded users) {
+    final user = users.users.firstWhere(
+      (user) => user.uid == FirebaseAuth.instance.currentUser!.uid,
+      orElse: () => const UserModel(
+        uid: "",
+        name: "",
+        email: "",
+        phoneNumber: "",
+        address: "",
+        pfpURL: "",
+      ),
+    );
     return Scaffold(
       body: Column(
         children: [
@@ -37,7 +75,7 @@ class HomeScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Hello, Ayodele Fagbami!",
+                      "Hello, ${user.name}!",
                       style: Theme.of(context)
                           .textTheme
                           .displayMedium

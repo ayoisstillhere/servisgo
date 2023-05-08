@@ -1,5 +1,6 @@
 import 'package:get_it/get_it.dart';
 import 'package:servisgo/features/home/domain/usecases/get_users_usecase.dart';
+import 'package:servisgo/features/home/presentation/bloc/user_cubit/user_cubit.dart';
 
 import 'features/auth/data/datasources/firebase_remote_datasource.dart';
 import 'features/auth/data/repositories/firebase_repository_impl.dart';
@@ -33,6 +34,7 @@ Future<void> init() async {
         setPhoneUsecase: sl.call(),
         resetPasswordUsecase: sl.call(),
       ));
+  sl.registerFactory<UserCubit>(() => UserCubit(usersUsecase: sl.call()));
 
   //!useCae
   sl.registerLazySingleton<IsSigninUsecase>(
