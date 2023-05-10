@@ -3,10 +3,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
 import 'package:servisgo/features/menu/presentation/pages/security_screen.dart';
 import 'package:servisgo/features/onboarding/presentation/pages/onboarding_screen.dart';
+
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
+import '../../../auth/domain/entities/user_entity.dart';
 import '../../../auth/presentation/bloc/auth_cubit/auth_cubit.dart';
 import '../../../auth/presentation/bloc/signin_cubit/signin_cubit.dart';
 import '../../../notifications/presentation/pages/notifications_screen.dart';
@@ -16,7 +19,11 @@ import 'help_support_screen.dart';
 import 'profile_screen.dart';
 
 class MenuScreen extends StatelessWidget {
-  const MenuScreen({super.key});
+  const MenuScreen({
+    Key? key,
+    required this.currentUser,
+  }) : super(key: key);
+  final UserEntity currentUser;
 
   @override
   Widget build(BuildContext context) {
@@ -60,9 +67,9 @@ class MenuScreen extends StatelessWidget {
                             offset: const Offset(5, 15)),
                       ],
                     ),
-                    child: Center(
+                    child: ClipOval(
                       child: Image.network(
-                        "https://firebasestorage.googleapis.com/v0/b/servisgo-fyp.appspot.com/o/Default_PFP.png?alt=media&token=c6cec350-3a9b-4c85-a219-a9d5a8a1a3db",
+                        currentUser.pfpURL,
                       ),
                     ),
                   ),
@@ -87,7 +94,7 @@ class MenuScreen extends StatelessWidget {
             ),
             SizedBox(height: getProportionateScreenHeight(12)),
             Text(
-              "Ayodele Fagbami",
+              currentUser.name,
               style: Theme.of(context)
                   .textTheme
                   .displaySmall!
@@ -95,7 +102,7 @@ class MenuScreen extends StatelessWidget {
             ),
             SizedBox(height: getProportionateScreenHeight(8)),
             Text(
-              "afagbami@gmail.com",
+              currentUser.email,
               style: Theme.of(context)
                   .textTheme
                   .bodySmall!
@@ -156,7 +163,8 @@ class MenuScreen extends StatelessWidget {
                 await BlocProvider.of<SigninCubit>(context).submitSignOut();
                 Navigator.pushAndRemoveUntil(
                   context,
-                  MaterialPageRoute(builder: (context) => const OnboardingScreen()),
+                  MaterialPageRoute(
+                      builder: (context) => const OnboardingScreen()),
                   (route) => false,
                 );
               },
