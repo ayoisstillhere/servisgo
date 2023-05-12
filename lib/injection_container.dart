@@ -1,6 +1,9 @@
 import 'package:get_it/get_it.dart';
 import 'package:servisgo/features/home/domain/usecases/get_users_usecase.dart';
 import 'package:servisgo/features/home/presentation/bloc/user_cubit/user_cubit.dart';
+import 'package:servisgo/features/menu/domain/usecases/update_address_usecase.dart';
+import 'package:servisgo/features/menu/domain/usecases/update_name_usecase.dart';
+import 'package:servisgo/features/menu/domain/usecases/update_phone_usecase.dart';
 
 import 'features/auth/data/datasources/firebase_remote_datasource.dart';
 import 'features/auth/data/repositories/firebase_repository_impl.dart';
@@ -34,7 +37,12 @@ Future<void> init() async {
         setPhoneUsecase: sl.call(),
         resetPasswordUsecase: sl.call(),
       ));
-  sl.registerFactory<UserCubit>(() => UserCubit(usersUsecase: sl.call()));
+  sl.registerFactory<UserCubit>(() => UserCubit(
+        usersUsecase: sl.call(),
+        updateAddressUsecase: sl.call(),
+        updateNameUsecase: sl.call(),
+        updatePhoneUsecase: sl.call(),
+      ));
 
   //!useCae
   sl.registerLazySingleton<IsSigninUsecase>(
@@ -59,6 +67,12 @@ Future<void> init() async {
       () => ResetPasswordUsecase(repository: sl.call()));
   sl.registerLazySingleton<GetUsersUsecase>(
       () => GetUsersUsecase(repository: sl.call()));
+  sl.registerLazySingleton<UpdateAddressUsecase>(
+      () => UpdateAddressUsecase(repository: sl.call()));
+  sl.registerLazySingleton<UpdateNameUsecase>(
+      () => UpdateNameUsecase(repository: sl.call()));
+  sl.registerLazySingleton<UpdatePhoneUsecase>(
+      () => UpdatePhoneUsecase(repository: sl.call()));
 
   //repository
   sl.registerLazySingleton<FirebaseRepository>(

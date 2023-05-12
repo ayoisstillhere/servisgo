@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:servisgo/features/menu/presentation/pages/update_field_screen.dart';
+
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
 
@@ -8,9 +10,11 @@ class ProfileItemTile extends StatelessWidget {
     Key? key,
     required this.field,
     required this.value,
+    required this.uid,
   }) : super(key: key);
   final String field;
   final String value;
+  final String uid;
 
   @override
   Widget build(BuildContext context) {
@@ -19,28 +23,53 @@ class ProfileItemTile extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         SizedBox(
-          width: getProportionateScreenWidth(60),
+          width: getProportionateScreenWidth(64),
           child: Text(
             field,
             style:
                 Theme.of(context).textTheme.bodyLarge!.copyWith(color: kGreys),
           ),
         ),
-        SizedBox(width: getProportionateScreenWidth(64)),
+        SizedBox(width: getProportionateScreenWidth(60)),
         Expanded(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                value,
-                style: Theme.of(context).textTheme.bodyLarge,
-              ),
-              SizedBox(
-                height: getProportionateScreenHeight(6),
-              ),
-              const Divider(),
-            ],
-          ),
+          child: field != "Email"
+              ? GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => UpdateFieldScreen(
+                                  field: field,
+                                  uid: uid,
+                                )));
+                  },
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        value,
+                        style: Theme.of(context).textTheme.bodyLarge,
+                      ),
+                      SizedBox(
+                        height: getProportionateScreenHeight(6),
+                      ),
+                      const Divider(),
+                    ],
+                  ),
+                )
+              : Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      value,
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    ),
+                    SizedBox(
+                      height: getProportionateScreenHeight(6),
+                    ),
+                    const Divider(),
+                  ],
+                ),
         ),
       ],
     );

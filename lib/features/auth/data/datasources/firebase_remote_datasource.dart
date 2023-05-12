@@ -23,6 +23,9 @@ abstract class FirebaseRemoteDatasource {
   Future<void> setPhone(String phoneNumber);
   Future<void> resetPassword(String email);
   Stream<List<UserEntity>> getUsers();
+  Future<void> updateName(String newName, String uid);
+  Future<void> updatePhone(String newPhoneNo, String uid);
+  Future<void> updateAddress(String newAddress, String uid);
 }
 
 class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDatasource {
@@ -129,7 +132,7 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDatasource {
           name: _user!.displayName!,
           email: _user!.email,
           phoneNumber: "",
-          address: "",
+          address: "No address",
           pfpURL: _user!.photoUrl!,
         ).toDocument();
         _userCollection.doc(_auth.currentUser!.uid).set(newUser);
@@ -155,5 +158,26 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDatasource {
     return _userCollection.snapshots().map((querySnapshot) => querySnapshot.docs
         .map((docSnapshot) => UserModel.fromSnapshot(docSnapshot))
         .toList());
+  }
+
+  @override
+  Future<void> updateAddress(String newAddress, String uid) async {
+    await _userCollection.doc(uid).update({
+      'address': newAddress,
+    });
+  }
+
+  @override
+  Future<void> updateName(String newName, String uid) async {
+    await _userCollection.doc(uid).update({
+      'name': newName,
+    });
+  }
+
+  @override
+  Future<void> updatePhone(String newPhoneNo, String uid) async {
+    await _userCollection.doc(uid).update({
+      'phoneNumber': newPhoneNo,
+    });
   }
 }

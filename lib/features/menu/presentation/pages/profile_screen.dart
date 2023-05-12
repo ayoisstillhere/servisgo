@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import 'package:servisgo/features/auth/domain/entities/user_entity.dart';
+
 import '../../../../components/default_button.dart';
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
 import '../widgets/profile_item_tile.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+  const ProfileScreen({
+    Key? key,
+    required this.currentUser,
+  }) : super(key: key);
+  final UserEntity currentUser;
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +50,7 @@ class ProfileScreen extends StatelessWidget {
                       ),
                       child: Center(
                         child: Image.network(
-                          "https://firebasestorage.googleapis.com/v0/b/servisgo-fyp.appspot.com/o/Default_PFP.png?alt=media&token=c6cec350-3a9b-4c85-a219-a9d5a8a1a3db",
+                          currentUser.pfpURL,
                         ),
                       ),
                     ),
@@ -68,24 +74,28 @@ class ProfileScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: getProportionateScreenHeight(36)),
-              const ProfileItemTile(
+              ProfileItemTile(
                 field: "Name",
-                value: "Ayodele Fagbami",
+                value: currentUser.name,
+                uid: currentUser.uid,
               ),
               SizedBox(height: getProportionateScreenHeight(24)),
-              const ProfileItemTile(
+              ProfileItemTile(
                 field: "Phone",
-                value: "+234 8183556281",
+                value: currentUser.phoneNumber,
+                uid: currentUser.uid,
               ),
               SizedBox(height: getProportionateScreenHeight(24)),
-              const ProfileItemTile(
+              ProfileItemTile(
                 field: "Email",
-                value: "afagbami@gmail.com",
+                value: currentUser.email,
+                uid: currentUser.uid,
               ),
               SizedBox(height: getProportionateScreenHeight(24)),
-              const ProfileItemTile(
-                field: "Adress",
-                value: "16B, Jennifer Rd., Lagos",
+              ProfileItemTile(
+                field: "Address",
+                value: currentUser.address,
+                uid: currentUser.uid,
               ),
               SizedBox(height: getProportionateScreenHeight(120)),
               DefaultButton(

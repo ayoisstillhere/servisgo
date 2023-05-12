@@ -77,4 +77,16 @@ class FirebaseRepositoryImpl implements FirebaseRepository {
   Stream<List<UserEntity>> getUsers() {
     return firebaseRemoteDatasource.getUsers();
   }
+
+  @override
+  Future<void> updateAddress(String newAddress, String uid) async =>
+      await firebaseRemoteDatasource.updateAddress(newAddress, uid);
+
+  @override
+  Future<void> updateName(String newName, String uid) async =>
+      await firebaseRemoteDatasource.updateName(newName, uid);
+
+  @override
+  Future<void> updatePhone(String newPhoneNo, String uid) async =>
+      await firebaseRemoteDatasource.updatePhone(newPhoneNo, uid);
 }
