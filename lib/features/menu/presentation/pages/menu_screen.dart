@@ -69,11 +69,8 @@ class MenuScreen extends StatelessWidget {
                             offset: const Offset(5, 15)),
                       ],
                     ),
-                    child: ClipOval(
-                      child: Image.network(
-                        currentUser.pfpURL,
-                        fit: BoxFit.cover,
-                      ),
+                    child: CircleAvatar(
+                      backgroundImage: NetworkImage(currentUser.pfpURL),
                     ),
                   ),
                   Positioned(

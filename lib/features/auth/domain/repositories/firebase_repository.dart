@@ -21,4 +21,5 @@ abstract class FirebaseRepository {
   Future<void> updateName(String newName, String uid);
   Future<void> updatePhone(String newPhoneNo, String uid);
   Future<void> updateAddress(String newAddress, String uid);
+  Future<void> updatePfpUrl(String newPfpUrl, String uid);
 }

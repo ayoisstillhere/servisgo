@@ -1,8 +1,15 @@
+// ignore_for_file: use_build_context_synchronously
+
+import 'dart:typed_data';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:servisgo/components/nav_page.dart';
 
 import 'package:servisgo/features/auth/domain/entities/user_entity.dart';
+import 'package:servisgo/features/menu/presentation/bloc/pfp_cubit/pfp_cubit.dart';
 
 import '../../../../components/default_button.dart';
 import '../../../../constants.dart';
@@ -49,13 +56,8 @@ class ProfileScreen extends StatelessWidget {
                               offset: const Offset(8.55, 26.65)),
                         ],
                       ),
-                      child: Center(
-                        child: ClipOval(
-                          child: Image.network(
-                            currentUser.pfpURL,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
+                      child: CircleAvatar(
+                        backgroundImage: NetworkImage(currentUser.pfpURL),
                       ),
                     ),
                     Positioned(
@@ -76,7 +78,7 @@ class ProfileScreen extends StatelessWidget {
                                     padding: EdgeInsets.all(
                                         getProportionateScreenWidth(20)),
                                     onPressed: () async {
-                                      pickImage(ImageSource.camera);
+                                      pickImage(ImageSource.camera, context);
                                     },
                                     child: const Text(
                                       "Take a Photo",
@@ -87,7 +89,7 @@ class ProfileScreen extends StatelessWidget {
                                     padding: EdgeInsets.all(
                                         getProportionateScreenWidth(20)),
                                     onPressed: () {
-                                      pickImage(ImageSource.gallery);
+                                      pickImage(ImageSource.gallery, context);
                                     },
                                     child: const Text(
                                       "Choose From Gallery",
@@ -165,14 +167,17 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
-  pickImage(ImageSource source) async {
+  pickImage(ImageSource source, BuildContext context) async {
     final ImagePicker imagePicker = ImagePicker();
 
     XFile? file = await imagePicker.pickImage(source: source);
-    print('${file?.path}');
+    Uint8List image = await file!.readAsBytes();
 
-    if (file != null) {
-      return await file.readAsBytes();
-    }
+    String pfpUrl = await BlocProvider.of<PfpCubit>(context).uploadImage(image);
+
+    BlocProvider.of<PfpCubit>(context).updatePFPUrl(pfpUrl, currentUser.uid);
+
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => const NavPage()));
   }
 }
