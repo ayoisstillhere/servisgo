@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:image_picker/image_picker.dart';
 
 import 'package:servisgo/features/auth/domain/entities/user_entity.dart';
 
@@ -49,24 +50,79 @@ class ProfileScreen extends StatelessWidget {
                         ],
                       ),
                       child: Center(
-                        child: Image.network(
-                          currentUser.pfpURL,
+                        child: ClipOval(
+                          child: Image.network(
+                            currentUser.pfpURL,
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                     ),
                     Positioned(
                       top: getProportionateScreenHeight(112),
                       right: 0,
-                      child: Container(
-                        height: getProportionateScreenHeight(48),
-                        width: getProportionateScreenWidth(48),
-                        padding: EdgeInsets.all(getProportionateScreenWidth(8)),
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: kCallToAction,
-                        ),
-                        child: SvgPicture.asset(
-                          "assets/icons/Camera.svg",
+                      child: GestureDetector(
+                        onTap: () {
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return SimpleDialog(
+                                title: const Text(
+                                  "Edit Profile Picture",
+                                  textAlign: TextAlign.center,
+                                ),
+                                children: [
+                                  SimpleDialogOption(
+                                    padding: EdgeInsets.all(
+                                        getProportionateScreenWidth(20)),
+                                    onPressed: () async {
+                                      pickImage(ImageSource.camera);
+                                    },
+                                    child: const Text(
+                                      "Take a Photo",
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
+                                  SimpleDialogOption(
+                                    padding: EdgeInsets.all(
+                                        getProportionateScreenWidth(20)),
+                                    onPressed: () {
+                                      pickImage(ImageSource.gallery);
+                                    },
+                                    child: const Text(
+                                      "Choose From Gallery",
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
+                                  SimpleDialogOption(
+                                    padding: EdgeInsets.all(
+                                        getProportionateScreenWidth(20)),
+                                    child: const Text(
+                                      "Cancel",
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(color: Colors.red),
+                                    ),
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        },
+                        child: Container(
+                          height: getProportionateScreenHeight(48),
+                          width: getProportionateScreenWidth(48),
+                          padding:
+                              EdgeInsets.all(getProportionateScreenWidth(8)),
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: kCallToAction,
+                          ),
+                          child: SvgPicture.asset(
+                            "assets/icons/Camera.svg",
+                          ),
                         ),
                       ),
                     ),
@@ -107,5 +163,16 @@ class ProfileScreen extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  pickImage(ImageSource source) async {
+    final ImagePicker imagePicker = ImagePicker();
+
+    XFile? file = await imagePicker.pickImage(source: source);
+    print('${file?.path}');
+
+    if (file != null) {
+      return await file.readAsBytes();
+    }
   }
 }

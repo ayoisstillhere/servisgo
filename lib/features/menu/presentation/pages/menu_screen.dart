@@ -49,7 +49,9 @@ class MenuScreen extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => ProfileScreen(currentUser: currentUser,)));
+                        builder: (context) => ProfileScreen(
+                              currentUser: currentUser,
+                            )));
               },
               child: Stack(
                 children: [
@@ -70,6 +72,7 @@ class MenuScreen extends StatelessWidget {
                     child: ClipOval(
                       child: Image.network(
                         currentUser.pfpURL,
+                        fit: BoxFit.cover,
                       ),
                     ),
                   ),
