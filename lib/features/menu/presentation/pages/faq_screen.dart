@@ -52,17 +52,20 @@ class FAQScreen extends StatelessWidget {
                 SizedBox(height: getProportionateScreenHeight(24)),
                 const FAQTile(
                   question: "Can I cancel or reschedule a booking?",
-                  answer: "To DO",
+                  answer:
+                      "No not at the moment. We are working on this functionality, so ensure you are able to host the service provider at the time of booking.",
                 ),
                 SizedBox(height: getProportionateScreenHeight(24)),
                 const FAQTile(
                   question: "What payment methods are accepted?",
-                  answer: "To DO",
+                  answer:
+                      "We accept all major credit and debit cards through Paystack and Flutterwave payment gateways.",
                 ),
                 SizedBox(height: getProportionateScreenHeight(24)),
                 const FAQTile(
                   question: "How do I rate the service provider?",
-                  answer: "To DO",
+                  answer:
+                      "After the service is completed, you will be prompted by the app to rate the service provider using a five star system.",
                 ),
                 SizedBox(height: getProportionateScreenHeight(24)),
               ],

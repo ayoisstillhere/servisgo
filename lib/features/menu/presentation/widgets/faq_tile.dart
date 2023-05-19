@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../../../../constants.dart';
@@ -43,12 +42,16 @@ class _FAQTileState extends State<FAQTile> {
                 ),
               ),
               SizedBox(width: getProportionateScreenWidth(8)),
-              Text(
-                widget.question,
-                style: Theme.of(context)
-                    .textTheme
-                    .bodyLarge!
-                    .copyWith(fontWeight: FontWeight.bold),
+              Expanded(
+                child: Text(
+                  widget.question,
+                  overflow: TextOverflow.ellipsis, // Use ellipsis overflow
+                  maxLines: 1, // Set the maximum number of lines
+                  style: Theme.of(context)
+                      .textTheme
+                      .bodyLarge!
+                      .copyWith(fontWeight: FontWeight.bold),
+                ),
               ),
             ],
           ),
