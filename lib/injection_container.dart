@@ -1,4 +1,6 @@
 import 'package:get_it/get_it.dart';
+import 'package:servisgo/features/home/domain/usecases/get_partners_usecase.dart';
+import 'package:servisgo/features/home/presentation/bloc/partner_cubit/partner_cubit.dart';
 import 'features/home/domain/usecases/get_users_usecase.dart';
 import 'features/home/presentation/bloc/user_cubit/user_cubit.dart';
 import 'features/menu/data/datasources/firebase_storage_remote_datasource.dart';
@@ -53,6 +55,9 @@ Future<void> init() async {
         uploadImageUsecase: sl.call(),
         updatePfpUrlUsecase: sl.call(),
       ));
+  sl.registerFactory<PartnerCubit>(() => PartnerCubit(
+        getPartnersUsecase: sl.call(),
+      ));
 
   //!useCae
   sl.registerLazySingleton<IsSigninUsecase>(
@@ -87,6 +92,8 @@ Future<void> init() async {
       () => UploadImageUsecase(firebaseStorageRepository: sl.call()));
   sl.registerLazySingleton<UpdatePfpUrlUsecase>(
       () => UpdatePfpUrlUsecase(repository: sl.call()));
+  sl.registerLazySingleton<GetPartnersUsecase>(
+      () => GetPartnersUsecase(repository: sl.call()));
 
   //repository
   sl.registerLazySingleton<FirebaseRepository>(

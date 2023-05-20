@@ -1,3 +1,5 @@
+import 'package:servisgo/features/home/domain/entities/partner_entity.dart';
+
 import '../../domain/entities/user_entity.dart';
 
 import '../../domain/repositories/firebase_repository.dart';
@@ -92,4 +94,9 @@ class FirebaseRepositoryImpl implements FirebaseRepository {
       
         @override
         Future<void> updatePfpUrl(String newPfpUrl, String uid) async => await firebaseRemoteDatasource.updatePfpUrl(newPfpUrl, uid);
+
+  @override
+  Stream<List<PartnerEntity>> getPartners() {
+    return firebaseRemoteDatasource.getPartners();
+  }
 }

@@ -1,3 +1,4 @@
+import '../../../home/domain/entities/partner_entity.dart';
 import '../entities/user_entity.dart';
 
 abstract class FirebaseRepository {
@@ -22,4 +23,5 @@ abstract class FirebaseRepository {
   Future<void> updatePhone(String newPhoneNo, String uid);
   Future<void> updateAddress(String newAddress, String uid);
   Future<void> updatePfpUrl(String newPfpUrl, String uid);
+  Stream<List<PartnerEntity>> getPartners();
 }

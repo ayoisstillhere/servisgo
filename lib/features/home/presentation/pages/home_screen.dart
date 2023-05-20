@@ -172,53 +172,46 @@ class HomeScreen extends StatelessWidget {
                 child: Row(
                   children: <Widget>[
                     SizedBox(width: getProportionateScreenWidth(32)),
-                    ServiceButton(
-                      color: const Color(0XFFFA99D3),
+                    const ServiceButton(
+                      color: Color(0XFFFA99D3),
                       icon: "assets/icons/CleaningIcon.png",
                       serviceName: "Cleaning",
-                      press: () {},
                     ),
                     SizedBox(width: getProportionateScreenWidth(28)),
-                    ServiceButton(
-                      color: const Color(0XFFF78273),
+                    const ServiceButton(
+                      color: Color(0XFFF78273),
                       icon: "assets/icons/GardeningIcon.png",
                       serviceName: "Gardening",
-                      press: () {},
                     ),
                     SizedBox(width: getProportionateScreenWidth(28)),
-                    ServiceButton(
-                      color: const Color(0XFFC45E84),
+                    const ServiceButton(
+                      color: Color(0XFFC45E84),
                       icon: "assets/icons/PlumbingIcon.png",
                       serviceName: "Plumbing",
-                      press: () {},
                     ),
                     SizedBox(width: getProportionateScreenWidth(28)),
-                    ServiceButton(
-                      color: const Color(0XFFBDA5A6),
+                    const ServiceButton(
+                      color: Color(0XFFBDA5A6),
                       icon: "assets/icons/ElectricalIcon.png",
                       serviceName: "Electrical",
-                      press: () {},
                     ),
                     SizedBox(width: getProportionateScreenWidth(28)),
-                    ServiceButton(
+                    const ServiceButton(
                       color: kCallToAction,
                       icon: "assets/icons/HandymanIcon.png",
                       serviceName: "Handyman",
-                      press: () {},
                     ),
                     SizedBox(width: getProportionateScreenWidth(28)),
-                    ServiceButton(
-                      color: const Color(0XFFA05338),
+                    const ServiceButton(
+                      color: Color(0XFFA05338),
                       icon: "assets/icons/PaintingIcon.png",
                       serviceName: "Painting",
-                      press: () {},
                     ),
                     SizedBox(width: getProportionateScreenWidth(28)),
-                    ServiceButton(
-                      color: const Color(0XFF5EECBE),
+                    const ServiceButton(
+                      color: Color(0XFF5EECBE),
                       icon: "assets/icons/HomeImprovementIcon.png",
                       serviceName: "Improve",
-                      press: () {},
                     ),
                     SizedBox(width: getProportionateScreenWidth(32)),
                   ],
@@ -243,7 +236,9 @@ class HomeScreen extends StatelessWidget {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => SelectProvider()));
+                                builder: (context) => SelectProvider(
+                                      serviceClass: 'top',
+                                    )));
                       },
                       child: Text(
                         "View More",
@@ -267,8 +262,8 @@ class HomeScreen extends StatelessWidget {
                           "https://cdn.pixabay.com/photo/2021/03/21/13/28/woman-6112091_1280.jpg",
                       name: "Judith Omole",
                       location: "Surulere",
-                      rating: "4.5 ",
-                      reviews: "(1234)",
+                      rating: "4.5",
+                      reviews: "1234",
                     ),
                     SizedBox(width: getProportionateScreenWidth(12)),
                     const ServiceProviderCard(
@@ -276,8 +271,8 @@ class HomeScreen extends StatelessWidget {
                           "https://cdn.pixabay.com/photo/2020/01/20/17/30/look-4780865__480.jpg",
                       name: "Stephen Anyanwu",
                       location: "Surulere",
-                      rating: "4.5 ",
-                      reviews: "(1234)",
+                      rating: "4.5",
+                      reviews: "1234",
                     ),
                     SizedBox(width: getProportionateScreenWidth(12)),
                     const ServiceProviderCard(
@@ -285,8 +280,8 @@ class HomeScreen extends StatelessWidget {
                           "https://images.unsplash.com/photo-1530785602389-07594beb8b73?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fG5pZ2VyaWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=900&q=60",
                       name: "Blessing Ornu",
                       location: "Surulere",
-                      rating: "4.5 ",
-                      reviews: "(1234)",
+                      rating: "4.5",
+                      reviews: "1234",
                     ),
                     SizedBox(width: getProportionateScreenWidth(12)),
                     const ServiceProviderCard(
@@ -294,8 +289,8 @@ class HomeScreen extends StatelessWidget {
                           "https://cdn.pixabay.com/photo/2018/10/11/15/35/angry-boy-3740043__480.jpg",
                       name: "Tobi Odusayo",
                       location: "Surulere",
-                      rating: "4.5 ",
-                      reviews: "(1234)",
+                      rating: "4.5",
+                      reviews: "1234",
                     ),
                     SizedBox(width: getProportionateScreenWidth(12)),
                     const ServiceProviderCard(
@@ -303,8 +298,8 @@ class HomeScreen extends StatelessWidget {
                           "https://images.unsplash.com/photo-1594564190328-0bed16a89837?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bmlnZXJpYW58ZW58MHx8MHx8&auto=format&fit=crop&w=900&q=60",
                       name: "Akpan Ibisi",
                       location: "Surulere",
-                      rating: "4.5 ",
-                      reviews: "(1234)",
+                      rating: "4.5",
+                      reviews: "1234",
                     ),
                     SizedBox(width: getProportionateScreenWidth(32)),
                   ],

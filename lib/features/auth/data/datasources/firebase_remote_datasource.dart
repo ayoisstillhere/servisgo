@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+import '../../../home/data/models/partner_model.dart';
+import '../../../home/domain/entities/partner_entity.dart';
 import '../../domain/entities/user_entity.dart';
 import '../models/user_model.dart';
 
@@ -27,11 +29,13 @@ abstract class FirebaseRemoteDatasource {
   Future<void> updatePhone(String newPhoneNo, String uid);
   Future<void> updateAddress(String newAddress, String uid);
   Future<void> updatePfpUrl(String newPfpUrl, String uid);
+  Stream<List<PartnerEntity>> getPartners();
 }
 
 class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDatasource {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final _userCollection = FirebaseFirestore.instance.collection("users");
+  final _partnerCollection = FirebaseFirestore.instance.collection('partners');
   final googleSignin = GoogleSignIn(scopes: ['email']);
 
   GoogleSignInAccount? _user;
@@ -187,5 +191,13 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDatasource {
    await _userCollection.doc(uid).update({
       'pfpURL': newPfpUrl,
     });
+  }
+  
+  @override
+  Stream<List<PartnerEntity>> getPartners() {
+    return _partnerCollection.snapshots().map((querySnapshot) => querySnapshot
+        .docs
+        .map((docSnapshot) => PartnerModel.fromSnapshot(docSnapshot))
+        .toList());
   }
 }

@@ -1,55 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:servisgo/features/home/domain/entities/partner_entity.dart';
 
 import '../../../../size_config.dart';
+import '../bloc/partner_cubit/partner_cubit.dart';
 import '../widgets/service_provider_card.dart';
 
-class SelectProvider extends StatelessWidget {
-  SelectProvider({super.key});
-  final List<ServiceProviderCard> serviceProvidersList = [
-    const ServiceProviderCard(
-      image:
-          "https://cdn.pixabay.com/photo/2021/03/21/13/28/woman-6112091_1280.jpg",
-      name: "Judith Omole",
-      location: "Surulere",
-      rating: "4.5 ",
-      reviews: "(1234)",
-    ),
-    const ServiceProviderCard(
-      image:
-          "https://cdn.pixabay.com/photo/2020/01/20/17/30/look-4780865__480.jpg",
-      name: "Stephen Anyanwu",
-      location: "Surulere",
-      rating: "4.5 ",
-      reviews: "(1234)",
-    ),
-    const ServiceProviderCard(
-      image:
-          "https://images.unsplash.com/photo-1530785602389-07594beb8b73?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fG5pZ2VyaWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=900&q=60",
-      name: "Blessing Ornu",
-      location: "Surulere",
-      rating: "4.5 ",
-      reviews: "(1234)",
-    ),
-    const ServiceProviderCard(
-      image:
-          "https://cdn.pixabay.com/photo/2018/10/11/15/35/angry-boy-3740043__480.jpg",
-      name: "Tobi Odusayo",
-      location: "Surulere",
-      rating: "4.5 ",
-      reviews: "(1234)",
-    ),
-    const ServiceProviderCard(
-      image:
-          "https://images.unsplash.com/photo-1594564190328-0bed16a89837?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bmlnZXJpYW58ZW58MHx8MHx8&auto=format&fit=crop&w=900&q=60",
-      name: "Akpan Ibisi",
-      location: "Surulere",
-      rating: "4.5 ",
-      reviews: "(1234)",
-    ),
-  ];
+class SelectProvider extends StatefulWidget {
+  const SelectProvider({
+    Key? key,
+    required this.serviceClass,
+  }) : super(key: key);
+  final String serviceClass;
+
+  @override
+  State<SelectProvider> createState() => _SelectProviderState();
+}
+
+class _SelectProviderState extends State<SelectProvider> {
+  @override
+  void initState() {
+    BlocProvider.of<PartnerCubit>(context).getPartners();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
+    return BlocBuilder<PartnerCubit, PartnerState>(
+      builder: (_, state) {
+        if (state is PartnerLoaded) {
+          return _selectBody(context, state);
+        }
+        return const Center(child: CircularProgressIndicator());
+      },
+    );
+  }
+
+  Scaffold _selectBody(BuildContext context, PartnerLoaded partners) {
+    List<PartnerEntity> serviceProvidersList = [];
+    if (widget.serviceClass != "top") {
+      serviceProvidersList = partners.partners
+          .where((partner) => partner.serviceClass == widget.serviceClass)
+          .toList();
+    } else {
+      serviceProvidersList = partners.partners.toList();
+    }
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -68,12 +63,24 @@ class SelectProvider extends StatelessWidget {
         ),
         itemCount: serviceProvidersList.length,
         itemBuilder: (BuildContext context, int index) {
+          final List ratings = serviceProvidersList[index].ratings;
+          double sum = 0;
+          double avgRating = 0;
+          if (ratings.isNotEmpty) {
+            for (int rating in ratings) {
+              sum += rating;
+            }
+            avgRating = sum / ratings.length;
+          } else {
+            avgRating = 0;
+          }
           return ServiceProviderCard(
-            image: serviceProvidersList[index].image,
-            name: serviceProvidersList[index].name,
-            location: serviceProvidersList[index].location,
-            rating: serviceProvidersList[index].rating,
-            reviews: serviceProvidersList[index].reviews,
+            image: serviceProvidersList[index].partnerPfpURL,
+            name: serviceProvidersList[index].partnerName,
+            // location: serviceProvidersList[index].location,
+            location: "Fixitbro",
+            rating: avgRating.toString(),
+            reviews: serviceProvidersList[index].ratings.length.toString(),
           );
         },
       ),

@@ -87,11 +87,11 @@ class ServiceProviderCard extends StatelessWidget {
                 SizedBox(width: getProportionateScreenWidth(4)),
                 RichText(
                   text: TextSpan(
-                      text: rating,
+                      text: "$rating ",
                       style: Theme.of(context).textTheme.bodySmall,
                       children: <TextSpan>[
                         TextSpan(
-                          text: reviews,
+                          text: "($reviews)",
                           style: Theme.of(context)
                               .textTheme
                               .bodySmall!

@@ -10,12 +10,10 @@ class ServiceButton extends StatelessWidget {
     required this.color,
     required this.icon,
     required this.serviceName,
-    required this.press,
   }) : super(key: key);
   final Color color;
   final String icon;
   final String serviceName;
-  final void Function() press;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +22,7 @@ class ServiceButton extends StatelessWidget {
         GestureDetector(
           onTap: () {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => SelectProvider()));
+                MaterialPageRoute(builder: (context) => SelectProvider(serviceClass: serviceName,)));
           },
           child: Container(
             decoration: BoxDecoration(
