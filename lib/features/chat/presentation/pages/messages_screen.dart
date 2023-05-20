@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../../../size_config.dart';
 
+import '../../../../size_config.dart';
 import '../widgets/message_tile.dart';
 
 class MessagesScreen extends StatelessWidget {

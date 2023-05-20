@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:servisgo/features/menu/presentation/pages/update_field_screen.dart';
+import '../pages/update_field_screen.dart';
 
 import '../../../../constants.dart';
 import '../../../../size_config.dart';

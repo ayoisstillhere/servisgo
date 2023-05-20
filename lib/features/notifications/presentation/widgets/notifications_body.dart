@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:servisgo/size_config.dart';
+import '../../../../size_config.dart';
 
 import 'notifications_box.dart';
 

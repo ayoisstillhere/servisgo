@@ -3,11 +3,11 @@ import 'dart:io';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:servisgo/features/auth/domain/entities/user_entity.dart';
-import 'package:servisgo/features/home/domain/usecases/get_users_usecase.dart';
-import 'package:servisgo/features/menu/domain/usecases/update_address_usecase.dart';
-import 'package:servisgo/features/menu/domain/usecases/update_name_usecase.dart';
-import 'package:servisgo/features/menu/domain/usecases/update_phone_usecase.dart';
+import '../../../../auth/domain/entities/user_entity.dart';
+import '../../../domain/usecases/get_users_usecase.dart';
+import '../../../../menu/domain/usecases/update_address_usecase.dart';
+import '../../../../menu/domain/usecases/update_name_usecase.dart';
+import '../../../../menu/domain/usecases/update_phone_usecase.dart';
 
 part 'user_state.dart';
 

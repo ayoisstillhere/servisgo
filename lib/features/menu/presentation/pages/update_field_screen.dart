@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:servisgo/components/default_button.dart';
-import 'package:servisgo/components/nav_page.dart';
-import 'package:servisgo/features/auth/presentation/widgets/form_header.dart';
-import 'package:servisgo/features/home/presentation/bloc/user_cubit/user_cubit.dart';
-import 'package:servisgo/size_config.dart';
+import '../../../../components/default_button.dart';
+import '../../../../components/nav_page.dart';
+import '../../../auth/presentation/widgets/form_header.dart';
+import '../../../home/presentation/bloc/user_cubit/user_cubit.dart';
+import '../../../../size_config.dart';
 
 class UpdateFieldScreen extends StatefulWidget {
   const UpdateFieldScreen({

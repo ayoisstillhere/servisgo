@@ -3,8 +3,8 @@ import 'dart:typed_data';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:servisgo/features/menu/domain/usecases/update_pfp_url_usecase.dart';
-import 'package:servisgo/features/menu/domain/usecases/upload_image_usecase.dart';
+import '../../../domain/usecases/update_pfp_url_usecase.dart';
+import '../../../domain/usecases/upload_image_usecase.dart';
 
 part 'pfp_state.dart';
 

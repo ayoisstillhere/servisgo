@@ -1,5 +1,5 @@
-import 'package:servisgo/features/auth/domain/entities/user_entity.dart';
-import 'package:servisgo/features/auth/domain/repositories/firebase_repository.dart';
+import '../../../auth/domain/entities/user_entity.dart';
+import '../../../auth/domain/repositories/firebase_repository.dart';
 
 class GetUsersUsecase {
   final FirebaseRepository repository;

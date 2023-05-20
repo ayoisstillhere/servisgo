@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:servisgo/constants.dart';
+import '../../../../constants.dart';
 
 import '../../../../size_config.dart';
 import '../widgets/faq_tile.dart';

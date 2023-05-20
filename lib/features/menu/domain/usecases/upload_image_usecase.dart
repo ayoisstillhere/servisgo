@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 
-import 'package:servisgo/features/menu/domain/repositories/firebase_storage_repository.dart';
+import '../repositories/firebase_storage_repository.dart';
 
 class UploadImageUsecase {
   final FirebaseStorageRepository firebaseStorageRepository;
