@@ -60,6 +60,8 @@ class ServiceProviderCard extends StatelessWidget {
             SizedBox(height: getProportionateScreenHeight(8)),
             Text(
               name,
+              overflow: TextOverflow.ellipsis, // Use ellipsis overflow
+              maxLines: 1, // Set the maximum number of lines
               style: Theme.of(context)
                   .textTheme
                   .bodyMedium!
