@@ -175,7 +175,7 @@ class ProfileScreen extends StatelessWidget {
 
     String pfpUrl = await BlocProvider.of<PfpCubit>(context).uploadImage(image);
 
-    BlocProvider.of<PfpCubit>(context).updatePFPUrl(pfpUrl, currentUser.uid);
+    await BlocProvider.of<PfpCubit>(context).updatePFPUrl(pfpUrl, currentUser.uid);
 
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => const NavPage()));
