@@ -11,6 +11,15 @@ class PartnerEntity extends Equatable {
   final List ratings;
   final int completed;
 
+  double get averageRating {
+    if (ratings.isEmpty) {
+      return 0;
+    }
+
+    double sum = ratings.fold(0, (a, b) => a + b);
+    return sum / ratings.length;
+  }
+
   const PartnerEntity(
     this.partnerId,
     this.partnerName,

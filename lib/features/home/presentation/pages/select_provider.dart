@@ -45,6 +45,7 @@ class _SelectProviderState extends State<SelectProvider> {
     } else {
       serviceProvidersList = partners.partners.toList();
     }
+    serviceProvidersList.sort((a, b) => b.averageRating.compareTo(a.averageRating));
     return Scaffold(
       appBar: AppBar(
         title: Text(
