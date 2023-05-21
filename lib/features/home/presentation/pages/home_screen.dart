@@ -317,7 +317,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   location: "FixitBro",
                   rating: avgRating.toString(),
                   reviews:
-                      serviceProvidersList[index].ratings.length.toString(),
+                      serviceProvidersList[index].ratings.length.toString(), partner: serviceProvidersList[index],
                 ),
               );
             },

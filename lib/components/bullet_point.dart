@@ -33,7 +33,7 @@ class BulletPoint extends StatelessWidget {
                 textAlign: TextAlign.justify,
                 style: Theme.of(context)
                     .textTheme
-                    .bodySmall!
+                    .bodyMedium!
                     .copyWith(color: kGreys)),
           ),
         ],

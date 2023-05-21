@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import '../../../details/presentation/pages/service_provider_details_screen.dart';
+
+import 'package:servisgo/features/home/domain/entities/partner_entity.dart';
 
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
+import '../../../details/presentation/pages/service_provider_details_screen.dart';
 
 class ServiceProviderCard extends StatelessWidget {
   const ServiceProviderCard({
@@ -13,12 +15,14 @@ class ServiceProviderCard extends StatelessWidget {
     required this.location,
     required this.rating,
     required this.reviews,
+    required this.partner,
   }) : super(key: key);
   final String image;
   final String name;
   final String location;
   final String rating;
   final String reviews;
+  final PartnerEntity partner;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +31,7 @@ class ServiceProviderCard extends StatelessWidget {
           context,
           MaterialPageRoute(
               builder: (context) => ServiceProviderDetails(
-                    imageUrl: image,
+                    partner: partner,
                   ))),
       child: Container(
         padding: EdgeInsets.symmetric(

@@ -81,7 +81,7 @@ class _SelectProviderState extends State<SelectProvider> {
             // location: serviceProvidersList[index].location,
             location: "Fixitbro",
             rating: avgRating.toString(),
-            reviews: serviceProvidersList[index].ratings.length.toString(),
+            reviews: serviceProvidersList[index].ratings.length.toString(), partner: serviceProvidersList[index],
           );
         },
       ),
