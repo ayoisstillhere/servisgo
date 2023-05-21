@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../../../../constants.dart';
@@ -43,6 +42,10 @@ class HistoryScreen extends StatelessWidget {
     ];
     return Scaffold(
       appBar: AppBar(
+        leading: const SizedBox(
+          width: 0,
+          height: 0,
+        ),
         title: Text(
           "Order History",
           style: Theme.of(context).textTheme.bodyMedium,
