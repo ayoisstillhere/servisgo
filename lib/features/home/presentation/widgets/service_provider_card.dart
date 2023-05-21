@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:servisgo/features/details/presentation/widgets/service_icon.dart';
 
 import 'package:servisgo/features/home/domain/entities/partner_entity.dart';
 
@@ -48,18 +49,29 @@ class ServiceProviderCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Hero(
-              tag: image,
-              transitionOnUserGestures: true,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(4),
-                child: Image.network(
-                  image,
-                  height: getProportionateScreenHeight(96),
-                  width: getProportionateScreenWidth(128),
-                  fit: BoxFit.cover,
+            Stack(
+              children: [
+                Hero(
+                  tag: image,
+                  transitionOnUserGestures: true,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(4),
+                    child: Image.network(
+                      image,
+                      height: getProportionateScreenHeight(96),
+                      width: getProportionateScreenWidth(128),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                 ),
-              ),
+                Positioned(
+                  top: getProportionateScreenWidth(5),
+                  left: getProportionateScreenWidth(5),
+                  child: ServiceIconSmall(
+                    serviceClass: partner.serviceClass,
+                  ),
+                ),
+              ],
             ),
             SizedBox(height: getProportionateScreenHeight(8)),
             Text(
