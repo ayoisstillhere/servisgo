@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../auth/domain/entities/user_entity.dart';
@@ -6,16 +7,29 @@ import '../../../auth/domain/entities/user_entity.dart';
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
 import '../../../notifications/presentation/pages/notifications_screen.dart';
+import '../../domain/entities/partner_entity.dart';
+import '../bloc/partner_cubit/partner_cubit.dart';
 import '../widgets/service_button.dart';
 import '../widgets/service_provider_card.dart';
 import 'select_provider.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({
     Key? key,
     required this.currentUser,
   }) : super(key: key);
   final UserEntity currentUser;
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    BlocProvider.of<PartnerCubit>(context).getPartners();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +57,7 @@ class HomeScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Hello, ${currentUser.name}!",
+                      "Hello, ${widget.currentUser.name}!",
                       style: Theme.of(context)
                           .textTheme
                           .displayMedium
@@ -252,62 +266,63 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
               SizedBox(height: getProportionateScreenHeight(8)),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: <Widget>[
-                    SizedBox(width: getProportionateScreenWidth(32)),
-                    const ServiceProviderCard(
-                      image:
-                          "https://cdn.pixabay.com/photo/2021/03/21/13/28/woman-6112091_1280.jpg",
-                      name: "Judith Omole",
-                      location: "Surulere",
-                      rating: "4.5",
-                      reviews: "1234",
-                    ),
-                    SizedBox(width: getProportionateScreenWidth(12)),
-                    const ServiceProviderCard(
-                      image:
-                          "https://cdn.pixabay.com/photo/2020/01/20/17/30/look-4780865__480.jpg",
-                      name: "Stephen Anyanwu",
-                      location: "Surulere",
-                      rating: "4.5",
-                      reviews: "1234",
-                    ),
-                    SizedBox(width: getProportionateScreenWidth(12)),
-                    const ServiceProviderCard(
-                      image:
-                          "https://images.unsplash.com/photo-1530785602389-07594beb8b73?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fG5pZ2VyaWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=900&q=60",
-                      name: "Blessing Ornu",
-                      location: "Surulere",
-                      rating: "4.5",
-                      reviews: "1234",
-                    ),
-                    SizedBox(width: getProportionateScreenWidth(12)),
-                    const ServiceProviderCard(
-                      image:
-                          "https://cdn.pixabay.com/photo/2018/10/11/15/35/angry-boy-3740043__480.jpg",
-                      name: "Tobi Odusayo",
-                      location: "Surulere",
-                      rating: "4.5",
-                      reviews: "1234",
-                    ),
-                    SizedBox(width: getProportionateScreenWidth(12)),
-                    const ServiceProviderCard(
-                      image:
-                          "https://images.unsplash.com/photo-1594564190328-0bed16a89837?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8bmlnZXJpYW58ZW58MHx8MHx8&auto=format&fit=crop&w=900&q=60",
-                      name: "Akpan Ibisi",
-                      location: "Surulere",
-                      rating: "4.5",
-                      reviews: "1234",
-                    ),
-                    SizedBox(width: getProportionateScreenWidth(32)),
-                  ],
-                ),
+              BlocBuilder<PartnerCubit, PartnerState>(
+                builder: (context, state) {
+                  if (state is PartnerLoaded) {
+                    return _topProvidersScrollView(state);
+                  }
+                  return const Center(child: CircularProgressIndicator());
+                },
               ),
             ],
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _topProvidersScrollView(PartnerLoaded partners) {
+    List<PartnerEntity> serviceProvidersList = partners.partners.toList();
+    serviceProvidersList
+        .sort((a, b) => b.averageRating.compareTo(a.averageRating));
+
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Padding(
+        padding: EdgeInsets.only(
+            left: getProportionateScreenWidth(32),
+            right: getProportionateScreenWidth(20)),
+        child: Row(
+          children: List.generate(
+            3,
+            (index) {
+              final List ratings = serviceProvidersList[index].ratings;
+              double sum = 0;
+              double avgRating = 0;
+              if (ratings.isNotEmpty) {
+                for (int rating in ratings) {
+                  sum += rating;
+                }
+                avgRating = sum / ratings.length;
+              } else {
+                avgRating = 0;
+              }
+
+              return Padding(
+                padding:
+                    EdgeInsets.only(right: getProportionateScreenWidth(12)),
+                child: ServiceProviderCard(
+                  image: serviceProvidersList[index].partnerPfpURL,
+                  name: serviceProvidersList[index].partnerName,
+                  location: "FixitBro",
+                  rating: avgRating.toString(),
+                  reviews:
+                      serviceProvidersList[index].ratings.length.toString(),
+                ),
+              );
+            },
+          ),
+        ),
       ),
     );
   }
