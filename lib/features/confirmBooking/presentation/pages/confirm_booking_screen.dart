@@ -42,19 +42,21 @@ class _ConfirmBookingScreenState extends State<ConfirmBookingScreen> {
   TextEditingController _dateController = TextEditingController();
   TextEditingController _timeController = TextEditingController();
   TextEditingController _priceController = TextEditingController();
+  TextEditingController _additionalDetailsContoller = TextEditingController();
 
   @override
   void initState() {
     currentMonthAbbreviation =
         monthAbbreviations[currentMonth - 1]; // Initialize here
-    _addressController = TextEditingController(
-        text: widget.currentUser.address);
+    _addressController =
+        TextEditingController(text: widget.currentUser.address);
     _dateController = TextEditingController(
         text: '$currentMonthAbbreviation ${currentDateTime.day}');
     _timeController = TextEditingController(
         text:
             '${currentDateTime.hour.toString().padLeft(2, '0')}:${currentDateTime.minute.toString().padLeft(2, '0')}');
     _priceController = TextEditingController(text: widget.price);
+    _additionalDetailsContoller = TextEditingController();
     super.initState();
   }
 
@@ -64,6 +66,7 @@ class _ConfirmBookingScreenState extends State<ConfirmBookingScreen> {
     _dateController.dispose();
     _timeController.dispose();
     _priceController.dispose();
+    _additionalDetailsContoller.dispose();
     super.dispose();
   }
 
@@ -284,7 +287,45 @@ class _ConfirmBookingScreenState extends State<ConfirmBookingScreen> {
                   ),
                 ),
               ),
-              SizedBox(height: getProportionateScreenHeight(48)),
+              SizedBox(height: getProportionateScreenHeight(8)),
+              TextFormField(
+                controller: _additionalDetailsContoller,
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyMedium!
+                    .copyWith(fontWeight: FontWeight.bold),
+                maxLines: 4,
+                decoration: InputDecoration(
+                  labelText: "Additional Details",
+                  floatingLabelStyle: Theme.of(context)
+                      .textTheme
+                      .bodyLarge!
+                      .copyWith(color: kGreys),
+                  floatingLabelBehavior: FloatingLabelBehavior.always,
+                  contentPadding: EdgeInsets.symmetric(
+                    vertical: getProportionateScreenHeight(16),
+                  ).copyWith(left: 16),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide.none,
+                    borderRadius: BorderRadius.circular(
+                      getProportionateScreenWidth(8),
+                    ),
+                  ),
+                  border: OutlineInputBorder(
+                    borderSide: BorderSide.none,
+                    borderRadius: BorderRadius.circular(
+                      getProportionateScreenWidth(8),
+                    ),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide.none,
+                    borderRadius: BorderRadius.circular(
+                      getProportionateScreenWidth(8),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: getProportionateScreenHeight(36)),
               DefaultButton(
                 text: "Confirm Booking",
                 press: () {},
