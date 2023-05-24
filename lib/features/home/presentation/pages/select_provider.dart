@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:servisgo/features/auth/domain/entities/user_entity.dart';
 import 'package:servisgo/features/home/domain/entities/partner_entity.dart';
 
 import '../../../../size_config.dart';
@@ -10,8 +12,10 @@ class SelectProvider extends StatefulWidget {
   const SelectProvider({
     Key? key,
     required this.serviceClass,
+    required this.currentUser,
   }) : super(key: key);
   final String serviceClass;
+  final UserEntity currentUser;
 
   @override
   State<SelectProvider> createState() => _SelectProviderState();
@@ -45,7 +49,8 @@ class _SelectProviderState extends State<SelectProvider> {
     } else {
       serviceProvidersList = partners.partners.toList();
     }
-    serviceProvidersList.sort((a, b) => b.averageRating.compareTo(a.averageRating));
+    serviceProvidersList
+        .sort((a, b) => b.averageRating.compareTo(a.averageRating));
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -81,7 +86,9 @@ class _SelectProviderState extends State<SelectProvider> {
             // location: serviceProvidersList[index].location,
             location: "Fixitbro",
             rating: avgRating.toString(),
-            reviews: serviceProvidersList[index].ratings.length.toString(), partner: serviceProvidersList[index],
+            reviews: serviceProvidersList[index].ratings.length.toString(),
+            partner: serviceProvidersList[index],
+            currentUser: widget.currentUser,
           );
         },
       ),

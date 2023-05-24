@@ -186,46 +186,53 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Row(
                   children: <Widget>[
                     SizedBox(width: getProportionateScreenWidth(32)),
-                    const ServiceButton(
-                      color: Color(0XFFFA99D3),
+                    ServiceButton(
+                      color: const Color(0XFFFA99D3),
                       icon: "assets/icons/CleaningIcon.png",
                       serviceName: "Cleaning",
+                      currentUser: widget.currentUser,
                     ),
                     SizedBox(width: getProportionateScreenWidth(28)),
-                    const ServiceButton(
-                      color: Color(0XFFF78273),
+                    ServiceButton(
+                      color: const Color(0XFFF78273),
                       icon: "assets/icons/GardeningIcon.png",
                       serviceName: "Gardening",
+                      currentUser: widget.currentUser,
                     ),
                     SizedBox(width: getProportionateScreenWidth(28)),
-                    const ServiceButton(
-                      color: Color(0XFFC45E84),
+                    ServiceButton(
+                      color: const Color(0XFFC45E84),
                       icon: "assets/icons/PlumbingIcon.png",
                       serviceName: "Plumbing",
+                      currentUser: widget.currentUser,
                     ),
                     SizedBox(width: getProportionateScreenWidth(28)),
-                    const ServiceButton(
-                      color: Color(0XFFBDA5A6),
+                    ServiceButton(
+                      color: const Color(0XFFBDA5A6),
                       icon: "assets/icons/ElectricalIcon.png",
                       serviceName: "Electrical",
+                      currentUser: widget.currentUser,
                     ),
                     SizedBox(width: getProportionateScreenWidth(28)),
-                    const ServiceButton(
+                    ServiceButton(
                       color: kCallToAction,
                       icon: "assets/icons/HandymanIcon.png",
                       serviceName: "Handyman",
+                      currentUser: widget.currentUser,
                     ),
                     SizedBox(width: getProportionateScreenWidth(28)),
-                    const ServiceButton(
-                      color: Color(0XFFA05338),
+                    ServiceButton(
+                      color: const Color(0XFFA05338),
                       icon: "assets/icons/PaintingIcon.png",
                       serviceName: "Painting",
+                      currentUser: widget.currentUser,
                     ),
                     SizedBox(width: getProportionateScreenWidth(28)),
-                    const ServiceButton(
-                      color: Color(0XFF5EECBE),
+                    ServiceButton(
+                      color: const Color(0XFF5EECBE),
                       icon: "assets/icons/HomeImprovementIcon.png",
                       serviceName: "Improve",
+                      currentUser: widget.currentUser,
                     ),
                     SizedBox(width: getProportionateScreenWidth(32)),
                   ],
@@ -252,6 +259,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             MaterialPageRoute(
                                 builder: (context) => SelectProvider(
                                       serviceClass: 'top',
+                                      currentUser: widget.currentUser,
                                     )));
                       },
                       child: Text(
@@ -317,7 +325,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   location: "FixitBro",
                   rating: avgRating.toString(),
                   reviews:
-                      serviceProvidersList[index].ratings.length.toString(), partner: serviceProvidersList[index],
+                      serviceProvidersList[index].ratings.length.toString(),
+                  partner: serviceProvidersList[index],
+                  currentUser: widget.currentUser,
                 ),
               );
             },

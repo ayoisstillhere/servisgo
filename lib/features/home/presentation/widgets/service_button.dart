@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:servisgo/features/auth/domain/entities/user_entity.dart';
+
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
 import '../pages/select_provider.dart';
@@ -10,10 +12,12 @@ class ServiceButton extends StatelessWidget {
     required this.color,
     required this.icon,
     required this.serviceName,
+    required this.currentUser,
   }) : super(key: key);
   final Color color;
   final String icon;
   final String serviceName;
+  final UserEntity currentUser;
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +25,13 @@ class ServiceButton extends StatelessWidget {
       children: [
         GestureDetector(
           onTap: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => SelectProvider(serviceClass: serviceName,)));
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => SelectProvider(
+                          serviceClass: serviceName,
+                          currentUser: currentUser,
+                        )));
           },
           child: Container(
             decoration: BoxDecoration(

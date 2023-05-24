@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:servisgo/features/details/presentation/widgets/service_icon.dart';
 
+import 'package:servisgo/features/auth/domain/entities/user_entity.dart';
+import 'package:servisgo/features/details/presentation/widgets/service_icon.dart';
 import 'package:servisgo/features/home/domain/entities/partner_entity.dart';
 
 import '../../../../components/bullet_point.dart';
@@ -14,8 +15,10 @@ class ServiceProviderDetails extends StatelessWidget {
   const ServiceProviderDetails({
     Key? key,
     required this.partner,
+    required this.currentUser,
   }) : super(key: key);
   final PartnerEntity partner;
+  final UserEntity currentUser;
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +37,7 @@ class ServiceProviderDetails extends StatelessWidget {
             'Cleaning kitchen appliances, including the stovetop, oven, and refrigerator.',
         'bulletPoint5':
             'Scrubbing and disinfecting bathrooms, including toilets, sinks, showers, and tubs.',
+        'price': '6500',
       },
       {
         'title': 'Gardening',
@@ -49,6 +53,7 @@ class ServiceProviderDetails extends StatelessWidget {
             'Weed control and removal to keep the garden free from unwanted vegetation.',
         'bulletPoint5':
             'Mulching and fertilizing to promote soil health and enhance plant growth.',
+        'price': '4000',
       },
       {
         'title': 'Plumbing',
@@ -64,6 +69,7 @@ class ServiceProviderDetails extends StatelessWidget {
             'Detecting and repairing water leaks in the plumbing system.',
         'bulletPoint5':
             'Conducting routine maintenance checks to ensure the proper functioning of the plumbing system.',
+        'price': '4000',
       },
       {
         'title': 'Electrical',
@@ -79,6 +85,7 @@ class ServiceProviderDetails extends StatelessWidget {
             'Installing and maintaining security systems, including CCTV cameras and motion sensors.',
         'bulletPoint5':
             'Electrical inspections and code compliance assessments.',
+        'price': '4000',
       },
       {
         'title': 'Handyman',
@@ -94,6 +101,7 @@ class ServiceProviderDetails extends StatelessWidget {
             'Installing or repairing locks and handles for enhanced security.',
         'bulletPoint5':
             'Performing general maintenance tasks, such as caulking, painting, and minor repairs.',
+        'price': '5000',
       },
       {
         'title': 'Painting',
@@ -107,6 +115,7 @@ class ServiceProviderDetails extends StatelessWidget {
             'Repairing and patching damaged areas on walls and ceilings before painting.',
         'bulletPoint5':
             'Cleaning up and removing paint debris after completing the painting project.',
+        'price': '6000',
       },
       {
         'title': 'Home Improvement',
@@ -121,6 +130,7 @@ class ServiceProviderDetails extends StatelessWidget {
             'Window and door replacement for improved energy efficiency and aesthetics.',
         'bulletPoint5':
             'Basement finishing and attic conversions for additional living space.',
+        'price': '10000',
       },
     ];
 
@@ -300,13 +310,15 @@ class ServiceProviderDetails extends StatelessWidget {
                         ),
                         SizedBox(height: getProportionateScreenHeight(36)),
                         DefaultButton(
-                          text: "Book Now - #2000/hr",
+                          text: "Book Now - #${details['price']}/hr",
                           press: () {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) =>
-                                        const ConfirmBookingScreen()));
+                                    builder: (context) => ConfirmBookingScreen(
+                                          price: details['price'],
+                                          currentUser: currentUser,
+                                        )));
                           },
                         ),
                         SizedBox(height: getProportionateScreenHeight(64)),

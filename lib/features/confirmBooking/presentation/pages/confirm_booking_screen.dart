@@ -1,18 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import 'package:servisgo/features/auth/domain/entities/user_entity.dart';
+
 import '../../../../components/default_button.dart';
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
 
 class ConfirmBookingScreen extends StatefulWidget {
-  const ConfirmBookingScreen({super.key});
+  final String price;
+  final UserEntity currentUser;
+  const ConfirmBookingScreen({
+    Key? key,
+    required this.price,
+    required this.currentUser,
+  }) : super(key: key);
 
   @override
   State<ConfirmBookingScreen> createState() => _ConfirmBookingScreenState();
 }
 
 class _ConfirmBookingScreenState extends State<ConfirmBookingScreen> {
+  DateTime currentDateTime = DateTime.now();
+  int currentMonth = DateTime.now().month;
+  List<String> monthAbbreviations = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec'
+  ];
+  late String currentMonthAbbreviation;
   TextEditingController _addressController = TextEditingController();
   TextEditingController _dateController = TextEditingController();
   TextEditingController _timeController = TextEditingController();
@@ -20,11 +45,16 @@ class _ConfirmBookingScreenState extends State<ConfirmBookingScreen> {
 
   @override
   void initState() {
+    currentMonthAbbreviation =
+        monthAbbreviations[currentMonth - 1]; // Initialize here
     _addressController = TextEditingController(
-        text: '14C Ola Crescent, High Gardens Estate, Ikota');
-    _dateController = TextEditingController(text: 'Sep 15');
-    _timeController = TextEditingController(text: '14:00');
-    _priceController = TextEditingController(text: '2000');
+        text: widget.currentUser.address);
+    _dateController = TextEditingController(
+        text: '$currentMonthAbbreviation ${currentDateTime.day}');
+    _timeController = TextEditingController(
+        text:
+            '${currentDateTime.hour.toString().padLeft(2, '0')}:${currentDateTime.minute.toString().padLeft(2, '0')}');
+    _priceController = TextEditingController(text: widget.price);
     super.initState();
   }
 
@@ -108,41 +138,53 @@ class _ConfirmBookingScreenState extends State<ConfirmBookingScreen> {
               Row(
                 children: [
                   Expanded(
-                    child: TextFormField(
-                      controller: _dateController,
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyMedium!
-                          .copyWith(fontWeight: FontWeight.bold),
-                      decoration: InputDecoration(
-                        labelText: "Date",
-                        floatingLabelStyle: Theme.of(context)
+                    child: GestureDetector(
+                      onTap: () async {
+                        final date = await _pickDate();
+                        if (date == null) return; // pressed cancel
+                        setState(() {
+                          _dateController = TextEditingController(
+                              text:
+                                  '${monthAbbreviations[date.month - 1]} ${date.day}');
+                        });
+                      },
+                      child: TextFormField(
+                        controller: _dateController,
+                        enabled: false,
+                        style: Theme.of(context)
                             .textTheme
-                            .bodyLarge!
-                            .copyWith(color: kGreys),
-                        floatingLabelBehavior: FloatingLabelBehavior.always,
-                        suffixIcon: Padding(
-                          padding:
-                              EdgeInsets.all(getProportionateScreenWidth(8)),
-                          child: SvgPicture.asset(
-                              "assets/icons/calendarConfirm.svg"),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide.none,
-                          borderRadius: BorderRadius.circular(
-                            getProportionateScreenWidth(8),
+                            .bodyMedium!
+                            .copyWith(fontWeight: FontWeight.bold),
+                        decoration: InputDecoration(
+                          labelText: "Date",
+                          floatingLabelStyle: Theme.of(context)
+                              .textTheme
+                              .bodyLarge!
+                              .copyWith(color: kGreys),
+                          floatingLabelBehavior: FloatingLabelBehavior.always,
+                          suffixIcon: Padding(
+                            padding:
+                                EdgeInsets.all(getProportionateScreenWidth(8)),
+                            child: SvgPicture.asset(
+                                "assets/icons/calendarConfirm.svg"),
                           ),
-                        ),
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide.none,
-                          borderRadius: BorderRadius.circular(
-                            getProportionateScreenWidth(8),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide.none,
+                            borderRadius: BorderRadius.circular(
+                              getProportionateScreenWidth(8),
+                            ),
                           ),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide.none,
-                          borderRadius: BorderRadius.circular(
-                            getProportionateScreenWidth(8),
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide.none,
+                            borderRadius: BorderRadius.circular(
+                              getProportionateScreenWidth(8),
+                            ),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide.none,
+                            borderRadius: BorderRadius.circular(
+                              getProportionateScreenWidth(8),
+                            ),
                           ),
                         ),
                       ),
@@ -150,41 +192,53 @@ class _ConfirmBookingScreenState extends State<ConfirmBookingScreen> {
                   ),
                   SizedBox(width: getProportionateScreenWidth(8)),
                   Expanded(
-                    child: TextFormField(
-                      controller: _timeController,
-                      style: Theme.of(context)
-                          .textTheme
-                          .bodyMedium!
-                          .copyWith(fontWeight: FontWeight.bold),
-                      decoration: InputDecoration(
-                        labelText: "Time",
-                        floatingLabelStyle: Theme.of(context)
+                    child: GestureDetector(
+                      onTap: () async {
+                        final time = await _pickTime();
+                        if (time == null) return; // pressed cancel
+                        setState(() {
+                          _timeController = TextEditingController(
+                              text:
+                                  '${time.hour.toString().padLeft(2, '0')}:${time.minute.toString().padLeft(2, '0')}');
+                        });
+                      },
+                      child: TextFormField(
+                        controller: _timeController,
+                        enabled: false,
+                        style: Theme.of(context)
                             .textTheme
-                            .bodyLarge!
-                            .copyWith(color: kGreys),
-                        floatingLabelBehavior: FloatingLabelBehavior.always,
-                        suffixIcon: Padding(
-                          padding:
-                              EdgeInsets.all(getProportionateScreenWidth(12)),
-                          child:
-                              SvgPicture.asset("assets/icons/ClockConfirm.svg"),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide.none,
-                          borderRadius: BorderRadius.circular(
-                            getProportionateScreenWidth(8),
+                            .bodyMedium!
+                            .copyWith(fontWeight: FontWeight.bold),
+                        decoration: InputDecoration(
+                          labelText: "Time",
+                          floatingLabelStyle: Theme.of(context)
+                              .textTheme
+                              .bodyLarge!
+                              .copyWith(color: kGreys),
+                          floatingLabelBehavior: FloatingLabelBehavior.always,
+                          suffixIcon: Padding(
+                            padding:
+                                EdgeInsets.all(getProportionateScreenWidth(12)),
+                            child: SvgPicture.asset(
+                                "assets/icons/ClockConfirm.svg"),
                           ),
-                        ),
-                        border: OutlineInputBorder(
-                          borderSide: BorderSide.none,
-                          borderRadius: BorderRadius.circular(
-                            getProportionateScreenWidth(8),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide.none,
+                            borderRadius: BorderRadius.circular(
+                              getProportionateScreenWidth(8),
+                            ),
                           ),
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide.none,
-                          borderRadius: BorderRadius.circular(
-                            getProportionateScreenWidth(8),
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide.none,
+                            borderRadius: BorderRadius.circular(
+                              getProportionateScreenWidth(8),
+                            ),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide.none,
+                            borderRadius: BorderRadius.circular(
+                              getProportionateScreenWidth(8),
+                            ),
                           ),
                         ),
                       ),
@@ -241,4 +295,17 @@ class _ConfirmBookingScreenState extends State<ConfirmBookingScreen> {
       ),
     );
   }
+
+  Future<DateTime?> _pickDate() => showDatePicker(
+        context: context,
+        initialDate: currentDateTime,
+        firstDate: DateTime(2023),
+        lastDate: DateTime(2100),
+      );
+
+  Future<TimeOfDay?> _pickTime() => showTimePicker(
+        context: context,
+        initialTime: TimeOfDay(
+            hour: currentDateTime.hour, minute: currentDateTime.minute),
+      );
 }
