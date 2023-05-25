@@ -3,9 +3,8 @@ import 'package:equatable/equatable.dart';
 class JobRequestEntity extends Equatable {
   final String id;
   final String customerId;
-  final String partnerId;
   final String serviceClass;
-  final String jobStatus;
+  final String jobRequestStatus;
   final String scheduledTime;
   final String scheduledDate;
   final Location location;
@@ -14,9 +13,8 @@ class JobRequestEntity extends Equatable {
   const JobRequestEntity(
     this.id,
     this.customerId,
-    this.partnerId,
     this.serviceClass,
-    this.jobStatus,
+    this.jobRequestStatus,
     this.scheduledTime,
     this.scheduledDate,
     this.location,
@@ -27,9 +25,8 @@ class JobRequestEntity extends Equatable {
   List<Object?> get props => [
         id,
         customerId,
-        partnerId,
         serviceClass,
-        jobStatus,
+        jobRequestStatus,
         scheduledTime,
         scheduledDate,
         location,
