@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:location/location.dart';
 
 import 'package:servisgo/features/auth/domain/entities/user_entity.dart';
 
@@ -21,6 +22,7 @@ class ConfirmBookingScreen extends StatefulWidget {
 }
 
 class _ConfirmBookingScreenState extends State<ConfirmBookingScreen> {
+  LocationData? currentLocation;
   DateTime currentDateTime = DateTime.now();
   int currentMonth = DateTime.now().month;
   List<String> monthAbbreviations = [
@@ -57,6 +59,7 @@ class _ConfirmBookingScreenState extends State<ConfirmBookingScreen> {
             '${currentDateTime.hour.toString().padLeft(2, '0')}:${currentDateTime.minute.toString().padLeft(2, '0')}');
     _priceController = TextEditingController(text: widget.price);
     _additionalDetailsContoller = TextEditingController();
+    getCurrentLocation();
     super.initState();
   }
 
@@ -68,6 +71,22 @@ class _ConfirmBookingScreenState extends State<ConfirmBookingScreen> {
     _priceController.dispose();
     _additionalDetailsContoller.dispose();
     super.dispose();
+  }
+
+  void getCurrentLocation() async {
+    Location location = Location();
+
+    location.getLocation().then(
+      (location) {
+        currentLocation = location;
+      },
+    );
+
+    location.onLocationChanged.listen((newLoc) {
+      currentLocation = newLoc;
+
+      setState(() {});
+    });
   }
 
   @override
