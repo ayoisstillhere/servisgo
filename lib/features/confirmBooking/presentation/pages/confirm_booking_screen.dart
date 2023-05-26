@@ -93,7 +93,9 @@ class _ConfirmBookingScreenState extends State<ConfirmBookingScreen> {
     location.onLocationChanged.listen((newLoc) {
       currentLocation = newLoc;
 
-      setState(() {});
+      if (mounted) {
+        setState(() {});
+      }
     });
   }
 
