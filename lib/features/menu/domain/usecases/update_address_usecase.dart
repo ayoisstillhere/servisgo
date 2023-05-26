@@ -8,10 +8,14 @@ class UpdateAddressUsecase {
 
   Future<void> call(
     String newAddress,
+    String newCity,
+    String newState,
     String uid,
   ) async =>
       await repository.updateAddress(
         newAddress,
+        newCity,
+        newState,
         uid,
       );
 }

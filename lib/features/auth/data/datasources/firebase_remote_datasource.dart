@@ -29,7 +29,8 @@ abstract class FirebaseRemoteDatasource {
   Stream<List<UserEntity>> getUsers();
   Future<void> updateName(String newName, String uid);
   Future<void> updatePhone(String newPhoneNo, String uid);
-  Future<void> updateAddress(String newAddress, String uid);
+  Future<void> updateAddress(
+      String newAddress, String newCity, String newState, String uid);
   Future<void> updatePfpUrl(String newPfpUrl, String uid);
   Stream<List<PartnerEntity>> getPartners();
   Future<void> createJobRequest(
@@ -186,9 +187,12 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDatasource {
   }
 
   @override
-  Future<void> updateAddress(String newAddress, String uid) async {
+  Future<void> updateAddress(
+      String newAddress, String newCity, String newState, String uid) async {
     await _userCollection.doc(uid).update({
       'address': newAddress,
+      'city': newCity,
+      'state': newState,
     });
   }
 
@@ -249,7 +253,8 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDatasource {
       state: state,
       latitude: latitude,
       longitude: longitude,
-      additionalDetails: additionalDetails, price: price,
+      additionalDetails: additionalDetails,
+      price: price,
     );
     await _jobRequestCollection.doc(id).set(newJobRequest.toDocument());
   }

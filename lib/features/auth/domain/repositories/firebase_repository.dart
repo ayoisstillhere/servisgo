@@ -21,7 +21,8 @@ abstract class FirebaseRepository {
   Stream<List<UserEntity>> getUsers();
   Future<void> updateName(String newName, String uid);
   Future<void> updatePhone(String newPhoneNo, String uid);
-  Future<void> updateAddress(String newAddress, String uid);
+  Future<void> updateAddress(
+      String newAddress, String newCity, String newState, String uid);
   Future<void> updatePfpUrl(String newPfpUrl, String uid);
   Stream<List<PartnerEntity>> getPartners();
   Future<void> createJobRequest(

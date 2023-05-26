@@ -41,6 +41,7 @@ class ProfileItemTile extends StatelessWidget {
                             builder: (context) => UpdateFieldScreen(
                                   field: field,
                                   uid: uid,
+                                  value: value,
                                 )));
                   },
                   child: Column(

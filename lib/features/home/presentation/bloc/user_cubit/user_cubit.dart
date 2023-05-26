@@ -32,9 +32,9 @@ class UserCubit extends Cubit<UserState> {
     } on SocketException catch (_) {}
   }
 
-  Future<void> updateAddress(String address, String uid) async {
+  Future<void> updateAddress(String address,  String newCity, String newState,String uid) async {
     try {
-      await updateAddressUsecase.call(address, uid);
+      await updateAddressUsecase.call(address, newCity, newState, uid);
     } on SocketException catch (_) {}
   }
 

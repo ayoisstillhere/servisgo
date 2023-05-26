@@ -81,8 +81,10 @@ class FirebaseRepositoryImpl implements FirebaseRepository {
   }
 
   @override
-  Future<void> updateAddress(String newAddress, String uid) async =>
-      await firebaseRemoteDatasource.updateAddress(newAddress, uid);
+  Future<void> updateAddress(String newAddress, String newCity, String newState,
+          String uid) async =>
+      await firebaseRemoteDatasource.updateAddress(
+          newAddress, newCity, newState, uid);
 
   @override
   Future<void> updateName(String newName, String uid) async =>
