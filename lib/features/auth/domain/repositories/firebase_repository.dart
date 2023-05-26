@@ -24,4 +24,16 @@ abstract class FirebaseRepository {
   Future<void> updateAddress(String newAddress, String uid);
   Future<void> updatePfpUrl(String newPfpUrl, String uid);
   Stream<List<PartnerEntity>> getPartners();
+  Future<void> createJobRequest(
+    String serviceClass,
+    String scheduledTime,
+    String scheduledDate,
+    String address,
+    String city,
+    String state,
+    double? latitude,
+    double? longitude,
+    String additionalDetails,
+    String price,
+  );
 }

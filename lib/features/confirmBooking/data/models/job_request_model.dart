@@ -9,18 +9,27 @@ class JobRequestModel extends JobRequestEntity {
     required String jobRequestStatus,
     required String scheduledTime,
     required String scheduledDate,
-    required Location location,
+    required String address,
+    required String city,
+    required String state,
+    required double? latitude,
+    required double? longitude,
     required String additionalDetails,
+    required String price,
   }) : super(
-          id,
-          customerId,
-          serviceClass,
-          jobRequestStatus,
-          scheduledTime,
-          scheduledDate,
-          location,
-          additionalDetails,
-        );
+            id,
+            customerId,
+            serviceClass,
+            jobRequestStatus,
+            scheduledTime,
+            scheduledDate,
+            address,
+            city,
+            state,
+            latitude,
+            longitude,
+            additionalDetails,
+            price);
 
   factory JobRequestModel.fromJson(Map<String, dynamic> json) {
     return JobRequestModel(
@@ -30,8 +39,13 @@ class JobRequestModel extends JobRequestEntity {
       jobRequestStatus: json['jobRequestStatus'],
       scheduledTime: json['scheduledTime'],
       scheduledDate: json['scheduledDate'],
-      location: json['location'],
+      address: json['address'],
+      city: json['city'],
+      state: json['state'],
+      latitude: json['latitude'],
+      longitude: json['longitude'],
       additionalDetails: json['additionalDetails'],
+      price: json['price'],
     );
   }
 
@@ -40,12 +54,19 @@ class JobRequestModel extends JobRequestEntity {
       id: (documentSnapshot.data()! as dynamic)['id'],
       customerId: (documentSnapshot.data()! as dynamic)['customerId'],
       serviceClass: (documentSnapshot.data()! as dynamic)['serviceClass'],
-      jobRequestStatus: (documentSnapshot.data()! as dynamic)['jobRequestStatus'],
+      jobRequestStatus:
+          (documentSnapshot.data()! as dynamic)['jobRequestStatus'],
       scheduledTime: (documentSnapshot.data()! as dynamic)['scheduledTime'],
       scheduledDate: (documentSnapshot.data()! as dynamic)['scheduledDate'],
-      location: (documentSnapshot.data()! as dynamic)['location'],
+      address: (documentSnapshot.data()! as dynamic)['address'],
+      city: (documentSnapshot.data()! as dynamic)['city'],
+      state: (documentSnapshot.data()! as dynamic)['state'],
+      latitude: (documentSnapshot.data()! as dynamic)['latitude'],
+      longitude: (documentSnapshot.data()! as dynamic)['longitude'],
       additionalDetails:
           (documentSnapshot.data()! as dynamic)['additionalDetails'],
+      price:
+          (documentSnapshot.data()! as dynamic)['price'],
     );
   }
 
@@ -57,8 +78,13 @@ class JobRequestModel extends JobRequestEntity {
       "jobRequestStatus": jobRequestStatus,
       "scheduledTime": scheduledTime,
       "scheduledDate": scheduledDate,
-      "location": location,
+      "address": address,
+      "city": city,
+      "state": state,
+      "latitude": latitude,
+      "longitude": longitude,
       "additionalDetails": additionalDetails,
+      "price": price,
     };
   }
 }

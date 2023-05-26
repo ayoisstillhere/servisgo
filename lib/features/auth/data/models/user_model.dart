@@ -10,6 +10,8 @@ class UserModel extends UserEntity {
     required String phoneNumber,
     required String address,
     required String pfpURL,
+    required String city,
+    required String state,
   }) : super(
           uid,
           name,
@@ -17,6 +19,8 @@ class UserModel extends UserEntity {
           phoneNumber,
           address,
           pfpURL,
+          city,
+          state,
         );
 
   factory UserModel.fromJson(Map<String, dynamic> json) {
@@ -27,6 +31,8 @@ class UserModel extends UserEntity {
       phoneNumber: json['phoneNumber'],
       address: json['address'],
       pfpURL: json['pfpURL'],
+      city: json['city'],
+      state: json['state'],
     );
   }
 
@@ -38,6 +44,8 @@ class UserModel extends UserEntity {
       phoneNumber: (documentSnapshot.data()! as dynamic)['phoneNumber'],
       address: (documentSnapshot.data()! as dynamic)['address'],
       pfpURL: (documentSnapshot.data()! as dynamic)['pfpURL'],
+      city: (documentSnapshot.data()! as dynamic)['city'],
+      state: (documentSnapshot.data()! as dynamic)['state'],
     );
   }
 
@@ -48,7 +56,9 @@ class UserModel extends UserEntity {
       "email": email,
       "phoneNumber": phoneNumber,
       "address": address,
-      "pfpURL":pfpURL,
+      "pfpURL": pfpURL,
+      "city": city,
+      "state": state,
     };
   }
 }

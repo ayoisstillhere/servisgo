@@ -70,6 +70,8 @@ class _NavPageState extends State<NavPage> {
         phoneNumber: "",
         address: "",
         pfpURL: "",
+        city: "",
+        state: "",
       ),
     );
     List<Widget> navPages = [

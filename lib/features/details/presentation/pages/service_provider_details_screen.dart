@@ -318,6 +318,7 @@ class ServiceProviderDetails extends StatelessWidget {
                                     builder: (context) => ConfirmBookingScreen(
                                           price: details['price'],
                                           currentUser: currentUser,
+                                          serviceClass: partner.serviceClass,
                                         )));
                           },
                         ),

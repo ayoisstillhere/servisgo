@@ -1,4 +1,6 @@
 import 'package:get_it/get_it.dart';
+import 'package:servisgo/features/confirmBooking/domain/usecases/create_job_request_usecase.dart';
+import 'package:servisgo/features/confirmBooking/presentation/bloc/job_request_cubit/job_request_cubit.dart';
 import 'package:servisgo/features/home/domain/usecases/get_partners_usecase.dart';
 import 'package:servisgo/features/home/presentation/bloc/partner_cubit/partner_cubit.dart';
 import 'features/home/domain/usecases/get_users_usecase.dart';
@@ -58,6 +60,8 @@ Future<void> init() async {
   sl.registerFactory<PartnerCubit>(() => PartnerCubit(
         getPartnersUsecase: sl.call(),
       ));
+  sl.registerFactory<JobRequestCubit>(
+      () => JobRequestCubit(createJobRequestUsecase: sl.call()));
 
   //!useCae
   sl.registerLazySingleton<IsSigninUsecase>(
@@ -94,6 +98,8 @@ Future<void> init() async {
       () => UpdatePfpUrlUsecase(repository: sl.call()));
   sl.registerLazySingleton<GetPartnersUsecase>(
       () => GetPartnersUsecase(repository: sl.call()));
+  sl.registerLazySingleton<CreateJobRequestUsecase>(
+      () => CreateJobRequestUsecase(repository: sl.call()));
 
   //repository
   sl.registerLazySingleton<FirebaseRepository>(

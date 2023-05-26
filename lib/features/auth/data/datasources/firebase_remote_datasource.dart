@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:servisgo/features/confirmBooking/data/models/job_request_model.dart';
+import 'package:uuid/uuid.dart';
 
 import '../../../home/data/models/partner_model.dart';
 import '../../../home/domain/entities/partner_entity.dart';
@@ -30,12 +32,26 @@ abstract class FirebaseRemoteDatasource {
   Future<void> updateAddress(String newAddress, String uid);
   Future<void> updatePfpUrl(String newPfpUrl, String uid);
   Stream<List<PartnerEntity>> getPartners();
+  Future<void> createJobRequest(
+    String serviceClass,
+    String scheduledTime,
+    String scheduledDate,
+    String address,
+    String city,
+    String state,
+    double? latitude,
+    double? longitude,
+    String additionalDetails,
+    String price,
+  );
 }
 
 class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDatasource {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final _userCollection = FirebaseFirestore.instance.collection("users");
   final _partnerCollection = FirebaseFirestore.instance.collection('partners');
+  final _jobRequestCollection =
+      FirebaseFirestore.instance.collection('jobRequests');
   final googleSignin = GoogleSignIn(scopes: ['email']);
 
   GoogleSignInAccount? _user;
@@ -59,6 +75,8 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDatasource {
           phoneNumber: phoneNumber,
           address: address,
           pfpURL: pfpURL,
+          city: '',
+          state: '',
         ).toDocument();
         _userCollection.doc(_auth.currentUser!.uid).set(newUser);
         return;
@@ -139,6 +157,8 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDatasource {
           phoneNumber: "",
           address: "No address",
           pfpURL: _user!.photoUrl!,
+          city: '',
+          state: '',
         ).toDocument();
         _userCollection.doc(_auth.currentUser!.uid).set(newUser);
         return;
@@ -185,19 +205,52 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDatasource {
       'phoneNumber': newPhoneNo,
     });
   }
-  
+
   @override
   Future<void> updatePfpUrl(String newPfpUrl, String uid) async {
-   await _userCollection.doc(uid).update({
+    await _userCollection.doc(uid).update({
       'pfpURL': newPfpUrl,
     });
   }
-  
+
   @override
   Stream<List<PartnerEntity>> getPartners() {
     return _partnerCollection.snapshots().map((querySnapshot) => querySnapshot
         .docs
         .map((docSnapshot) => PartnerModel.fromSnapshot(docSnapshot))
         .toList());
+  }
+
+  @override
+  Future<void> createJobRequest(
+    String serviceClass,
+    String scheduledTime,
+    String scheduledDate,
+    String address,
+    String city,
+    String state,
+    double? latitude,
+    double? longitude,
+    String additionalDetails,
+    String price,
+  ) async {
+    var uuid = const Uuid();
+    final String id = uuid.v4();
+
+    final newJobRequest = JobRequestModel(
+      id: id,
+      customerId: _auth.currentUser!.uid,
+      serviceClass: serviceClass,
+      jobRequestStatus: "Pending",
+      scheduledTime: scheduledTime,
+      scheduledDate: scheduledDate,
+      address: address,
+      city: city,
+      state: state,
+      latitude: latitude,
+      longitude: longitude,
+      additionalDetails: additionalDetails, price: price,
+    );
+    await _jobRequestCollection.doc(id).set(newJobRequest.toDocument());
   }
 }

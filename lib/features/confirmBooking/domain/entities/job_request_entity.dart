@@ -7,8 +7,13 @@ class JobRequestEntity extends Equatable {
   final String jobRequestStatus;
   final String scheduledTime;
   final String scheduledDate;
-  final Location location;
+  final String address;
+  final String city;
+  final String state;
+  final double? latitude;
+  final double? longitude;
   final String additionalDetails;
+  final String price;
 
   const JobRequestEntity(
     this.id,
@@ -17,8 +22,13 @@ class JobRequestEntity extends Equatable {
     this.jobRequestStatus,
     this.scheduledTime,
     this.scheduledDate,
-    this.location,
+    this.address,
+    this.city,
+    this.state,
+    this.latitude,
+    this.longitude,
     this.additionalDetails,
+    this.price,
   );
 
   @override
@@ -29,23 +39,12 @@ class JobRequestEntity extends Equatable {
         jobRequestStatus,
         scheduledTime,
         scheduledDate,
-        location,
+        address,
+        city,
+        state,
+        latitude,
+        longitude,
         additionalDetails,
+        price,
       ];
-}
-
-class Location {
-  final String address;
-  final String city;
-  final String state;
-  final double latitude;
-  final double longitude;
-
-  const Location({
-    required this.address,
-    required this.city,
-    required this.state,
-    required this.latitude,
-    required this.longitude,
-  });
 }
