@@ -33,7 +33,7 @@ class _UpdateFieldScreenState extends State<UpdateFieldScreen> {
   List<NigeriaLocation> nigeriaLocations = [
     NigeriaLocation(
       state: 'Lagos',
-      cities: ['Ikeja', 'Lekki', 'Victoria Island'],
+      cities: ['Ikeja', 'Lekki', 'V.I'],
     ),
     NigeriaLocation(
       state: 'Abuja',
