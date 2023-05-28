@@ -77,7 +77,7 @@ class _NavPageState extends State<NavPage> {
     List<Widget> navPages = [
       HomeScreen(currentUser: user),
       const HistoryScreen(),
-      const TrackerScreen(),
+      TrackerScreen(currentUser: user),
       MessagesScreen(),
       MenuScreen(currentUser: user),
     ];
