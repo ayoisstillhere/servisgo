@@ -1,4 +1,5 @@
 import 'package:servisgo/features/home/domain/entities/partner_entity.dart';
+import 'package:servisgo/features/tracker/domain/entities/accepted_service_entity.dart';
 
 import '../../domain/entities/user_entity.dart';
 
@@ -128,4 +129,9 @@ class FirebaseRepositoryImpl implements FirebaseRepository {
         additionalDetails,
         price,
       );
+
+  @override
+  Stream<List<AcceptedServiceEntity>> getAcceptedServices() {
+    return firebaseRemoteDatasource.getAcceptedServices();
+  }
 }

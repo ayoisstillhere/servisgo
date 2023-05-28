@@ -218,8 +218,10 @@ class ServiceProviderDetails extends StatelessWidget {
                                     child: Text(
                                       "FixITbRO",
                                       textAlign: TextAlign.center,
-                                      style:
-                                          Theme.of(context).textTheme.bodySmall,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodySmall!
+                                          .copyWith(color: kBlacks),
                                     ),
                                   ),
                                 ),

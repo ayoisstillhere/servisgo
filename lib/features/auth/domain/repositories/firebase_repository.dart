@@ -1,3 +1,5 @@
+import 'package:servisgo/features/tracker/domain/entities/accepted_service_entity.dart';
+
 import '../../../home/domain/entities/partner_entity.dart';
 import '../entities/user_entity.dart';
 
@@ -37,4 +39,5 @@ abstract class FirebaseRepository {
     String additionalDetails,
     String price,
   );
+  Stream<List<AcceptedServiceEntity>> getAcceptedServices();
 }

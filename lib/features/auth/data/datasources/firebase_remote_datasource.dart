@@ -6,6 +6,8 @@ import 'package:uuid/uuid.dart';
 
 import '../../../home/data/models/partner_model.dart';
 import '../../../home/domain/entities/partner_entity.dart';
+import '../../../tracker/data/models/accepted_service_model.dart';
+import '../../../tracker/domain/entities/accepted_service_entity.dart';
 import '../../domain/entities/user_entity.dart';
 import '../models/user_model.dart';
 
@@ -45,6 +47,7 @@ abstract class FirebaseRemoteDatasource {
     String additionalDetails,
     String price,
   );
+  Stream<List<AcceptedServiceEntity>> getAcceptedServices();
 }
 
 class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDatasource {
@@ -53,6 +56,8 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDatasource {
   final _partnerCollection = FirebaseFirestore.instance.collection('partners');
   final _jobRequestCollection =
       FirebaseFirestore.instance.collection('jobRequests');
+  final _acceptedServiceCollection =
+      FirebaseFirestore.instance.collection("acceptedServices");
   final googleSignin = GoogleSignIn(scopes: ['email']);
 
   GoogleSignInAccount? _user;
@@ -257,5 +262,14 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDatasource {
       price: price,
     );
     await _jobRequestCollection.doc(id).set(newJobRequest.toDocument());
+  }
+
+  @override
+  Stream<List<AcceptedServiceEntity>> getAcceptedServices() {
+    return _acceptedServiceCollection.snapshots().map((querySnapshot) =>
+        querySnapshot.docs
+            .map(
+                (docSnapshot) => AcceptedServiceModel.fromSnapshot(docSnapshot))
+            .toList());
   }
 }
