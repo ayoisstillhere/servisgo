@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:servisgo/features/confirmBooking/domain/entities/job_request_entity.dart';
+import '../../domain/entities/job_request_entity.dart';
 
 class JobRequestModel extends JobRequestEntity {
   const JobRequestModel({

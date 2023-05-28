@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:servisgo/features/confirmBooking/data/models/job_request_model.dart';
+import '../../../confirmBooking/data/models/job_request_model.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../home/data/models/partner_model.dart';

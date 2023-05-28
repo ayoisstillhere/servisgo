@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
 import '../constants.dart';
 import '../features/auth/data/models/user_model.dart';
 import '../features/chat/presentation/pages/messages_screen.dart';
@@ -11,7 +12,6 @@ import '../features/home/presentation/bloc/user_cubit/user_cubit.dart';
 import '../features/home/presentation/pages/home_screen.dart';
 import '../features/menu/presentation/pages/menu_screen.dart';
 import '../features/tracker/presentation/pages/tracker_screen.dart';
-
 import '../size_config.dart';
 
 class NavPage extends StatefulWidget {

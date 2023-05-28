@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:location/location.dart';
-import 'package:servisgo/components/nav_page.dart';
+import '../../../../components/nav_page.dart';
 
-import 'package:servisgo/features/auth/domain/entities/user_entity.dart';
-import 'package:servisgo/features/auth/presentation/widgets/form_error.dart';
+import '../../../auth/domain/entities/user_entity.dart';
+import '../../../auth/presentation/widgets/form_error.dart';
 
 import '../../../../components/default_button.dart';
 import '../../../../constants.dart';

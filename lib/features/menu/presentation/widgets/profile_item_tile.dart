@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../pages/update_field_screen.dart';
-
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
+import '../pages/update_field_screen.dart';
 
 class ProfileItemTile extends StatelessWidget {
   const ProfileItemTile({

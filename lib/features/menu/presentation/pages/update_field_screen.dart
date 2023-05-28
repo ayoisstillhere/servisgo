@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:servisgo/features/auth/presentation/widgets/form_error.dart';
+import '../../../auth/presentation/widgets/form_error.dart';
 
 import '../../../../components/default_button.dart';
 import '../../../../components/nav_page.dart';

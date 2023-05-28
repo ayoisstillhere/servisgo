@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:servisgo/features/confirmBooking/domain/usecases/create_job_request_usecase.dart';
+import '../../../domain/usecases/create_job_request_usecase.dart';
 
 part 'job_request_state.dart';
 

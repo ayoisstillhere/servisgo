@@ -7,7 +7,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:servisgo/components/nav_page.dart';
-
 import 'package:servisgo/features/auth/domain/entities/user_entity.dart';
 import 'package:servisgo/features/menu/presentation/bloc/pfp_cubit/pfp_cubit.dart';
 

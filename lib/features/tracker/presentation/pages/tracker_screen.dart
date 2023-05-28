@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:servisgo/features/auth/domain/entities/user_entity.dart';
+import '../../../auth/domain/entities/user_entity.dart';
 
 import '../../data/models/accepted_service_model.dart';
 import '../bloc/accepted_service_cubit/accepted_service_cubit.dart';

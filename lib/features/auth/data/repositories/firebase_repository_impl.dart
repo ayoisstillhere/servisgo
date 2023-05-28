@@ -1,5 +1,5 @@
-import 'package:servisgo/features/home/domain/entities/partner_entity.dart';
-import 'package:servisgo/features/tracker/domain/entities/accepted_service_entity.dart';
+import '../../../home/domain/entities/partner_entity.dart';
+import '../../../tracker/domain/entities/accepted_service_entity.dart';
 
 import '../../domain/entities/user_entity.dart';
 

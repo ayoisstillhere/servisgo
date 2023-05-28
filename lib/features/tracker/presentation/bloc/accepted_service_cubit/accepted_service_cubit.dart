@@ -3,8 +3,8 @@ import 'dart:io';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:servisgo/features/tracker/domain/entities/accepted_service_entity.dart';
-import 'package:servisgo/features/tracker/domain/usecases/get_accepted_requests_usecases.dart';
+import '../../../domain/entities/accepted_service_entity.dart';
+import '../../../domain/usecases/get_accepted_requests_usecases.dart';
 
 part 'accepted_service_state.dart';
 

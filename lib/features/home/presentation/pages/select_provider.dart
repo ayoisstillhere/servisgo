@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:servisgo/features/auth/domain/entities/user_entity.dart';
-import 'package:servisgo/features/home/domain/entities/partner_entity.dart';
+import '../../../auth/domain/entities/user_entity.dart';
+import '../../domain/entities/partner_entity.dart';
 
 import '../../../../size_config.dart';
 import '../bloc/partner_cubit/partner_cubit.dart';

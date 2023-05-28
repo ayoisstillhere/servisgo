@@ -1,9 +1,9 @@
 import 'package:get_it/get_it.dart';
-import 'package:servisgo/features/confirmBooking/domain/usecases/create_job_request_usecase.dart';
-import 'package:servisgo/features/confirmBooking/presentation/bloc/job_request_cubit/job_request_cubit.dart';
-import 'package:servisgo/features/home/domain/usecases/get_partners_usecase.dart';
-import 'package:servisgo/features/home/presentation/bloc/partner_cubit/partner_cubit.dart';
-import 'package:servisgo/features/tracker/presentation/bloc/accepted_service_cubit/accepted_service_cubit.dart';
+import 'features/confirmBooking/domain/usecases/create_job_request_usecase.dart';
+import 'features/confirmBooking/presentation/bloc/job_request_cubit/job_request_cubit.dart';
+import 'features/home/domain/usecases/get_partners_usecase.dart';
+import 'features/home/presentation/bloc/partner_cubit/partner_cubit.dart';
+import 'features/tracker/presentation/bloc/accepted_service_cubit/accepted_service_cubit.dart';
 import 'features/home/domain/usecases/get_users_usecase.dart';
 import 'features/home/presentation/bloc/user_cubit/user_cubit.dart';
 import 'features/menu/data/datasources/firebase_storage_remote_datasource.dart';
