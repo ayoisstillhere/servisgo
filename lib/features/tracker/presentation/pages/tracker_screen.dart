@@ -3,11 +3,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
+import 'package:servisgo/features/home/presentation/bloc/partner_cubit/partner_cubit.dart';
+import 'package:servisgo/size_config.dart';
+
 import '../../../../constants.dart';
 import '../../../auth/domain/entities/user_entity.dart';
 import '../../data/models/accepted_service_model.dart';
+import '../../domain/entities/accepted_service_entity.dart';
 import '../bloc/accepted_service_cubit/accepted_service_cubit.dart';
-import '../widgets/no_results_body.dart';
+import '../widgets/tracker_info_card.dart';
 
 class TrackerScreen extends StatefulWidget {
   final UserEntity currentUser;
@@ -72,33 +76,13 @@ class _TrackerScreenState extends State<TrackerScreen> {
 
             List<LatLng> polylineCoordinates = [];
 
-            void getPolyPoints() async {
-              PolylinePoints polylinePoints = PolylinePoints();
-
-              PolylineResult result =
-                  await polylinePoints.getRouteBetweenCoordinates(
-                googleApiKey,
-                PointLatLng(
-                    partnerLocation.latitude, partnerLocation.longitude),
-                PointLatLng(
-                    customerLocation.latitude, customerLocation.longitude),
-              );
-
-              if (result.points.isNotEmpty) {
-                result.points.forEach(
-                  (PointLatLng point) => polylineCoordinates.add(
-                    LatLng(point.latitude, point.longitude),
-                  ),
-                );
-                setState(() {});
-              }
-            }
-
             // return const NoResultsBody();
             return TrackerMap(
               customerLocation: customerLocation,
               partnerLocation: partnerLocation,
               polylineCoordinates: polylineCoordinates,
+              partnerId: currentService.partnerId,
+              acceptedService: currentService,
             );
           }
           return const Center(child: CircularProgressIndicator());
@@ -114,12 +98,17 @@ class TrackerMap extends StatefulWidget {
     required this.customerLocation,
     required this.partnerLocation,
     required this.polylineCoordinates,
+    required this.partnerId,
+    required this.acceptedService,
   }) : super(key: key);
 
   final LatLng customerLocation;
   final LatLng partnerLocation;
 
   final List<LatLng> polylineCoordinates;
+  final String partnerId;
+
+  final AcceptedServiceEntity acceptedService;
 
   @override
   State<TrackerMap> createState() => _TrackerMapState();
@@ -154,6 +143,7 @@ class _TrackerMapState extends State<TrackerMap> {
   @override
   void initState() {
     getPolyPoints();
+    BlocProvider.of<PartnerCubit>(context).getPartners();
     super.initState();
   }
 
@@ -184,6 +174,24 @@ class _TrackerMapState extends State<TrackerMap> {
               position: widget.customerLocation,
             ),
           },
+        ),
+        Positioned(
+          bottom: getProportionateScreenHeight(66),
+          left: getProportionateScreenWidth(32),
+          right: getProportionateScreenWidth(32),
+          child: BlocBuilder<PartnerCubit, PartnerState>(
+            builder: (_, state) {
+              if (state is PartnerLoaded) {
+                final partner = state.partners.firstWhere(
+                    (partner) => partner.partnerId == widget.partnerId);
+                return TrackerInfoCard(
+                  partner: partner,
+                  acceptedService: widget.acceptedService,
+                );
+              }
+              return const Center(child: CircularProgressIndicator());
+            },
+          ),
         ),
       ],
     );

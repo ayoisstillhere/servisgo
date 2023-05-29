@@ -28,6 +28,7 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  auto_size_text: ^3.0.0
   cloud_firestore: ^4.4.3
   cupertino_icons: ^1.0.2
   equatable: ^2.0.5
@@ -76,59 +77,9 @@ flutter:
   uses-material-design: true
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/Logo_Icon.png
-    - assets/images/ServisGo_Logo.png
-    - assets/images/Onboarding1.png
-    - assets/images/Onboarding2.png
-    - assets/images/Onboarding3.png
-    - assets/icons/eye-suffix.svg
-    - assets/images/or.svg
-    - assets/icons/google_icon.svg
-    - assets/images/Forgot_img.svg
-    - assets/icons/Error.svg
-    - assets/icons/chat_icon.svg
-    - assets/icons/history_icon.svg
-    - assets/icons/home_icon.svg
-    - assets/icons/Location_icon.svg
-    - assets/icons/Menu_icon.svg
-    - assets/icons/Notifications-none.svg
-    - assets/icons/Notifications.svg
-    - assets/images/cleanerNobg.png
-    - assets/icons/CleaningIcon.png
-    - assets/icons/ElectricalIcon.png
-    - assets/icons/GardeningIcon.png
-    - assets/icons/HandymanIcon.png
-    - assets/icons/HomeImprovementIcon.png
-    - assets/icons/PaintingIcon.png
-    - assets/icons/PlumbingIcon.png
-    - assets/icons/ratingStar.svg
-    - assets/icons/ArrowLeft.svg
-    - assets/icons/clock.svg
-    - assets/icons/money.svg
-    - assets/icons/Star.svg
-    - assets/icons/Edit.svg
-    - assets/icons/Document.svg
-    - assets/icons/InfoCircle.svg
-    - assets/icons/Logout.svg
-    - assets/icons/Notification.svg
-    - assets/icons/Setting.svg
-    - assets/icons/ShieldDone.svg
-    - assets/icons/Wallet.svg
-    - assets/icons/Camera.svg
-    - assets/icons/addIcon.svg
-    - assets/icons/Send.svg
-    - assets/images/notFound.svg
-    - assets/icons/calendarConfirm.svg
-    - assets/icons/ClockConfirm.svg
-    - assets/icons/DollarConfirm.svg
-    - assets/icons/locationPinConfirm.svg
-    - assets/images/notifiBell.svg
-    - assets/icons/Iconly/Broken/Lock.svg
-    - assets/icons/Iconly/Broken/Send.svg
-    - assets/icons/Iconly/Broken/Star.svg
-    - assets/icons/calendar.svg
-    - assets/icons/work.svg
-    - assets/images/supportSvg.svg
+    - assets/icons/Iconly/Broken/
+    - assets/icons/
+    - assets/images/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see
