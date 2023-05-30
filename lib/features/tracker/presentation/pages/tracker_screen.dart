@@ -155,6 +155,8 @@ class _TrackerMapState extends State<TrackerMap> {
     return Stack(
       children: [
         GoogleMap(
+          mapType: MapType.normal,
+          myLocationButtonEnabled: true,
           initialCameraPosition: CameraPosition(
             target: widget.customerLocation,
             zoom: 13.5,
