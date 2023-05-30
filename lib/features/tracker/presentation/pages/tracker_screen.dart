@@ -11,6 +11,7 @@ import '../../../auth/domain/entities/user_entity.dart';
 import '../../data/models/accepted_service_model.dart';
 import '../../domain/entities/accepted_service_entity.dart';
 import '../bloc/accepted_service_cubit/accepted_service_cubit.dart';
+import '../widgets/no_results_body.dart';
 import '../widgets/tracker_info_card.dart';
 
 class TrackerScreen extends StatefulWidget {
@@ -76,7 +77,9 @@ class _TrackerScreenState extends State<TrackerScreen> {
 
             List<LatLng> polylineCoordinates = [];
 
-            // return const NoResultsBody();
+            if (currentService.id == "") {
+              return const NoResultsBody();
+            }
             return TrackerMap(
               customerLocation: customerLocation,
               partnerLocation: partnerLocation,

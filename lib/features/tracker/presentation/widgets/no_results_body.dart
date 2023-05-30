@@ -21,7 +21,7 @@ class NoResultsBody extends StatelessWidget {
       padding: EdgeInsets.symmetric(
         horizontal: getProportionateScreenWidth(32),
       ).copyWith(
-        top: getProportionateScreenHeight(88),
+        top: getProportionateScreenHeight(170),
       ),
       child: Column(
         children: [
