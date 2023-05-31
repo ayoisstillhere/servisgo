@@ -134,11 +134,11 @@ class _TrackerMapState extends State<TrackerMap> {
     );
 
     if (result.points.isNotEmpty) {
-      result.points.forEach(
-        (PointLatLng point) => widget.polylineCoordinates.add(
+      for (var point in result.points) {
+        widget.polylineCoordinates.add(
           LatLng(point.latitude, point.longitude),
-        ),
-      );
+        );
+      }
       setState(() {});
     }
   }
