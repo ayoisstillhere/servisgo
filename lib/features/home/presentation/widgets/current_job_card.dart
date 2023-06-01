@@ -1,0 +1,196 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import 'package:servisgo/features/tracker/domain/entities/accepted_service_entity.dart';
+
+import '../../../../constants.dart';
+import '../../../../size_config.dart';
+import '../bloc/partner_cubit/partner_cubit.dart';
+
+class CurrentJobCard extends StatefulWidget {
+  const CurrentJobCard({
+    Key? key,
+    required this.currentService,
+  }) : super(key: key);
+  final AcceptedServiceEntity currentService;
+
+  @override
+  State<CurrentJobCard> createState() => _CurrentJobCardState();
+}
+
+class _CurrentJobCardState extends State<CurrentJobCard> {
+  @override
+  void initState() {
+    BlocProvider.of<PartnerCubit>(context).getPartners();
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final primaryColor =
+        MediaQuery.of(context).platformBrightness == Brightness.dark
+            ? kDarkPrimaryColor
+            : kPrimaryColor;
+    return BlocBuilder<PartnerCubit, PartnerState>(
+      builder: (_, state) {
+        if (state is PartnerLoaded) {
+          final currentPartner = state.partners.firstWhere((partner) =>
+              partner.partnerId == widget.currentService.partnerId);
+          return Padding(
+            padding: EdgeInsets.symmetric(
+                horizontal: getProportionateScreenWidth(32)),
+            child: Container(
+              padding: EdgeInsets.symmetric(
+                horizontal: getProportionateScreenWidth(16),
+                vertical: getProportionateScreenHeight(16),
+              ),
+              width: double.infinity,
+              // height: getProportionateScreenHeight(200),
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: kOutlineVariant,
+                ),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      CircleAvatar(
+                        radius: getProportionateScreenWidth(32),
+                        backgroundImage: NetworkImage(
+                          currentPartner.partnerPfpURL,
+                        ),
+                      ),
+                      SizedBox(width: getProportionateScreenWidth(8)),
+                      Expanded(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  currentPartner.partnerName,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyLarge!
+                                      .copyWith(fontWeight: FontWeight.w600),
+                                ),
+                                SizedBox(
+                                    height: getProportionateScreenHeight(8)),
+                                Row(
+                                  children: [
+                                    Text(
+                                      widget.currentService.scheduledDate,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium!
+                                          .copyWith(
+                                            fontWeight: FontWeight.w600,
+                                            color: kGreys,
+                                          ),
+                                    ),
+                                    SizedBox(
+                                        width: getProportionateScreenWidth(12)),
+                                    Text(
+                                      widget.currentService.scheduledTime,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodyMedium!
+                                          .copyWith(
+                                            fontWeight: FontWeight.w600,
+                                            color: kGreys,
+                                          ),
+                                    )
+                                  ],
+                                )
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: getProportionateScreenWidth(12)),
+                  Row(
+                    children: [
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Service",
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodySmall!
+                                .copyWith(color: kGreys),
+                          ),
+                          SizedBox(height: getProportionateScreenHeight(4)),
+                          Text(
+                            widget.currentService.serviceClass,
+                            style: Theme.of(context).textTheme.bodyMedium,
+                          ),
+                        ],
+                      ),
+                      SizedBox(width: getProportionateScreenWidth(100)),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "Price Per Hour",
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodySmall!
+                                .copyWith(color: kGreys),
+                          ),
+                          SizedBox(height: getProportionateScreenHeight(4)),
+                          Text(
+                            "#${widget.currentService.servicePrice}",
+                            style: Theme.of(context).textTheme.bodyMedium,
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  SizedBox(height: getProportionateScreenWidth(24)),
+                  GestureDetector(
+                    onTap: () {},
+                    child: Container(
+                      width: double.infinity,
+                      decoration: BoxDecoration(
+                          color: primaryColor,
+                          borderRadius: BorderRadius.circular(
+                              getProportionateScreenWidth(8))),
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: getProportionateScreenWidth(24),
+                          vertical: getProportionateScreenHeight(8),
+                        ),
+                        child: Center(
+                          child: Text(
+                            "Mark As Complete",
+                            textAlign: TextAlign.center,
+                            style:
+                                Theme.of(context).textTheme.bodyLarge!.copyWith(
+                                      color: MediaQuery.of(context)
+                                                  .platformBrightness ==
+                                              Brightness.dark
+                                          ? kBlacks
+                                          : kBgColor,
+                                    ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          );
+        }
+        return const Center(child: CircularProgressIndicator());
+      },
+    );
+  }
+}
