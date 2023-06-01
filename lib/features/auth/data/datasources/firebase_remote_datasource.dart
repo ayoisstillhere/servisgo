@@ -49,6 +49,8 @@ abstract class FirebaseRemoteDatasource {
   );
   Stream<List<AcceptedServiceEntity>> getAcceptedServices();
   Future<void> updateServiceToCompleted(String serviceId, String partnerId);
+  Future<void> updateServiceRating(
+      String serviceId, String partnerId, double rating);
 }
 
 class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDatasource {
@@ -275,7 +277,8 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDatasource {
   }
 
   @override
-  Future<void> updateServiceToCompleted(String serviceId, String partnerId) async {
+  Future<void> updateServiceToCompleted(
+      String serviceId, String partnerId) async {
     await _acceptedServiceCollection.doc(serviceId).update({
       'serviceStatus': 'Completed',
     });
@@ -287,5 +290,16 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDatasource {
         'completed': newValue,
       });
     }
+  }
+
+  @override
+  Future<void> updateServiceRating(
+      String serviceId, String partnerId, double rating) async {
+    await _acceptedServiceCollection.doc(serviceId).update({
+      'serviceRating': rating,
+    });
+    await _partnerCollection.doc(partnerId).update({
+      'ratings': FieldValue.arrayUnion([rating]),
+    });
   }
 }

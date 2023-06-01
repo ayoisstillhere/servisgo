@@ -368,7 +368,7 @@ class _HomeScreenState extends State<HomeScreen> {
               double sum = 0;
               double avgRating = 0;
               if (ratings.isNotEmpty) {
-                for (int rating in ratings) {
+                for (var rating in ratings) {
                   sum += rating;
                 }
                 avgRating = sum / ratings.length;

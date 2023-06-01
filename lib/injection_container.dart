@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:servisgo/features/home/domain/usecases/update_service_rating_usecase.dart';
 import 'package:servisgo/features/home/domain/usecases/update_service_to_completed_usecase.dart';
 import 'features/confirmBooking/domain/usecases/create_job_request_usecase.dart';
 import 'features/confirmBooking/presentation/bloc/job_request_cubit/job_request_cubit.dart';
@@ -68,6 +69,7 @@ Future<void> init() async {
   sl.registerFactory<AcceptedServiceCubit>(() => AcceptedServiceCubit(
         getAcceptedRequestsUsecase: sl.call(),
         updateServiceToCompletedUsecase: sl.call(),
+        updateServiceRatingUsecase: sl.call(),
       ));
 
   //!useCae
@@ -111,6 +113,8 @@ Future<void> init() async {
       () => GetAcceptedRequestsUsecase(repository: sl.call()));
   sl.registerLazySingleton<UpdateServiceToCompletedUsecase>(
       () => UpdateServiceToCompletedUsecase(repository: sl.call()));
+  sl.registerLazySingleton<UpdateServiceRatingUsecase>(
+      () => UpdateServiceRatingUsecase(repository: sl.call()));
 
   //repository
   sl.registerLazySingleton<FirebaseRepository>(

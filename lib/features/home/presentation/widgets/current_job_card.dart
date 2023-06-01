@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -161,11 +163,11 @@ class _CurrentJobCardState extends State<CurrentJobCard> {
                   ),
                   SizedBox(height: getProportionateScreenWidth(24)),
                   GestureDetector(
-                    onTap: () {
-                      // BlocProvider.of<AcceptedServiceCubit>(context)
-                      //     .updateServiceToCompleted(widget.currentService.id,
-                      //         widget.currentService.partnerId);
-                      showRating(currentPartner);
+                    onTap: () async {
+                      await showRating(currentPartner);
+                      BlocProvider.of<AcceptedServiceCubit>(context)
+                          .updateServiceToCompleted(widget.currentService.id,
+                              widget.currentService.partnerId);
                     },
                     child: Container(
                       width: double.infinity,
@@ -205,7 +207,7 @@ class _CurrentJobCardState extends State<CurrentJobCard> {
     );
   }
 
-  void showRating(final PartnerEntity currentPartner) => showDialog(
+  Future<void> showRating(final PartnerEntity currentPartner) => showDialog(
         context: context,
         builder: (context) => AlertDialog(
           content: Container(
@@ -244,7 +246,12 @@ class _CurrentJobCardState extends State<CurrentJobCard> {
                   }),
                 ),
                 GestureDetector(
-                  onTap: () {},
+                  onTap: () async {
+                    await BlocProvider.of<AcceptedServiceCubit>(context)
+                        .updateServiceRating(widget.currentService.id,
+                            widget.currentService.partnerId, rating);
+                    Navigator.pop(context);
+                  },
                   child: Container(
                     width: getProportionateScreenWidth(224),
                     height: getProportionateScreenHeight(36),
