@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:servisgo/features/home/domain/entities/partner_entity.dart';
 
 import 'package:servisgo/features/tracker/domain/entities/accepted_service_entity.dart';
 import 'package:servisgo/features/tracker/presentation/bloc/accepted_service_cubit/accepted_service_cubit.dart';
@@ -20,6 +23,8 @@ class CurrentJobCard extends StatefulWidget {
 }
 
 class _CurrentJobCardState extends State<CurrentJobCard> {
+  double rating = 0.0;
+
   @override
   void initState() {
     BlocProvider.of<PartnerCubit>(context).getPartners();
@@ -157,8 +162,10 @@ class _CurrentJobCardState extends State<CurrentJobCard> {
                   SizedBox(height: getProportionateScreenWidth(24)),
                   GestureDetector(
                     onTap: () {
-                      BlocProvider.of<AcceptedServiceCubit>(context)
-                          .updateServiceToCompleted(widget.currentService.id, widget.currentService.partnerId);
+                      // BlocProvider.of<AcceptedServiceCubit>(context)
+                      //     .updateServiceToCompleted(widget.currentService.id,
+                      //         widget.currentService.partnerId);
+                      showRating(currentPartner);
                     },
                     child: Container(
                       width: double.infinity,
@@ -197,4 +204,71 @@ class _CurrentJobCardState extends State<CurrentJobCard> {
       },
     );
   }
+
+  void showRating(final PartnerEntity currentPartner) => showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          content: Container(
+            height: getProportionateScreenHeight(284),
+            width: getProportionateScreenWidth(320),
+            padding: EdgeInsets.symmetric(
+              horizontal: getProportionateScreenWidth(6),
+              vertical: getProportionateScreenWidth(16),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SvgPicture.asset("assets/icons/stars.svg"),
+                Text(
+                  "Rate ${currentPartner.partnerName}",
+                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                        fontWeight: FontWeight.w600,
+                      ),
+                ),
+                Text(
+                  "Tap a star to give your rating",
+                  style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                        color: kGreys,
+                      ),
+                ),
+                RatingBar.builder(
+                  minRating: 0,
+                  itemSize: 46,
+                  itemBuilder: (context, _) => const Icon(
+                    Icons.star,
+                    color: Colors.amber,
+                  ),
+                  updateOnDrag: true,
+                  onRatingUpdate: (rating) => setState(() {
+                    this.rating = rating;
+                  }),
+                ),
+                GestureDetector(
+                  onTap: () {},
+                  child: Container(
+                    width: getProportionateScreenWidth(224),
+                    height: getProportionateScreenHeight(36),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(4),
+                      color: MediaQuery.of(context).platformBrightness ==
+                              Brightness.dark
+                          ? kDarkPrimaryColor
+                          : kPrimaryColor,
+                    ),
+                    child: Center(
+                        child: Text(
+                      "Submit Rating",
+                      style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                          color: MediaQuery.of(context).platformBrightness ==
+                                  Brightness.dark
+                              ? kBlacks
+                              : kBgColor),
+                    )),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      );
 }
