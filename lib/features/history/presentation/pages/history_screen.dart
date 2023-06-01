@@ -19,7 +19,7 @@ class HistoryScreen extends StatelessWidget {
       },
       {
         "providerName": "Akpan Ibisi",
-        "status": "Complete",
+        "status": "Completed",
         "price": "3000",
         "service": "Plumbing",
         "date": "Aug 26",
@@ -33,7 +33,7 @@ class HistoryScreen extends StatelessWidget {
       },
       {
         "providerName": "William Saliba",
-        "status": "Complete",
+        "status": "Completed",
         "price": "2000",
         "service": "Improvement",
         "date": "Aug 26",

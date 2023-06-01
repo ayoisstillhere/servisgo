@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:servisgo/features/tracker/domain/entities/accepted_service_entity.dart';
+import 'package:servisgo/features/tracker/presentation/bloc/accepted_service_cubit/accepted_service_cubit.dart';
 
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
@@ -155,7 +156,10 @@ class _CurrentJobCardState extends State<CurrentJobCard> {
                   ),
                   SizedBox(height: getProportionateScreenWidth(24)),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      BlocProvider.of<AcceptedServiceCubit>(context)
+                          .updateServiceToCompleted(widget.currentService.id, widget.currentService.partnerId);
+                    },
                     child: Container(
                       width: double.infinity,
                       decoration: BoxDecoration(

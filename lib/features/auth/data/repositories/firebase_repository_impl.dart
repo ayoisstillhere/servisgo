@@ -134,4 +134,8 @@ class FirebaseRepositoryImpl implements FirebaseRepository {
   Stream<List<AcceptedServiceEntity>> getAcceptedServices() {
     return firebaseRemoteDatasource.getAcceptedServices();
   }
+  
+  @override
+  Future<void> updateServiceToCompleted(String serviceId, String partnerId) async =>
+      await firebaseRemoteDatasource.updateServiceToCompleted(serviceId, partnerId);
 }

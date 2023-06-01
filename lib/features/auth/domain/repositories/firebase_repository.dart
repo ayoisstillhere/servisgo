@@ -40,4 +40,5 @@ abstract class FirebaseRepository {
     String price,
   );
   Stream<List<AcceptedServiceEntity>> getAcceptedServices();
+  Future<void> updateServiceToCompleted(String serviceId, String partnerId);
 }

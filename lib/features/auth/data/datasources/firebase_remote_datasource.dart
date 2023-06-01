@@ -48,6 +48,7 @@ abstract class FirebaseRemoteDatasource {
     String price,
   );
   Stream<List<AcceptedServiceEntity>> getAcceptedServices();
+  Future<void> updateServiceToCompleted(String serviceId, String partnerId);
 }
 
 class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDatasource {
@@ -271,5 +272,20 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDatasource {
             .map(
                 (docSnapshot) => AcceptedServiceModel.fromSnapshot(docSnapshot))
             .toList());
+  }
+
+  @override
+  Future<void> updateServiceToCompleted(String serviceId, String partnerId) async {
+    await _acceptedServiceCollection.doc(serviceId).update({
+      'serviceStatus': 'Completed',
+    });
+    DocumentSnapshot snapshot = await _partnerCollection.doc(partnerId).get();
+    if (snapshot.exists) {
+      int currentValue = (snapshot.data()! as dynamic)['completed']!;
+      int newValue = currentValue + 1;
+      _partnerCollection.doc(partnerId).update({
+        'completed': newValue,
+      });
+    }
   }
 }
