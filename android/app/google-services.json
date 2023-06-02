@@ -7,20 +7,28 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:277590345714:android:a9c4a036f7327ac2fc8d6b",
+        "mobilesdk_app_id": "1:277590345714:android:fb904c95fa8efcf2fc8d6b",
         "android_client_info": {
-          "package_name": "com.servisgo.user.servisgo"
+          "package_name": "com.servisgo.partner"
         }
       },
       "oauth_client": [
         {
-          "client_id": "277590345714-dgtjkrpsjcc6obervtucj0208po67unf.apps.googleusercontent.com",
+          "client_id": "277590345714-icdv1lfkchsvj423pirnfatmcc9nts08.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.servisgo.partner",
+            "certificate_hash": "38a63fcedd1ab2db350f016a74637cd6f9416d1c"
+          }
+        },
+        {
+          "client_id": "277590345714-frk30o8g55n1fbvhg5vdo13ocp9ojdlg.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCVhyldeof7_wRP31TIloVr3X9PJseC65g"
+          "current_key": "AIzaSyAe38iw_6e5SYF0J4qeM72vh_TAIt7Jj9k"
         }
       ],
       "services": {
@@ -31,10 +39,54 @@
               "client_type": 3
             },
             {
-              "client_id": "277590345714-npl4vgiqcucc5l00v50m97gnbvhvjakc.apps.googleusercontent.com",
+              "client_id": "277590345714-g05j5hn2578d9p8ndsiv9ii6m7cj5q00.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.servisgo.user.servisgo"
+                "bundle_id": "com.servisgo.partner"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:277590345714:android:a9c4a036f7327ac2fc8d6b",
+        "android_client_info": {
+          "package_name": "com.servisgo.user.servisgo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "277590345714-ip7bnsk86c1v4ltvum2a3gpdqpok8o54.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.servisgo.user.servisgo",
+            "certificate_hash": "38a63fcedd1ab2db350f016a74637cd6f9416d1c"
+          }
+        },
+        {
+          "client_id": "277590345714-frk30o8g55n1fbvhg5vdo13ocp9ojdlg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAe38iw_6e5SYF0J4qeM72vh_TAIt7Jj9k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "277590345714-dgtjkrpsjcc6obervtucj0208po67unf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "277590345714-g05j5hn2578d9p8ndsiv9ii6m7cj5q00.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.servisgo.partner"
               }
             }
           ]

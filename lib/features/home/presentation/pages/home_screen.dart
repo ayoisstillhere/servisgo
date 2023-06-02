@@ -125,99 +125,111 @@ class _HomeScreenState extends State<HomeScreen> {
                                 latitudePartner: 0,
                                 longitudePartner: 0,
                               ));
-                      return activeService.id != "" ?  Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.only(
-                                left: getProportionateScreenWidth(32)),
-                            child: Text(
-                              "Active Service",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .bodyLarge!
-                                  .copyWith(
-                                    fontWeight: FontWeight.w600,
-                                    color: MediaQuery.of(context)
-                                                .platformBrightness ==
-                                            Brightness.dark
-                                        ? Colors.white
-                                        : kBlacks,
-                                  ),
-                            ),
-                          ),
-                          SizedBox(height: getProportionateScreenHeight(8)),
-                           CurrentJobCard(currentService: activeService,),
-                        ],
-                      ) :  Padding(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: getProportionateScreenWidth(32)),
-                      child: Stack(
-                        children: [
-                          Container(
-                            width: double.infinity,
-                            height: getProportionateScreenHeight(156),
-                            padding: EdgeInsets.symmetric(
-                              vertical: getProportionateScreenHeight(27),
-                              horizontal: getProportionateScreenWidth(16),
-                            ),
-                            decoration: BoxDecoration(
-                              color: kCallToAction,
-                              borderRadius: BorderRadius.circular(
-                                  getProportionateScreenWidth(4)),
-                            ),
-                            child: Column(
+                      return activeService.id != ""
+                          ? Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(
-                                  "FIRST TIME DISCOUNT!",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .bodyMedium!
-                                      .copyWith(color: kBgColor),
-                                ),
-                                Text(
-                                  "10% OFF",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .displayLarge!
-                                      .copyWith(color: kBgColor),
-                                ),
-                                Container(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal:
-                                          getProportionateScreenWidth(4),
-                                      vertical:
-                                          getProportionateScreenHeight(8)),
-                                  decoration: BoxDecoration(
-                                    color: kPrimaryColor,
-                                    borderRadius: BorderRadius.circular(
-                                        getProportionateScreenWidth(4)),
-                                  ),
+                                Padding(
+                                  padding: EdgeInsets.only(
+                                      left: getProportionateScreenWidth(32)),
                                   child: Text(
-                                    "ORDER NOW",
+                                    "Active Service",
                                     style: Theme.of(context)
                                         .textTheme
-                                        .bodyMedium!
-                                        .copyWith(color: kBgColor),
+                                        .bodyLarge!
+                                        .copyWith(
+                                          fontWeight: FontWeight.w600,
+                                          color: MediaQuery.of(context)
+                                                      .platformBrightness ==
+                                                  Brightness.dark
+                                              ? Colors.white
+                                              : kBlacks,
+                                        ),
                                   ),
                                 ),
+                                SizedBox(
+                                    height: getProportionateScreenHeight(8)),
+                                CurrentJobCard(
+                                  currentService: activeService,
+                                ),
                               ],
-                            ),
-                          ),
-                          Positioned(
-                            bottom: 0,
-                            left: getProportionateScreenWidth(152),
-                            child: Image.asset(
-                              "assets/images/cleanerNobg.png",
-                              height: getProportionateScreenHeight(120),
-                              width: getProportionateScreenWidth(159.49),
-                            ),
-                          ),
-                        ],
-                      ),
-                    );
+                            )
+                          : Padding(
+                              padding: EdgeInsets.symmetric(
+                                  horizontal: getProportionateScreenWidth(32)),
+                              child: Stack(
+                                children: [
+                                  Container(
+                                    width: double.infinity,
+                                    height: getProportionateScreenHeight(156),
+                                    padding: EdgeInsets.symmetric(
+                                      vertical:
+                                          getProportionateScreenHeight(27),
+                                      horizontal:
+                                          getProportionateScreenWidth(16),
+                                    ),
+                                    decoration: BoxDecoration(
+                                      color: kCallToAction,
+                                      borderRadius: BorderRadius.circular(
+                                          getProportionateScreenWidth(4)),
+                                    ),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          "FIRST TIME DISCOUNT!",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .bodyMedium!
+                                              .copyWith(color: kBgColor),
+                                        ),
+                                        Text(
+                                          "10% OFF",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .displayLarge!
+                                              .copyWith(color: kBgColor),
+                                        ),
+                                        Container(
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal:
+                                                  getProportionateScreenWidth(
+                                                      4),
+                                              vertical:
+                                                  getProportionateScreenHeight(
+                                                      8)),
+                                          decoration: BoxDecoration(
+                                            color: kPrimaryColor,
+                                            borderRadius: BorderRadius.circular(
+                                                getProportionateScreenWidth(4)),
+                                          ),
+                                          child: Text(
+                                            "ORDER NOW",
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .bodyMedium!
+                                                .copyWith(color: kBgColor),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Positioned(
+                                    bottom: 0,
+                                    left: getProportionateScreenWidth(152),
+                                    child: Image.asset(
+                                      "assets/images/cleanerNobg.png",
+                                      height: getProportionateScreenHeight(120),
+                                      width:
+                                          getProportionateScreenWidth(159.49),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            );
                     }
                     return const Center(child: CircularProgressIndicator());
                   },
@@ -383,7 +395,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   image: serviceProvidersList[index].partnerPfpURL,
                   name: serviceProvidersList[index].partnerName,
                   location: "FixitBro",
-                  rating: avgRating.toString(),
+                  rating: avgRating.toStringAsFixed(1),
                   reviews:
                       serviceProvidersList[index].ratings.length.toString(),
                   partner: serviceProvidersList[index],

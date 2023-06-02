@@ -156,7 +156,7 @@ class ServiceProviderDetails extends StatelessWidget {
     double sum = 0;
     double avgRating = 0;
     if (ratings.isNotEmpty) {
-      for (int rating in ratings) {
+      for (var rating in ratings) {
         sum += rating;
       }
       avgRating = sum / ratings.length;
@@ -239,7 +239,7 @@ class ServiceProviderDetails extends StatelessWidget {
                                 SvgPicture.asset("assets/icons/Star.svg"),
                                 SizedBox(width: getProportionateScreenWidth(4)),
                                 Text(
-                                  "$avgRating (${partner.ratings.length} reviews)",
+                                  "${avgRating.toStringAsFixed(1)} (${partner.ratings.length} reviews)",
                                   style: Theme.of(context)
                                       .textTheme
                                       .bodySmall!

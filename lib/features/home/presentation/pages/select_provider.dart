@@ -73,7 +73,7 @@ class _SelectProviderState extends State<SelectProvider> {
           double sum = 0;
           double avgRating = 0;
           if (ratings.isNotEmpty) {
-            for (int rating in ratings) {
+            for (var rating in ratings) {
               sum += rating;
             }
             avgRating = sum / ratings.length;
@@ -85,7 +85,7 @@ class _SelectProviderState extends State<SelectProvider> {
             name: serviceProvidersList[index].partnerName,
             // location: serviceProvidersList[index].location,
             location: "Fixitbro",
-            rating: avgRating.toString(),
+            rating: avgRating.toStringAsFixed(1),
             reviews: serviceProvidersList[index].ratings.length.toString(),
             partner: serviceProvidersList[index],
             currentUser: widget.currentUser,

@@ -396,7 +396,20 @@ class _ConfirmBookingScreenState extends State<ConfirmBookingScreen> {
                     FormError(errors: errors),
                     DefaultButton(
                       text: "Confirm Booking",
-                      press: _createJobRequest,
+                      press: () {
+                        if (currentLocation == null) {
+                          setState(() {
+                            errors.add("Please wait for location to load");
+                          });
+                          return;
+                        } else {
+                          setState(() {
+                            errors.remove("Please select a location");
+                          });
+
+                          _createJobRequest();
+                        }
+                      },
                     ),
                   ],
                 ),

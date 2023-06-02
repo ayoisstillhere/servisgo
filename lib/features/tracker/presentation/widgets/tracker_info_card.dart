@@ -23,7 +23,7 @@ class TrackerInfoCard extends StatelessWidget {
     double sum = 0;
     double avgRating = 0;
     if (ratings.isNotEmpty) {
-      for (int rating in ratings) {
+      for (var rating in ratings) {
         sum += rating;
       }
       avgRating = sum / ratings.length;
@@ -102,7 +102,7 @@ class TrackerInfoCard extends StatelessWidget {
                   SvgPicture.asset("assets/icons/trackerRatingStar.svg"),
                   SizedBox(width: getProportionateScreenWidth(4)),
                   Text(
-                    "$avgRating",
+                    avgRating.toStringAsFixed(1),
                     style: Theme.of(context).textTheme.bodySmall,
                   ),
                 ],
