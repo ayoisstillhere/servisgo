@@ -27,8 +27,8 @@ class MessageTile extends StatelessWidget {
             : kPrimaryColor;
     return GestureDetector(
       onTap: () {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => ChatScreen(name: name)));
+        // Navigator.push(context,
+        //     MaterialPageRoute(builder: (context) => ChatScreen()));
       },
       child: Column(
         children: [

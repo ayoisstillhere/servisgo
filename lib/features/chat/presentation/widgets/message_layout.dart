@@ -1,5 +1,6 @@
 import 'package:bubble/bubble.dart';
 import 'package:flutter/material.dart';
+
 import 'package:servisgo/constants.dart';
 import 'package:servisgo/size_config.dart';
 
@@ -12,6 +13,7 @@ class MessageLayout extends StatelessWidget {
   final BubbleNip nip;
   final String senderName;
   final MainAxisAlignment boxMainAxisAlignment;
+  final String pfpUrl;
   const MessageLayout({
     Key? key,
     required this.text,
@@ -22,6 +24,7 @@ class MessageLayout extends StatelessWidget {
     required this.nip,
     required this.senderName,
     required this.boxMainAxisAlignment,
+    required this.pfpUrl,
   }) : super(key: key);
 
   @override
@@ -48,9 +51,8 @@ class MessageLayout extends StatelessWidget {
                                   .copyWith(
                             bottomRight: const Radius.circular(0),
                           ),
-                          image: const DecorationImage(
-                            image: NetworkImage(
-                                "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aGVhZHNob3R8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=900&q=60"),
+                          image: DecorationImage(
+                            image: NetworkImage(pfpUrl),
                           )),
                     )
                   : const Text(
@@ -94,15 +96,15 @@ class MessageLayout extends StatelessWidget {
                       margin: EdgeInsets.only(
                           left: getProportionateScreenWidth(14)),
                       decoration: BoxDecoration(
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(8))
-                                  .copyWith(
-                            bottomLeft: const Radius.circular(0),
-                          ),
-                          image: const DecorationImage(
-                            image: NetworkImage(
-                                "https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aGVhZHNob3R8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=900&q=60"),
-                          )),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(8)).copyWith(
+                          bottomLeft: const Radius.circular(0),
+                        ),
+                        image: DecorationImage(
+                          image: NetworkImage(pfpUrl),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     )
                   : const Text(
                       "",

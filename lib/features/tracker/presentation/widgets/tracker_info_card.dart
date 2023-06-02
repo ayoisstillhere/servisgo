@@ -2,19 +2,23 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import 'package:servisgo/features/auth/domain/entities/user_entity.dart';
 import 'package:servisgo/features/home/domain/entities/partner_entity.dart';
 import 'package:servisgo/features/tracker/domain/entities/accepted_service_entity.dart';
 
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
+import '../../../chat/presentation/pages/chat_screen.dart';
 
 class TrackerInfoCard extends StatelessWidget {
   const TrackerInfoCard({
     Key? key,
     required this.partner,
+    required this.currentUser,
     required this.acceptedService,
   }) : super(key: key);
   final PartnerEntity partner;
+  final UserEntity currentUser;
   final AcceptedServiceEntity acceptedService;
 
   @override
@@ -134,12 +138,23 @@ class TrackerInfoCard extends StatelessWidget {
                     child: SvgPicture.asset("assets/icons/trackerCall.svg"),
                   ),
                   SizedBox(width: getProportionateScreenWidth(4)),
-                  Container(
-                    padding: EdgeInsets.all(getProportionateScreenWidth(7)),
-                    decoration: BoxDecoration(
-                        color: primaryColor,
-                        borderRadius: BorderRadius.circular(8)),
-                    child: SvgPicture.asset("assets/icons/trackerChat.svg"),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ChatScreen(
+                                    partner: partner,
+                                    user: currentUser,
+                                  )));
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(getProportionateScreenWidth(7)),
+                      decoration: BoxDecoration(
+                          color: primaryColor,
+                          borderRadius: BorderRadius.circular(8)),
+                      child: SvgPicture.asset("assets/icons/trackerChat.svg"),
+                    ),
                   ),
                 ],
               ),

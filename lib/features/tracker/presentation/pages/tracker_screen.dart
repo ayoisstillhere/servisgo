@@ -86,6 +86,7 @@ class _TrackerScreenState extends State<TrackerScreen> {
               polylineCoordinates: polylineCoordinates,
               partnerId: currentService.partnerId,
               acceptedService: currentService,
+              currentUser: widget.currentUser,
             );
           }
           return const Center(child: CircularProgressIndicator());
@@ -100,6 +101,7 @@ class TrackerMap extends StatefulWidget {
     Key? key,
     required this.customerLocation,
     required this.partnerLocation,
+    required this.currentUser,
     required this.polylineCoordinates,
     required this.partnerId,
     required this.acceptedService,
@@ -107,6 +109,7 @@ class TrackerMap extends StatefulWidget {
 
   final LatLng customerLocation;
   final LatLng partnerLocation;
+  final UserEntity currentUser;
 
   final List<LatLng> polylineCoordinates;
   final String partnerId;
@@ -194,6 +197,7 @@ class _TrackerMapState extends State<TrackerMap> {
                 return TrackerInfoCard(
                   partner: partner,
                   acceptedService: widget.acceptedService,
+                  currentUser: widget.currentUser,
                 );
               }
               return const Center(child: CircularProgressIndicator());
