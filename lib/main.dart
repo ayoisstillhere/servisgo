@@ -4,6 +4,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:servisgo/components/nav_page.dart';
+import 'package:servisgo/features/chat/presentation/bloc/chat_cubit/chat_cubit.dart';
 import 'package:servisgo/features/confirmBooking/presentation/bloc/job_request_cubit/job_request_cubit.dart';
 import 'package:servisgo/features/home/presentation/bloc/partner_cubit/partner_cubit.dart';
 import 'package:servisgo/features/home/presentation/bloc/user_cubit/user_cubit.dart';
@@ -54,6 +55,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<AcceptedServiceCubit>(
           create: (_) => di.sl<AcceptedServiceCubit>(),
+        ),
+        BlocProvider<ChatCubit>(
+          create: (_) => di.sl<ChatCubit>(),
         ),
       ],
       child: MaterialApp(

@@ -139,7 +139,9 @@ class _TrackerMapState extends State<TrackerMap> {
           LatLng(point.latitude, point.longitude),
         );
       }
-      setState(() {});
+      if (mounted) {
+        setState(() {});
+      }
     }
   }
 

@@ -1,4 +1,7 @@
 import 'package:get_it/get_it.dart';
+import 'package:servisgo/features/chat/domain/usecases/get_messages_usecase.dart';
+import 'package:servisgo/features/chat/domain/usecases/send_text_message_usecase.dart';
+import 'package:servisgo/features/chat/presentation/bloc/chat_cubit/chat_cubit.dart';
 import 'package:servisgo/features/home/domain/usecases/update_service_rating_usecase.dart';
 import 'package:servisgo/features/home/domain/usecases/update_service_to_completed_usecase.dart';
 import 'features/confirmBooking/domain/usecases/create_job_request_usecase.dart';
@@ -71,6 +74,10 @@ Future<void> init() async {
         updateServiceToCompletedUsecase: sl.call(),
         updateServiceRatingUsecase: sl.call(),
       ));
+  sl.registerFactory<ChatCubit>(() => ChatCubit(
+        getMessagesUsecase: sl.call(),
+        sendTextMessageUseCase: sl.call(),
+      ));
 
   //!useCae
   sl.registerLazySingleton<IsSigninUsecase>(
@@ -115,6 +122,10 @@ Future<void> init() async {
       () => UpdateServiceToCompletedUsecase(repository: sl.call()));
   sl.registerLazySingleton<UpdateServiceRatingUsecase>(
       () => UpdateServiceRatingUsecase(repository: sl.call()));
+  sl.registerLazySingleton<GetMessagesUsecase>(
+      () => GetMessagesUsecase(repository: sl.call()));
+  sl.registerLazySingleton<SendTextMessageUseCase>(
+      () => SendTextMessageUseCase(repository: sl.call()));
 
   //repository
   sl.registerLazySingleton<FirebaseRepository>(

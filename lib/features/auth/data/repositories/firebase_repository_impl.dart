@@ -1,3 +1,5 @@
+import 'package:servisgo/features/chat/domain/entities/text_message_entity.dart';
+
 import '../../../home/domain/entities/partner_entity.dart';
 import '../../../tracker/domain/entities/accepted_service_entity.dart';
 
@@ -146,4 +148,14 @@ class FirebaseRepositoryImpl implements FirebaseRepository {
           String serviceId, String partnerId, double rating) async =>
       await firebaseRemoteDatasource.updateServiceRating(
           serviceId, partnerId, rating);
+
+  @override
+  Stream<List<TextMessageEntity>> getTextMessages() {
+    return firebaseRemoteDatasource.getTextMessages();
+  }
+
+  @override
+  Future<void> sendTextMessage(TextMessageEntity textMessage) {
+    return firebaseRemoteDatasource.sendTextMessage(textMessage);
+  }
 }

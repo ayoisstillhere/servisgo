@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import '../../../chat/data/models/text_message_model.dart';
+import '../../../chat/domain/entities/text_message_entity.dart';
 import '../../../confirmBooking/data/models/job_request_model.dart';
 import 'package:uuid/uuid.dart';
 
@@ -51,6 +53,8 @@ abstract class FirebaseRemoteDatasource {
   Future<void> updateServiceToCompleted(String serviceId, String partnerId);
   Future<void> updateServiceRating(
       String serviceId, String partnerId, double rating);
+  Future<void> sendTextMessage(TextMessageEntity textMessage);
+  Stream<List<TextMessageEntity>> getTextMessages();
 }
 
 class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDatasource {
@@ -61,6 +65,7 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDatasource {
       FirebaseFirestore.instance.collection('jobRequests');
   final _acceptedServiceCollection =
       FirebaseFirestore.instance.collection("acceptedServices");
+  final _chatCollection = FirebaseFirestore.instance.collection("chats");
   final googleSignin = GoogleSignIn(scopes: ['email']);
 
   GoogleSignInAccount? _user;
@@ -301,5 +306,25 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDatasource {
     await _partnerCollection.doc(partnerId).update({
       'ratings': FieldValue.arrayUnion([rating]),
     });
+  }
+
+  @override
+  Stream<List<TextMessageEntity>> getTextMessages() {
+    return _chatCollection.snapshots().map((querySnapshot) => querySnapshot.docs
+        .map((docSnapshot) => TextMessageModel.fromSnapshot(docSnapshot))
+        .toList());
+  }
+
+  @override
+  Future<void> sendTextMessage(TextMessageEntity textMessage) async {
+    final newMessage = TextMessageModel(
+      recipientId: textMessage.recipientId,
+      senderId: textMessage.senderId,
+      timestamp: textMessage.timestamp,
+      message: textMessage.message,
+      recipientName: textMessage.recipientName,
+      senderName: textMessage.senderName,
+    );
+    _chatCollection.add(newMessage.toDocument());
   }
 }

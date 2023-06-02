@@ -1,5 +1,7 @@
+import 'package:bubble/bubble.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:servisgo/features/chat/presentation/widgets/message_layout.dart';
 
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
@@ -13,6 +15,10 @@ class ChatScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Color primaryColor =
+        MediaQuery.of(context).platformBrightness == Brightness.dark
+            ? kDarkPrimaryColor
+            : kPrimaryColor;
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -30,9 +36,7 @@ class ChatScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Expanded(
-            child: Container(),
-          ),
+          _listMessagesWidget(primaryColor),
           Padding(
             padding: EdgeInsets.symmetric(
                 horizontal: getProportionateScreenWidth(32)),
@@ -126,6 +130,38 @@ class ChatScreen extends StatelessWidget {
           ),
           Container(height: getProportionateScreenHeight(58)),
         ],
+      ),
+    );
+  }
+
+  Expanded _listMessagesWidget(Color primaryColor) {
+    return Expanded(
+      child: SizedBox(
+        width: double.infinity,
+        child: Column(
+          children: [
+            MessageLayout(
+              text: "abeg time is going be fast svfbdgbcgnbdgb sfvdsfdv",
+              time: "17:38",
+              color: primaryColor,
+              align: TextAlign.left,
+              boxAlignment: CrossAxisAlignment.end,
+              nip: BubbleNip.rightBottom,
+              senderName: "Ayodele",
+              boxMainAxisAlignment: MainAxisAlignment.end,
+            ),
+            const MessageLayout(
+              text: "AYODELE FAGBAMI",
+              time: "17:38",
+              color: kLightGreys,
+              align: TextAlign.left,
+              boxAlignment: CrossAxisAlignment.start,
+              nip: BubbleNip.leftBottom,
+              senderName: "Ayodele",
+              boxMainAxisAlignment: MainAxisAlignment.start,
+            ),
+          ],
+        ),
       ),
     );
   }

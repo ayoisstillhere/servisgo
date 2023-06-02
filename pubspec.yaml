@@ -29,6 +29,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   auto_size_text: ^3.0.0
+  bubble: ^1.2.1
   cloud_firestore: ^4.4.3
   cupertino_icons: ^1.0.2
   equatable: ^2.0.5
@@ -44,7 +45,7 @@ dependencies:
   google_maps_flutter: ^2.2.8
   google_sign_in: ^6.0.2
   image_picker: ^0.8.7+5
-  intl: ^0.17.0
+  intl: ^0.18.1
   location: ^4.4.0
   uuid: ^3.0.7
 

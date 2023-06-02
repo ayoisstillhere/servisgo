@@ -1,3 +1,5 @@
+import 'package:servisgo/features/chat/domain/entities/text_message_entity.dart';
+
 import '../../../tracker/domain/entities/accepted_service_entity.dart';
 
 import '../../../home/domain/entities/partner_entity.dart';
@@ -41,5 +43,8 @@ abstract class FirebaseRepository {
   );
   Stream<List<AcceptedServiceEntity>> getAcceptedServices();
   Future<void> updateServiceToCompleted(String serviceId, String partnerId);
-  Future<void> updateServiceRating(String serviceId, String partnerId, double rating);
+  Future<void> updateServiceRating(
+      String serviceId, String partnerId, double rating);
+  Future<void> sendTextMessage(TextMessageEntity textMessage);
+  Stream<List<TextMessageEntity>> getTextMessages();
 }
