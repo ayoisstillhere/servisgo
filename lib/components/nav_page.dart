@@ -78,7 +78,7 @@ class _NavPageState extends State<NavPage> {
       HomeScreen(currentUser: user),
       const HistoryScreen(),
       TrackerScreen(currentUser: user),
-      MessagesScreen(),
+      MessagesScreen(currentUser: user),
       MenuScreen(currentUser: user),
     ];
     return Scaffold(

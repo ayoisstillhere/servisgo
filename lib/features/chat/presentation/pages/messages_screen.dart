@@ -1,40 +1,34 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
+
+import 'package:servisgo/features/auth/domain/entities/user_entity.dart';
+import 'package:servisgo/features/chat/domain/entities/text_message_entity.dart';
+import 'package:servisgo/features/chat/presentation/bloc/chat_cubit/chat_cubit.dart';
+import 'package:servisgo/features/home/domain/entities/partner_entity.dart';
+import 'package:servisgo/features/home/presentation/bloc/partner_cubit/partner_cubit.dart';
 
 import '../../../../size_config.dart';
 import '../widgets/message_tile.dart';
 
-class MessagesScreen extends StatelessWidget {
-  MessagesScreen({super.key});
-  final List messageData = [
-    [
-      "https://cdn.pixabay.com/photo/2021/03/21/13/28/woman-6112091_1280.jpg",
-      "Judith Omole",
-      "I'm on My Way",
-      "17:38",
-      2
-    ],
-    [
-      "https://cdn.pixabay.com/photo/2020/01/20/17/30/look-4780865__480.jpg",
-      "Stephen Anyanwu",
-      "Yeah, sure!",
-      "Yesterday",
-      0
-    ],
-    [
-      "https://images.unsplash.com/photo-1530785602389-07594beb8b73?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fG5pZ2VyaWFufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=900&q=60",
-      "Blessing Ornu",
-      "Thank you sir!",
-      "26 Aug",
-      0
-    ],
-    [
-      "https://cdn.pixabay.com/photo/2018/10/11/15/35/angry-boy-3740043__480.jpg",
-      "Tobi Odusayo",
-      "You're Welcome!",
-      "11 May",
-      1
-    ],
-  ];
+class MessagesScreen extends StatefulWidget {
+  const MessagesScreen({
+    Key? key,
+    required this.currentUser,
+  }) : super(key: key);
+  final UserEntity currentUser;
+
+  @override
+  State<MessagesScreen> createState() => _MessagesScreenState();
+}
+
+class _MessagesScreenState extends State<MessagesScreen> {
+  @override
+  void initState() {
+    BlocProvider.of<ChatCubit>(context).getTextMessages();
+    BlocProvider.of<PartnerCubit>(context).getPartners();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,23 +47,68 @@ class MessagesScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: ListView.builder(
-        padding: EdgeInsets.symmetric(
-          horizontal: getProportionateScreenWidth(32),
-        ),
-        itemCount: messageData.length,
-        itemBuilder: (BuildContext context, int index) {
-          return Padding(
-            padding: EdgeInsets.only(top: getProportionateScreenHeight(28)),
-            child: MessageTile(
-                imgUrl: messageData[index][0],
-                name: messageData[index][1],
-                lastMsg: messageData[index][2],
-                time: messageData[index][3],
-                noOfMessages: messageData[index][4]),
-          );
+      body: BlocBuilder<ChatCubit, ChatState>(
+        builder: (context, state) {
+          if (state is ChatLoaded) {
+            final Map<String, TextMessageEntity> conversationMap = {};
+            
+            for (TextMessageEntity textMessageEntity in state.messages) {
+            final String conversationId = _getConversationId(textMessageEntity);
+            if (!conversationMap.containsKey(conversationId) ||
+                textMessageEntity.timestamp.toDate().isAfter(
+                  conversationMap[conversationId]!.timestamp.toDate(),
+                )) {
+              conversationMap[conversationId] = textMessageEntity;
+            }
+          }
+
+           final List<TextMessageEntity> allMessages = conversationMap.values.toList();
+          allMessages.sort((a, b) => b.timestamp.compareTo(a.timestamp)); // Sort by timestamp
+
+
+            
+            return ListView.builder(
+              padding: EdgeInsets.symmetric(
+                horizontal: getProportionateScreenWidth(32),
+              ),
+              itemCount: allMessages.length,
+              itemBuilder: (BuildContext context, int index) {
+                return BlocBuilder<PartnerCubit, PartnerState>(
+                  builder: (context, state) {
+                    if (state is PartnerLoaded) {
+                      final PartnerEntity partner = state.partners.firstWhere(
+                        (partner) =>
+                            partner.partnerId == allMessages[index].recipientId,
+                      );
+                      return Padding(
+                        padding: EdgeInsets.only(
+                            top: getProportionateScreenHeight(28)),
+                        child: MessageTile(
+                          imgUrl: widget.currentUser.pfpURL,
+                          name: allMessages[index].recipientName,
+                          lastMsg: allMessages[index].message,
+                          time: DateFormat('hh:mm a')
+                              .format(allMessages[index].timestamp.toDate()),
+                          currentUser: widget.currentUser,
+                          currentPartner: partner,
+                        ),
+                      );
+                    }
+                    return const Center(child: CircularProgressIndicator());
+                  },
+                );
+              },
+            );
+          }
+          return const Center(child: CircularProgressIndicator());
         },
       ),
     );
+  }
+
+  String _getConversationId(TextMessageEntity message) {
+    final List<String> participants = [message.senderId, message.recipientId];
+    participants.sort();
+    return participants.join('_');
   }
 }
