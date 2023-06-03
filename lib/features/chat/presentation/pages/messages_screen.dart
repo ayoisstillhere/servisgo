@@ -79,14 +79,16 @@ class _MessagesScreenState extends State<MessagesScreen> {
                     if (state is PartnerLoaded) {
                       final PartnerEntity partner = state.partners.firstWhere(
                         (partner) =>
-                            partner.partnerId == allMessages[index].recipientId,
+                            partner.partnerId ==
+                                allMessages[index].recipientId ||
+                            partner.partnerId == allMessages[index].senderId,
                       );
                       return Padding(
                         padding: EdgeInsets.only(
                             top: getProportionateScreenHeight(28)),
                         child: MessageTile(
-                          imgUrl: widget.currentUser.pfpURL,
-                          name: allMessages[index].recipientName,
+                          imgUrl: partner.partnerPfpURL,
+                          name: partner.partnerName,
                           lastMsg: allMessages[index].message,
                           time: DateFormat('hh:mm a')
                               .format(allMessages[index].timestamp.toDate()),

@@ -53,6 +53,7 @@ class MessageLayout extends StatelessWidget {
                           ),
                           image: DecorationImage(
                             image: NetworkImage(pfpUrl),
+                            fit: BoxFit.cover,
                           )),
                     )
                   : const Text(

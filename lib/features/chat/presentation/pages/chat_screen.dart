@@ -1,4 +1,3 @@
-
 import 'package:bubble/bubble.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -187,6 +186,8 @@ class _ChatScreenState extends State<ChatScreen> {
                       widget.partner.partnerId == message.recipientId)) {
                 messages.add(message);
               }
+              messages.sort((a, b) =>
+                  a.timestamp.compareTo(b.timestamp)); // sort by timestamp
             }
 
             return ListView.builder(
