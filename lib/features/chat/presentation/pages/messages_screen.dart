@@ -68,11 +68,21 @@ class _MessagesScreenState extends State<MessagesScreen> {
             allMessages.sort((a, b) =>
                 b.timestamp.compareTo(a.timestamp)); // Sort by timestamp
 
+                List<TextMessageEntity> requiredMessages = [];
+            for (TextMessageEntity textMessageEntity in allMessages) {
+              if (textMessageEntity.senderId ==
+                      widget.currentUser.uid ||
+                  textMessageEntity.recipientId ==
+                      widget.currentUser.uid) {
+                requiredMessages.add(textMessageEntity);
+              }
+            }
+
             return ListView.builder(
               padding: EdgeInsets.symmetric(
                 horizontal: getProportionateScreenWidth(32),
               ),
-              itemCount: allMessages.length,
+              itemCount: requiredMessages.length,
               itemBuilder: (BuildContext context, int index) {
                 return BlocBuilder<PartnerCubit, PartnerState>(
                   builder: (context, state) {
@@ -80,8 +90,8 @@ class _MessagesScreenState extends State<MessagesScreen> {
                       final PartnerEntity partner = state.partners.firstWhere(
                         (partner) =>
                             partner.partnerId ==
-                                allMessages[index].recipientId ||
-                            partner.partnerId == allMessages[index].senderId,
+                                requiredMessages[index].recipientId ||
+                            partner.partnerId == requiredMessages[index].senderId,
                       );
                       return Padding(
                         padding: EdgeInsets.only(
@@ -89,9 +99,9 @@ class _MessagesScreenState extends State<MessagesScreen> {
                         child: MessageTile(
                           imgUrl: partner.partnerPfpURL,
                           name: partner.partnerName,
-                          lastMsg: allMessages[index].message,
+                          lastMsg: requiredMessages[index].message,
                           time: DateFormat('hh:mm a')
-                              .format(allMessages[index].timestamp.toDate()),
+                              .format(requiredMessages[index].timestamp.toDate()),
                           currentUser: widget.currentUser,
                           currentPartner: partner,
                         ),
