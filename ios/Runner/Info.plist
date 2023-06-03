@@ -64,5 +64,10 @@
 	<string>This application requires microphone access</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This app uses your location to provide accurate directions</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>sms</string>
+		<string>tel</string>
+	</array>
 </dict>
 </plist>
