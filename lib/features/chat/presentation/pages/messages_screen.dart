@@ -51,22 +51,23 @@ class _MessagesScreenState extends State<MessagesScreen> {
         builder: (context, state) {
           if (state is ChatLoaded) {
             final Map<String, TextMessageEntity> conversationMap = {};
-            
+
             for (TextMessageEntity textMessageEntity in state.messages) {
-            final String conversationId = _getConversationId(textMessageEntity);
-            if (!conversationMap.containsKey(conversationId) ||
-                textMessageEntity.timestamp.toDate().isAfter(
-                  conversationMap[conversationId]!.timestamp.toDate(),
-                )) {
-              conversationMap[conversationId] = textMessageEntity;
+              final String conversationId =
+                  _getConversationId(textMessageEntity);
+              if (!conversationMap.containsKey(conversationId) ||
+                  textMessageEntity.timestamp.toDate().isAfter(
+                        conversationMap[conversationId]!.timestamp.toDate(),
+                      )) {
+                conversationMap[conversationId] = textMessageEntity;
+              }
             }
-          }
 
-           final List<TextMessageEntity> allMessages = conversationMap.values.toList();
-          allMessages.sort((a, b) => b.timestamp.compareTo(a.timestamp)); // Sort by timestamp
+            final List<TextMessageEntity> allMessages =
+                conversationMap.values.toList();
+            allMessages.sort((a, b) =>
+                b.timestamp.compareTo(a.timestamp)); // Sort by timestamp
 
-
-            
             return ListView.builder(
               padding: EdgeInsets.symmetric(
                 horizontal: getProportionateScreenWidth(32),
@@ -107,7 +108,13 @@ class _MessagesScreenState extends State<MessagesScreen> {
   }
 
   String _getConversationId(TextMessageEntity message) {
-    final List<String> participants = [message.senderId, message.recipientId];
+    List<String> participants = [];
+    if (message.senderId == widget.currentUser.uid) {
+      participants = [message.senderId, message.recipientId];
+    } else {
+      participants = [message.recipientId, message.senderId];
+    }
+
     participants.sort();
     return participants.join('_');
   }
