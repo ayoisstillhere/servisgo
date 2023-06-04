@@ -1,4 +1,4 @@
-import 'package:servisgo/features/chat/domain/entities/text_message_entity.dart';
+import '../../../chat/domain/entities/text_message_entity.dart';
 
 import '../../../home/domain/entities/partner_entity.dart';
 import '../../../tracker/domain/entities/accepted_service_entity.dart';

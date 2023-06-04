@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:servisgo/features/auth/domain/entities/user_entity.dart';
-import 'package:servisgo/features/tracker/domain/entities/accepted_service_entity.dart';
-import 'package:servisgo/features/tracker/presentation/bloc/accepted_service_cubit/accepted_service_cubit.dart';
+import '../../../auth/domain/entities/user_entity.dart';
+import '../../../tracker/domain/entities/accepted_service_entity.dart';
+import '../../../tracker/presentation/bloc/accepted_service_cubit/accepted_service_cubit.dart';
 
 import '../../../../constants.dart';
 import '../../../../size_config.dart';

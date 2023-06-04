@@ -5,10 +5,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 
-import 'package:servisgo/features/auth/domain/entities/user_entity.dart';
-import 'package:servisgo/features/chat/domain/entities/text_message_entity.dart';
-import 'package:servisgo/features/chat/presentation/bloc/chat_cubit/chat_cubit.dart';
-import 'package:servisgo/features/chat/presentation/widgets/message_layout.dart';
+import '../../../auth/domain/entities/user_entity.dart';
+import '../../domain/entities/text_message_entity.dart';
+import '../bloc/chat_cubit/chat_cubit.dart';
+import '../widgets/message_layout.dart';
 
 import '../../../../constants.dart';
 import '../../../../size_config.dart';

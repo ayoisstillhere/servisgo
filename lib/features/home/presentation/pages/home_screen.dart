@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:servisgo/features/tracker/data/models/accepted_service_model.dart';
-import 'package:servisgo/features/tracker/presentation/bloc/accepted_service_cubit/accepted_service_cubit.dart';
+import '../../../tracker/data/models/accepted_service_model.dart';
+import '../../../tracker/presentation/bloc/accepted_service_cubit/accepted_service_cubit.dart';
 
 import '../../../auth/domain/entities/user_entity.dart';
 

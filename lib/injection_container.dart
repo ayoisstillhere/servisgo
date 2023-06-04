@@ -1,9 +1,9 @@
 import 'package:get_it/get_it.dart';
-import 'package:servisgo/features/chat/domain/usecases/get_messages_usecase.dart';
-import 'package:servisgo/features/chat/domain/usecases/send_text_message_usecase.dart';
-import 'package:servisgo/features/chat/presentation/bloc/chat_cubit/chat_cubit.dart';
-import 'package:servisgo/features/home/domain/usecases/update_service_rating_usecase.dart';
-import 'package:servisgo/features/home/domain/usecases/update_service_to_completed_usecase.dart';
+import 'features/chat/domain/usecases/get_messages_usecase.dart';
+import 'features/chat/domain/usecases/send_text_message_usecase.dart';
+import 'features/chat/presentation/bloc/chat_cubit/chat_cubit.dart';
+import 'features/home/domain/usecases/update_service_rating_usecase.dart';
+import 'features/home/domain/usecases/update_service_to_completed_usecase.dart';
 import 'features/confirmBooking/domain/usecases/create_job_request_usecase.dart';
 import 'features/confirmBooking/presentation/bloc/job_request_cubit/job_request_cubit.dart';
 import 'features/home/domain/usecases/get_partners_usecase.dart';

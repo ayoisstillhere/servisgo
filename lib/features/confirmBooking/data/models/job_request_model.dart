@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+
 import '../../domain/entities/job_request_entity.dart';
 
 class JobRequestModel extends JobRequestEntity {

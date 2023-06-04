@@ -1,4 +1,4 @@
-import 'package:servisgo/features/auth/domain/repositories/firebase_repository.dart';
+import '../../../auth/domain/repositories/firebase_repository.dart';
 
 class UpdateServiceRatingUsecase {
   final FirebaseRepository repository;

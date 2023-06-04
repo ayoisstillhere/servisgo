@@ -3,8 +3,8 @@ import 'dart:io';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:servisgo/features/chat/domain/usecases/get_messages_usecase.dart';
-import 'package:servisgo/features/chat/domain/usecases/send_text_message_usecase.dart';
+import '../../../domain/usecases/get_messages_usecase.dart';
+import '../../../domain/usecases/send_text_message_usecase.dart';
 
 import '../../../domain/entities/text_message_entity.dart';
 

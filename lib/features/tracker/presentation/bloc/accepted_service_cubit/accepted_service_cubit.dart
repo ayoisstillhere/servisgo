@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:servisgo/features/home/domain/usecases/update_service_rating_usecase.dart';
+import '../../../../home/domain/usecases/update_service_rating_usecase.dart';
 
 import '../../../../home/domain/usecases/update_service_to_completed_usecase.dart';
 import '../../../domain/entities/accepted_service_entity.dart';

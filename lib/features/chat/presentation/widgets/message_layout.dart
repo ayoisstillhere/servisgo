@@ -1,8 +1,8 @@
 import 'package:bubble/bubble.dart';
 import 'package:flutter/material.dart';
 
-import 'package:servisgo/constants.dart';
-import 'package:servisgo/size_config.dart';
+import '../../../../constants.dart';
+import '../../../../size_config.dart';
 
 class MessageLayout extends StatelessWidget {
   final String text;

@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-import 'package:servisgo/features/home/presentation/bloc/partner_cubit/partner_cubit.dart';
-import 'package:servisgo/size_config.dart';
+import '../../../home/presentation/bloc/partner_cubit/partner_cubit.dart';
+import '../../../../size_config.dart';
 
 import '../../../../constants.dart';
 import '../../../auth/domain/entities/user_entity.dart';
