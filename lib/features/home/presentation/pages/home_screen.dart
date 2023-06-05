@@ -151,6 +151,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     height: getProportionateScreenHeight(8)),
                                 CurrentJobCard(
                                   currentService: activeService,
+                                  currentUser: widget.currentUser,
                                 ),
                               ],
                             )

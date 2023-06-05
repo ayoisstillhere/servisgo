@@ -4,6 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:flutterwave_standard/core/flutterwave.dart';
+import 'package:flutterwave_standard/models/requests/customer.dart';
+import 'package:flutterwave_standard/models/requests/customizations.dart';
+import 'package:flutterwave_standard/models/responses/charge_response.dart';
 import 'package:servisgo/features/home/domain/entities/partner_entity.dart';
 
 import 'package:servisgo/features/tracker/domain/entities/accepted_service_entity.dart';
@@ -11,14 +15,17 @@ import 'package:servisgo/features/tracker/presentation/bloc/accepted_service_cub
 
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
+import '../../../auth/domain/entities/user_entity.dart';
 import '../bloc/partner_cubit/partner_cubit.dart';
 
 class CurrentJobCard extends StatefulWidget {
   const CurrentJobCard({
     Key? key,
     required this.currentService,
+    required this.currentUser,
   }) : super(key: key);
   final AcceptedServiceEntity currentService;
+  final UserEntity currentUser;
 
   @override
   State<CurrentJobCard> createState() => _CurrentJobCardState();
@@ -250,6 +257,27 @@ class _CurrentJobCardState extends State<CurrentJobCard> {
                     await BlocProvider.of<AcceptedServiceCubit>(context)
                         .updateServiceRating(widget.currentService.id,
                             widget.currentService.partnerId, rating);
+
+                    final Customer customer = Customer(
+                      name: widget.currentUser.name,
+                      phoneNumber: widget.currentUser.phoneNumber,
+                      email: widget.currentUser.email,
+                    );
+                    final Flutterwave flutterwave = Flutterwave(
+                      context: context,
+                      publicKey:
+                          "FLWPUBK_TEST-6d01d9880e194bd2788e43795a1cf32d-X",
+                      currency: "NGN",
+                      redirectUrl: "https://pub.dev/",
+                      txRef:
+                          "${widget.currentService.id}-${DateTime.now().millisecondsSinceEpoch}",
+                      amount: widget.currentService.servicePrice,
+                      customer: customer,
+                      paymentOptions: "ussd, card, barter, payattitude",
+                      customization: Customization(title: "Pay for Servcie"),
+                      isTestMode: true,
+                    );
+                    final ChargeResponse response = await flutterwave.charge();
                     Navigator.pop(context);
                   },
                   child: Container(
