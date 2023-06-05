@@ -14,7 +14,7 @@ class ServiceProviderCard extends StatelessWidget {
     Key? key,
     required this.image,
     required this.name,
-    required this.location,
+    required this.serviceClass,
     required this.rating,
     required this.reviews,
     required this.partner,
@@ -22,7 +22,7 @@ class ServiceProviderCard extends StatelessWidget {
   }) : super(key: key);
   final String image;
   final String name;
-  final String location;
+  final String serviceClass;
   final String rating;
   final String reviews;
   final PartnerEntity partner;
@@ -89,7 +89,7 @@ class ServiceProviderCard extends StatelessWidget {
             ),
             SizedBox(height: getProportionateScreenHeight(4)),
             Text(
-              location,
+              serviceClass,
               style: Theme.of(context)
                   .textTheme
                   .bodySmall!

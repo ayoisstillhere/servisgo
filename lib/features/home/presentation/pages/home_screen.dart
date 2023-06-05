@@ -395,7 +395,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: ServiceProviderCard(
                   image: serviceProvidersList[index].partnerPfpURL,
                   name: serviceProvidersList[index].partnerName,
-                  location: "FixitBro",
+                  serviceClass: serviceProvidersList[index].serviceClass,
                   rating: avgRating.toStringAsFixed(1),
                   reviews:
                       serviceProvidersList[index].ratings.length.toString(),

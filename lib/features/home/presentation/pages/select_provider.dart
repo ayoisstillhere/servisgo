@@ -84,7 +84,7 @@ class _SelectProviderState extends State<SelectProvider> {
             image: serviceProvidersList[index].partnerPfpURL,
             name: serviceProvidersList[index].partnerName,
             // location: serviceProvidersList[index].location,
-            location: "Fixitbro",
+            serviceClass: serviceProvidersList[index].serviceClass,
             rating: avgRating.toStringAsFixed(1),
             reviews: serviceProvidersList[index].ratings.length.toString(),
             partner: serviceProvidersList[index],

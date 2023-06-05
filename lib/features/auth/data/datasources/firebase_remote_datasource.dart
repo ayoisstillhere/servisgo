@@ -303,8 +303,12 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDatasource {
     await _acceptedServiceCollection.doc(serviceId).update({
       'serviceRating': rating,
     });
+
+    DocumentSnapshot snapshot = await _partnerCollection.doc(partnerId).get();
+    List currentRatings = (snapshot.data()! as dynamic)['ratings']!;
+    currentRatings.add(rating);
     await _partnerCollection.doc(partnerId).update({
-      'ratings': FieldValue.arrayUnion([rating]),
+      'ratings': currentRatings,
     });
   }
 

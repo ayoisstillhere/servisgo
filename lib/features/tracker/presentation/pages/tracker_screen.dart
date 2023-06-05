@@ -35,13 +35,6 @@ class _TrackerScreenState extends State<TrackerScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   leading: Container(),
-      //   title: Text(
-      //     "Map Unavailable",
-      //     style: Theme.of(context).textTheme.bodyMedium,
-      //   ),
-      // ),
       body: BlocBuilder<AcceptedServiceCubit, AcceptedServiceState>(
         builder: (_, state) {
           if (state is AcceptedServiceLoaded) {
@@ -72,7 +65,7 @@ class _TrackerScreenState extends State<TrackerScreen> {
             );
             final customerLocation = LatLng(
               currentService.latitudeCustomer!,
-              currentService.longitudePartner!,
+              currentService.longitudeCustomer!,
             );
 
             List<LatLng> polylineCoordinates = [];
