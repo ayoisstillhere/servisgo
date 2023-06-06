@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import '../../../chat/data/models/text_message_model.dart';
 import '../../../chat/domain/entities/text_message_entity.dart';
@@ -68,7 +67,6 @@ class FirebaseRemoteDataSourceImpl implements FirebaseRemoteDatasource {
       FirebaseFirestore.instance.collection("acceptedServices");
   final _chatCollection = FirebaseFirestore.instance.collection("chats");
   final googleSignin = GoogleSignIn(scopes: ['email']);
-  final _firebaseMessaging = FirebaseMessaging.instance;
 
   GoogleSignInAccount? _user;
 
