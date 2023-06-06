@@ -66,6 +66,7 @@ class _ChatScreenState extends State<ChatScreen> {
       ),
       body: Column(
         children: [
+          SizedBox(height: getProportionateScreenHeight(24)),
           _listMessagesWidget(primaryColor),
           Padding(
             padding: EdgeInsets.symmetric(
