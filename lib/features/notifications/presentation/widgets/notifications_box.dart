@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:servisgo/features/auth/domain/entities/user_entity.dart';
 
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
@@ -8,8 +9,10 @@ class NotificationsBox extends StatelessWidget {
   const NotificationsBox({
     super.key,
     required this.icons,
+    required this.currentUser,
   });
 
+  final UserEntity currentUser;
   final List icons;
 
   @override
@@ -58,12 +61,13 @@ class NotificationsBox extends StatelessWidget {
             children: [
               NotificationRow(
                 icon: icons[0],
-                text: "Ayodele, Your password has been successfully reset",
+                text:
+                    "${currentUser.name} Your password has been successfully reset!",
               ),
               const Divider(),
               NotificationRow(
                 icon: icons[1],
-                text: "Service Provider has arrived has been delivered.",
+                text: "${currentUser.name}, Service Provider has arrived!",
               ),
               const Divider(),
               NotificationRow(

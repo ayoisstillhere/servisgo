@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutterwave_standard/core/flutterwave.dart';
 import 'package:flutterwave_standard/models/requests/customer.dart';
@@ -161,7 +162,7 @@ class _CurrentJobCardState extends State<CurrentJobCard> {
                           ),
                           SizedBox(height: getProportionateScreenHeight(4)),
                           Text(
-                            "#${widget.currentService.servicePrice}",
+                            "₦${widget.currentService.servicePrice}",
                             style: Theme.of(context).textTheme.bodyMedium,
                           ),
                         ],
@@ -209,7 +210,12 @@ class _CurrentJobCardState extends State<CurrentJobCard> {
             ),
           );
         }
-        return const Center(child: CircularProgressIndicator());
+        return Center(
+          child: SpinKitPulsingGrid(
+            color: kPrimaryColor,
+            size: getProportionateScreenWidth(100),
+          ),
+        );
       },
     );
   }

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:intl/intl.dart';
 
+import '../../../../constants.dart';
 import '../../../auth/domain/entities/user_entity.dart';
 import '../../domain/entities/text_message_entity.dart';
 import '../bloc/chat_cubit/chat_cubit.dart';
@@ -34,6 +36,10 @@ class _MessagesScreenState extends State<MessagesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: const SizedBox(
+          height: 0,
+          width: 0,
+        ),
         title: Text(
           "Messages",
           style: Theme.of(context).textTheme.bodyMedium,
@@ -68,12 +74,10 @@ class _MessagesScreenState extends State<MessagesScreen> {
             allMessages.sort((a, b) =>
                 b.timestamp.compareTo(a.timestamp)); // Sort by timestamp
 
-                List<TextMessageEntity> requiredMessages = [];
+            List<TextMessageEntity> requiredMessages = [];
             for (TextMessageEntity textMessageEntity in allMessages) {
-              if (textMessageEntity.senderId ==
-                      widget.currentUser.uid ||
-                  textMessageEntity.recipientId ==
-                      widget.currentUser.uid) {
+              if (textMessageEntity.senderId == widget.currentUser.uid ||
+                  textMessageEntity.recipientId == widget.currentUser.uid) {
                 requiredMessages.add(textMessageEntity);
               }
             }
@@ -91,7 +95,8 @@ class _MessagesScreenState extends State<MessagesScreen> {
                         (partner) =>
                             partner.partnerId ==
                                 requiredMessages[index].recipientId ||
-                            partner.partnerId == requiredMessages[index].senderId,
+                            partner.partnerId ==
+                                requiredMessages[index].senderId,
                       );
                       return Padding(
                         padding: EdgeInsets.only(
@@ -100,20 +105,30 @@ class _MessagesScreenState extends State<MessagesScreen> {
                           imgUrl: partner.partnerPfpURL,
                           name: partner.partnerName,
                           lastMsg: requiredMessages[index].message,
-                          time: DateFormat('hh:mm a')
-                              .format(requiredMessages[index].timestamp.toDate()),
+                          time: DateFormat('hh:mm a').format(
+                              requiredMessages[index].timestamp.toDate()),
                           currentUser: widget.currentUser,
                           currentPartner: partner,
                         ),
                       );
                     }
-                    return const Center(child: CircularProgressIndicator());
+                    return Center(
+                      child: SpinKitPulsingGrid(
+                        color: kPrimaryColor,
+                        size: getProportionateScreenWidth(100),
+                      ),
+                    );
                   },
                 );
               },
             );
           }
-          return const Center(child: CircularProgressIndicator());
+          return Center(
+            child: SpinKitPulsingGrid(
+              color: kPrimaryColor,
+              size: getProportionateScreenWidth(100),
+            ),
+          );
         },
       ),
     );

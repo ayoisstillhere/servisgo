@@ -33,6 +33,10 @@ class MenuScreen extends StatelessWidget {
             : kPrimaryColor;
     return Scaffold(
       appBar: AppBar(
+        leading: const SizedBox(
+          width: 0,
+          height: 0,
+        ),
         title: Text(
           "Menu",
           style: Theme.of(context).textTheme.bodyMedium,
@@ -114,7 +118,9 @@ class MenuScreen extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const NotificationsScreen()));
+                        builder: (context) => NotificationsScreen(
+                              currentUser: currentUser,
+                            )));
               },
               icon: "assets/icons/Notification.svg",
               text: "Notifications",
@@ -167,6 +173,11 @@ class MenuScreen extends StatelessWidget {
                       builder: (context) => const OnboardingScreen()),
                   (route) => false,
                 );
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //       builder: (context) => const OnboardingScreen()),
+                // );
               },
               icon: "assets/icons/Logout.svg",
               text: "Logout",

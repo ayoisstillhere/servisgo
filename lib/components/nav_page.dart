@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../constants.dart';
@@ -50,13 +51,19 @@ class _NavPageState extends State<NavPage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<UserCubit, UserState>(
-      builder: (_, state) {
-        if (state is UserLoaded) {
-          return _navBody(context, state);
-        }
-        return const Center(child: CircularProgressIndicator());
-      },
+    return Scaffold(
+      body: BlocBuilder<UserCubit, UserState>(
+        builder: (_, state) {
+          if (state is UserLoaded) {
+            return _navBody(context, state);
+          }
+          return Center(
+              child: SpinKitPulsingGrid(
+            color: kPrimaryColor,
+            size: getProportionateScreenWidth(100),
+          ));
+        },
+      ),
     );
   }
 

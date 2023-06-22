@@ -1,5 +1,7 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import '../../../tracker/data/models/accepted_service_model.dart';
 import '../../../tracker/presentation/bloc/accepted_service_cubit/accepted_service_cubit.dart';
@@ -57,33 +59,38 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Hello, ${widget.currentUser.name}!",
-                        style: Theme.of(context)
-                            .textTheme
-                            .displayMedium
-                            ?.copyWith(color: kBgColor),
-                      ),
-                      SizedBox(height: getProportionateScreenHeight(4)),
-                      Text(
-                        "What do you need done today?",
-                        style: Theme.of(context)
-                            .textTheme
-                            .bodySmall!
-                            .copyWith(color: kBgColor),
-                      ),
-                    ],
+                  Expanded(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        AutoSizeText(
+                          "Hello, ${widget.currentUser.name}!",
+                          style: Theme.of(context)
+                              .textTheme
+                              .displayMedium
+                              ?.copyWith(color: kBgColor),
+                          maxLines: 1, // Limit the number of lines to 2
+                          minFontSize: 10,
+                        ),
+                        SizedBox(height: getProportionateScreenHeight(4)),
+                        Text(
+                          "What do you need done today?",
+                          style: Theme.of(context)
+                              .textTheme
+                              .bodySmall!
+                              .copyWith(color: kBgColor),
+                        ),
+                      ],
+                    ),
                   ),
                   GestureDetector(
                     onTap: () {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const NotificationsScreen(),
+                          builder: (context) => NotificationsScreen(
+                              currentUser: widget.currentUser),
                         ),
                       );
                     },
@@ -232,7 +239,12 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                             );
                     }
-                    return const Center(child: CircularProgressIndicator());
+                    return Center(
+                      child: SpinKitPulsingGrid(
+                        color: kPrimaryColor,
+                        size: getProportionateScreenWidth(100),
+                      ),
+                    );
                   },
                 ),
                 SizedBox(
@@ -351,7 +363,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     if (state is PartnerLoaded) {
                       return _topProvidersScrollView(state);
                     }
-                    return const Center(child: CircularProgressIndicator());
+                    return Center(
+                      child: SpinKitPulsingGrid(
+                        color: kPrimaryColor,
+                        size: getProportionateScreenWidth(100),
+                      ),
+                    );
                   },
                 ),
               ],

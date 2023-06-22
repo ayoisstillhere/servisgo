@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
+import '../../../../constants.dart';
 import '../../../auth/domain/entities/user_entity.dart';
 import '../../domain/entities/partner_entity.dart';
 
@@ -35,7 +37,12 @@ class _SelectProviderState extends State<SelectProvider> {
         if (state is PartnerLoaded) {
           return _selectBody(context, state);
         }
-        return const Center(child: CircularProgressIndicator());
+        return Center(
+          child: SpinKitPulsingGrid(
+            color: kPrimaryColor,
+            size: getProportionateScreenWidth(100),
+          ),
+        );
       },
     );
   }

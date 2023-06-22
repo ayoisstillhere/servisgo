@@ -56,7 +56,7 @@ class ServiceProviderCard extends StatelessWidget {
             Stack(
               children: [
                 Hero(
-                  tag: image,
+                  tag: partner.partnerId,
                   transitionOnUserGestures: true,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(4),

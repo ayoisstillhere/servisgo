@@ -2,6 +2,7 @@ import 'package:bubble/bubble.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 
@@ -223,7 +224,12 @@ class _ChatScreenState extends State<ChatScreen> {
               },
             );
           }
-          return const Center(child: CircularProgressIndicator());
+          return Center(
+            child: SpinKitPulsingGrid(
+              color: kPrimaryColor,
+              size: getProportionateScreenWidth(100),
+            ),
+          );
         },
       ),
     );

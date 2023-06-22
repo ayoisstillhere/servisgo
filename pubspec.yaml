@@ -40,6 +40,7 @@ dependencies:
   flutter_bloc: ^8.1.2
   flutter_polyline_points: ^1.0.0
   flutter_rating_bar: ^4.0.1
+  flutter_spinkit: ^5.2.0
   flutter_svg: ^2.0.2
   flutterwave_standard: ^1.0.7
   get_it: ^7.2.0
@@ -52,21 +53,36 @@ dependencies:
   uuid: ^3.0.7
 
 dev_dependencies:
-  flutter_launcher_icons: ^0.12.0
   flutter_lints: ^2.0.0
   flutter_native_splash: ^2.2.18
   flutter_test:
     sdk: flutter
+  flutter_launcher_icons: ^0.13.1
+
+flutter_launcher_icons:
+  image_path_android: "assets/images/app_icon.png"
+  image_path_ios: "assets/images/app_icon.png"
+  android: true
+  ios: true
+  image_path: "assets/images/app_icon.png"
+  remove_alpha_ios: true
+  min_sdk_android: 21 # android min sdk min:16, default 21
 
 flutter_native_splash:
   android: true
   ios: true
   web: false
   color: "#273a69"
-  image: "assets/images/ServisGo_Logo.png"
+  image: assets/images/ServisGo_Logo.png
+
+  android_12:
+    image: assets/images/CustomerLogoIOS.png
+    icon_background_color: "#273a69"
+    image_dark: assets/images/CustomerLogoIOS.png
+    icon_background_color_dark: "#273a69"
 
 flutter_icons:
-  androind: true
+  android: true
   ios: true
   image_path: "assets/images/Logo_Icon.png"
   adaptive_icon_background: "#FFFFFF"

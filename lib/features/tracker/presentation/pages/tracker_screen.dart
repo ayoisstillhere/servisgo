@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_polyline_points/flutter_polyline_points.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../../../home/presentation/bloc/partner_cubit/partner_cubit.dart';
@@ -82,7 +83,12 @@ class _TrackerScreenState extends State<TrackerScreen> {
               currentUser: widget.currentUser,
             );
           }
-          return const Center(child: CircularProgressIndicator());
+          return Center(
+            child: SpinKitPulsingGrid(
+              color: kPrimaryColor,
+              size: getProportionateScreenWidth(100),
+            ),
+          );
         },
       ),
     );
@@ -193,7 +199,12 @@ class _TrackerMapState extends State<TrackerMap> {
                   currentUser: widget.currentUser,
                 );
               }
-              return const Center(child: CircularProgressIndicator());
+              return Center(
+                child: SpinKitPulsingGrid(
+                  color: kPrimaryColor,
+                  size: getProportionateScreenWidth(100),
+                ),
+              );
             },
           ),
         ),

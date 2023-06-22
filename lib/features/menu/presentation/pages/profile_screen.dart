@@ -9,8 +9,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:servisgo/components/nav_page.dart';
 import 'package:servisgo/features/auth/domain/entities/user_entity.dart';
 import 'package:servisgo/features/menu/presentation/bloc/pfp_cubit/pfp_cubit.dart';
-
-import '../../../../components/default_button.dart';
 import '../../../../constants.dart';
 import '../../../../size_config.dart';
 import '../widgets/profile_item_tile.dart';
@@ -155,10 +153,6 @@ class ProfileScreen extends StatelessWidget {
                 uid: currentUser.uid,
               ),
               SizedBox(height: getProportionateScreenHeight(120)),
-              DefaultButton(
-                text: "Save Changes",
-                press: () {},
-              )
             ],
           ),
         ),
@@ -174,7 +168,8 @@ class ProfileScreen extends StatelessWidget {
 
     String pfpUrl = await BlocProvider.of<PfpCubit>(context).uploadImage(image);
 
-    await BlocProvider.of<PfpCubit>(context).updatePFPUrl(pfpUrl, currentUser.uid);
+    await BlocProvider.of<PfpCubit>(context)
+        .updatePFPUrl(pfpUrl, currentUser.uid);
 
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => const NavPage()));

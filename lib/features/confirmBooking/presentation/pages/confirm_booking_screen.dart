@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:location/location.dart';
 import '../../../../components/nav_page.dart';
@@ -137,7 +138,12 @@ class _ConfirmBookingScreenState extends State<ConfirmBookingScreen> {
         },
         builder: (context, state) {
           if (state is JobRequestLoading) {
-            return const Center(child: CircularProgressIndicator());
+            return Center(
+              child: SpinKitPulsingGrid(
+                color: kPrimaryColor,
+                size: getProportionateScreenWidth(100),
+              ),
+            );
           }
           return Padding(
             padding: EdgeInsets.symmetric(

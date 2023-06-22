@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/svg.dart';
 
 import '../../../../components/default_button.dart';
@@ -77,7 +78,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
         },
         builder: (context, state) {
           if (state is SigninLoading) {
-            return const Center(child: CircularProgressIndicator());
+            return Center(
+              child: SpinKitPulsingGrid(
+                color: kPrimaryColor,
+                size: getProportionateScreenWidth(100),
+              ),
+            );
           }
           return Padding(
             padding: EdgeInsets.symmetric(

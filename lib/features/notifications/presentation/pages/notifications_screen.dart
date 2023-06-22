@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 
+import 'package:servisgo/features/auth/domain/entities/user_entity.dart';
+
 import '../widgets/notifications_body.dart';
 
 class NotificationsScreen extends StatelessWidget {
-  const NotificationsScreen({super.key});
+  const NotificationsScreen({
+    Key? key,
+    required this.currentUser,
+  }) : super(key: key);
+  final UserEntity currentUser;
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +29,7 @@ class NotificationsScreen extends StatelessWidget {
         ],
       ),
       // body: const NoNotificationsBody(),
-      body: const NotificationsBody(),
+      body: NotificationsBody(currentUser: currentUser),
     );
   }
 }
-

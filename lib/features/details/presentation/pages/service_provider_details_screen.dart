@@ -171,7 +171,7 @@ class ServiceProviderDetails extends StatelessWidget {
               child: Column(
                 children: <Widget>[
                   Hero(
-                    tag: partner.partnerPfpURL,
+                    tag: partner.partnerId,
                     transitionOnUserGestures: true,
                     child: Image.network(
                       partner.partnerPfpURL,
@@ -216,7 +216,7 @@ class ServiceProviderDetails extends StatelessWidget {
                                   ),
                                   child: Center(
                                     child: Text(
-                                      "FixITbRO",
+                                      details['title'],
                                       textAlign: TextAlign.center,
                                       style: Theme.of(context)
                                           .textTheme
@@ -252,7 +252,7 @@ class ServiceProviderDetails extends StatelessWidget {
                                 SvgPicture.asset("assets/icons/money.svg"),
                                 SizedBox(width: getProportionateScreenWidth(4)),
                                 Text(
-                                  "# 2000/hr",
+                                  "₦${details['price']}/hr",
                                   style: Theme.of(context)
                                       .textTheme
                                       .bodySmall!
@@ -312,7 +312,7 @@ class ServiceProviderDetails extends StatelessWidget {
                         ),
                         SizedBox(height: getProportionateScreenHeight(36)),
                         DefaultButton(
-                          text: "Book Now - #${details['price']}/hr",
+                          text: "Book Now - ₦${details['price']}/hr",
                           press: () {
                             Navigator.push(
                                 context,
@@ -333,19 +333,19 @@ class ServiceProviderDetails extends StatelessWidget {
             ),
           ),
           Positioned(
-            left: getProportionateScreenWidth(32),
-            top: getProportionateScreenHeight(58),
+            // left: getProportionateScreenWidth(32),
+            top: getProportionateScreenHeight(24),
             child: GestureDetector(
               onTap: () => Navigator.pop(context),
               child: Container(
                 padding: EdgeInsets.symmetric(
-                  horizontal: getProportionateScreenWidth(16),
+                  // horizontal: getProportionateScreenWidth(16),
                   vertical: getProportionateScreenHeight(18),
                 ),
                 height: getProportionateScreenHeight(56),
                 width: getProportionateScreenWidth(56),
                 decoration: BoxDecoration(
-                  color: kPrimaryColor,
+                  // color: kPrimaryColor,
                   borderRadius: BorderRadius.circular(
                     getProportionateScreenWidth(16),
                   ),

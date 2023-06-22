@@ -62,7 +62,9 @@ class ProfileItemTile extends StatelessWidget {
                   children: [
                     Text(
                       value,
-                      style: Theme.of(context).textTheme.bodyLarge,
+                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                            color: kGreys,
+                          ),
                     ),
                     SizedBox(
                       height: getProportionateScreenHeight(6),
