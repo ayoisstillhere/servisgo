@@ -8,6 +8,8 @@ import '../widgets/body.dart';
 class OnboardingScreen extends StatelessWidget {
   const OnboardingScreen({super.key});
 
+  static String routeName = "/onboarding";
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);

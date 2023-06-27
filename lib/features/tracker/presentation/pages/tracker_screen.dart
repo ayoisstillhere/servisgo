@@ -167,6 +167,7 @@ class _TrackerMapState extends State<TrackerMap> {
           ),
           polylines: {
             Polyline(
+              visible: true,
               polylineId: const PolylineId("route"),
               points: widget.polylineCoordinates,
               color: kPrimaryColor,

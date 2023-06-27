@@ -167,17 +167,16 @@ class MenuScreen extends StatelessWidget {
               press: () async {
                 await BlocProvider.of<AuthCubit>(context).loggedOut();
                 await BlocProvider.of<SigninCubit>(context).submitSignOut();
-                Navigator.pushAndRemoveUntil(
+                // Navigator.popUntil(
+                //   context,
+                //   ModalRoute.withName(OnboardingScreen.routeName),
+                  
+                // );
+                Navigator.push(
                   context,
                   MaterialPageRoute(
                       builder: (context) => const OnboardingScreen()),
-                  (route) => false,
                 );
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(
-                //       builder: (context) => const OnboardingScreen()),
-                // );
               },
               icon: "assets/icons/Logout.svg",
               text: "Logout",

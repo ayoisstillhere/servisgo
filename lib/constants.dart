@@ -28,4 +28,4 @@ const String kInvalidPhoneError = "Please Enter Valid Phone Number";
 const String kSubjectNullError = "Please Enter a subject";
 const String kMessageNullError = "Please Enter a message";
 
-const String googleApiKey = "AIzaSyBm27uu6PcrVD1MOy9HZW-TUe8GB9xbwXU";
+const String googleApiKey = "AIzaSyB_e7zWrg0sHJ3EIOLiwfpeaEcxigYdjww";

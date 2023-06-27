@@ -10,6 +10,7 @@ import 'package:servisgo/features/home/presentation/bloc/partner_cubit/partner_c
 import 'package:servisgo/features/home/presentation/bloc/user_cubit/user_cubit.dart';
 import 'package:servisgo/features/menu/presentation/bloc/pfp_cubit/pfp_cubit.dart';
 import 'package:servisgo/features/tracker/presentation/bloc/accepted_service_cubit/accepted_service_cubit.dart';
+import 'package:servisgo/routes.dart';
 
 import 'features/auth/presentation/bloc/auth_cubit/auth_cubit.dart';
 import 'features/auth/presentation/bloc/signin_cubit/signin_cubit.dart';
@@ -63,11 +64,13 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'ServisGo',
+        routes: routes,
         themeMode: ThemeMode.system,
         theme: MyThemes.lightTheme,
         darkTheme: MyThemes.darktheme,
         home: BlocBuilder<AuthCubit, AuthState>(
           builder: (context, authState) {
+
             if (authState is Authenticated) {
               return const NavPage();
             } else {
